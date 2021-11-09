@@ -1,0 +1,18 @@
+package bank.version17;
+//Collateral ratio uses the strategy pattern
+
+public class RegularChecking extends CheckingAccount {
+
+   public RegularChecking(int acctnum, boolean isforeign, boolean ispreferred) {
+      super(acctnum, isforeign, ispreferred);
+   }
+
+   protected String accountType() {
+      return " Regular Checking";
+   }
+   
+   protected double interestRate() {
+      return 0.0;
+   }
+}
+

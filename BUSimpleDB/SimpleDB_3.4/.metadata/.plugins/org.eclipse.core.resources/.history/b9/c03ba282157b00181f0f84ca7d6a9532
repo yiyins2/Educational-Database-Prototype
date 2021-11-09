@@ -1,0 +1,5 @@
+package chapter5.bank18;
+
+public interface AccountFactory {
+   BankAccount create(int acctnum, boolean isforeign, boolean ispreferred);
+}

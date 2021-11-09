@@ -1,0 +1,57 @@
+package hw7;
+
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+
+public class HW7Test {
+   public static void main(String[] args) throws IOException {
+      Collection<String> dict = readFromFile("dictionary.txt");
+      Collection<String> reversedict = reverse(dict);
+
+      // predicate p1 denotes words longer than 20 characters
+      Predicate<? super Collection<String>> p1 = p -> ((CharSequence) p).length() > 20;
+      printWords(reversedict, p1);
+
+      System.out.println();
+
+      // predicate p2 denotes words beginning with "chori".
+      Predicate<? super Collection<String>> p2 = Predicate.isEqual("chori");
+      printWords(reversedict, p2);
+   }
+   
+   public static Collection<String> readFromFile (String file) throws FileNotFoundException  {
+	   //List<String> list = Files.readAllLines( new File(file).toPath(), Charset.defaultCharset());
+	   Scanner s = new Scanner(new File(file));
+	   Collection<String> collect = new ArrayList<String>();
+	   while(s.hasNext()){
+		   collect.add(s.next());  
+	   }
+	   s.close();
+	   return collect;
+   }
+   
+   public static Collection<String> reverse(Collection<String> dict){
+	   Comparator<String> comparator = Collections.reverseOrder();
+	   dict = new HashSet<String>();
+	   List<String> list = new ArrayList<String>(dict);
+	   Collections.sort(list, comparator);
+	   Collection<String> collect = new HashSet<String>(list);
+	   return collect;
+   }
+   
+   
+   public static void printWords (Collection<String> collect, Predicate<? super Collection<String>> p){
+	   //Predicate<String> pred = q -> q.length() > 20;
+	   collect = new HashSet<String>();
+	   List<Collection<String>> list = Arrays.asList(collect);
+	   List<Collection<String>> result = list.stream().filter(p).collect(Collectors.toList());
+	   result.forEach(word ->System.out.println(word));
+	   //System.out.println(p.test(collect));
+	   
+   }
+
+}

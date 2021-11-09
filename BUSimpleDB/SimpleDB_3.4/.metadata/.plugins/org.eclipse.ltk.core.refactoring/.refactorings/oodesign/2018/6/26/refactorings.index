@@ -1,0 +1,72 @@
+1530133994278	Delete element
+1530134005466	Delete element
+1530134013599	Delete element
+1530134030351	Copy compilation unit
+1530134036975	Copy compilation unit
+1530134041954	Copy compilation unit
+1530136591352	Copy package
+1530149657990	Rename type 'ForeignCheckingFee'
+1530149665554	Delete element
+1530149675641	Rename type 'DomesticFee'
+1530149740044	Rename type 'FeeStrategy'
+1530182868464	Rename type 'Ownership'
+1530183081834	Rename method 'isForeign'
+1530183229283	Rename method 'ownerType'
+1530183430587	Delete element
+1530183699501	Delete element
+1530183703221	Delete element
+1530183713804	Delete element
+1530183724652	Delete element
+1530183743287	Copy compilation units
+1530183837055	Rename field 'fs'
+1530210392022	Delete element
+1530210415638	Rename type 'Fees'
+1530210588238	Copy compilation unit
+1530210680798	Copy compilation units
+1530210750635	Delete element
+1530210752822	Delete element
+1530210850752	Copy compilation unit
+1530211079092	Rename field 'sc'
+1530218091850	Delete element
+1530218362945	Copy compilation unit
+1530218619356	Delete element
+1530219034872	Copy package
+1530219073162	Copy file
+1530219288209	Delete element
+1530219295128	Copy compilation unit
+1530220230910	Copy compilation unit
+1530281985191	Copy compilation unit
+1530281990160	Copy compilation unit
+1530293524134	Delete element
+1530293526411	Delete element
+1530293538446	Delete element
+1530297734960	Copy compilation unit
+1530297764242	Copy compilation unit
+1530297770227	Copy compilation unit
+1530297774628	Copy compilation unit
+1530297780575	Copy compilation unit
+1530297787872	Copy compilation unit
+1530298860858	Rename type 'DoneCmd'
+1530374851183	Copy compilation unit
+1530375027639	Delete element
+1530377012239	Copy compilation units
+1530377027919	Copy compilation unit
+1530377050932	Delete element
+1530377058457	Copy compilation unit
+1530377090847	Copy compilation unit
+1530377390959	Rename method 'determineCommands'
+1530382049126	Rename local variable 'cmd'
+1530382068496	Rename local variable 'cmd'
+1530382095235	Rename local variable 'cmd'
+1530382146131	Rename local variable 'cmd'
+1530382153169	Rename local variable 'cmd'
+1530382174435	Rename local variable 'cmd'
+1530382180492	Rename local variable 'cmd'
+1530382214591	Rename local variable 'cmd'
+1530382221602	Rename local variable 'cmd'
+1530382244869	Rename local variable 'cmd'
+1530382249367	Rename local variable 'cmd'
+1530382266337	Rename local variable 'cmd'
+1530382270862	Rename local variable 'cmd'
+1530382292593	Rename local variable 'cmd'
+1530382298639	Rename local variable 'cmd'

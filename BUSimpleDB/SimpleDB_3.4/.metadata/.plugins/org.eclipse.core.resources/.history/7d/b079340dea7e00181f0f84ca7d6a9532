@@ -1,0 +1,5 @@
+package chapter5.bank13;
+
+public interface AccountFactory {
+   BankAccount create(int acctnum);
+}

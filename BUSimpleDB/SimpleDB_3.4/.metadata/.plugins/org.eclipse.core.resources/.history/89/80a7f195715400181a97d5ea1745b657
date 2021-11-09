@@ -1,0 +1,16 @@
+package hw10;
+
+public class SportClient implements Client {
+   private String mysport;
+   
+   public SportClient(String s, ScoreService svc) {
+      mysport = s;
+      svc.addObserver(this);
+   }
+   
+   public void newScore(String sport, String hometeam, String awayteam, String homescore, String awayscore) {
+      if (sport.equals(mysport)) {    
+         System.out.println("New " + mysport + " score: " + hometeam + " " + homescore + ", " + awayteam + " " + awayscore);
+      }
+   }
+}

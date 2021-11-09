@@ -1,0 +1,16 @@
+package chapter09.cookbook;
+
+import java.util.Iterator;
+import java.util.function.Consumer;
+
+public interface FoodItem {
+   String name();
+   Iterator<FoodItem> childIterator();
+   
+   default void forEachChild(Consumer<FoodItem> c) {
+      Iterator<FoodItem> iter = childIterator();
+      while (iter.hasNext())
+         c.accept(iter.next());
+   }
+   
+}

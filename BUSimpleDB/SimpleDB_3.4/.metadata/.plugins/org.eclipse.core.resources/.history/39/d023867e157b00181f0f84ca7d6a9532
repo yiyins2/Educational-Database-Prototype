@@ -1,0 +1,15 @@
+package chapter5.bank13;
+
+public class AccountFactory {
+   public static BankAccount createSavings(int acctnum) {
+      return new SavingsAccount(acctnum);
+   }
+
+   public static BankAccount createRegularChecking(int acctnum) {
+      return new RegularChecking(acctnum);
+   }
+
+   public static BankAccount createInterestChecking(int acctnum) {
+      return new InterestChecking(acctnum);
+   }
+}

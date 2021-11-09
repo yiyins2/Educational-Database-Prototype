@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;tx&apos; in &apos;simpledb.jdbc.network.RemoteConnectionImpl&apos; to &apos;currentTx&apos;&#x0A;- Original project: &apos;SimpleDB Engine&apos;&#x0A;- Original element: &apos;simpledb.jdbc.network.RemoteConnectionImpl.tx&apos;&#x0A;- Renamed element: &apos;simpledb.jdbc.network.RemoteConnectionImpl.currentTx&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;tx&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;simpledb.jdbc.network{RemoteConnectionImpl.java[RemoteConnectionImpl^tx" name="currentTx" references="true" setter="false" stamp="1557888936010" textual="false" version="1.0"/>
+</session>

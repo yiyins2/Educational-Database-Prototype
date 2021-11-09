@@ -1,0 +1,59 @@
+package hw7;
+
+import java.util.*;
+import java.util.function.Predicate;
+import java.io.*;
+
+public class HW7Test {
+    
+    public static Collection<String> readFromFile(String file) throws IOException{
+        Reader r = new FileReader(file);
+        Collection<String> c = new ArrayList<>();
+        int x;
+        while((x = r.read())>0){
+            String s="";
+            char ch = (char) x;
+            s=s+ch;
+            int y;
+            while((char)(y=r.read())!='\n'){
+                char cha = (char)y;
+                s=s+cha;
+            }
+            c.add(s);
+        }
+        return c;
+    }
+    
+    public static Collection<String> reverse(Collection<String> c){
+        Comparator<String> comp = (s1,s2)->s2.compareTo(s1);
+        Collection<String> col = new SortedCollection<>(c, comp);
+        return col;
+    }
+    
+    public static void printWords(Collection<String> c, Predicate<String> p){
+        for(String s : c){
+            if(p.test(s))
+                System.out.println(s);
+        }   
+    }
+    
+    
+   public static void main(String[] args) throws IOException {
+     Collection<String> dict = readFromFile("dictionary.txt");
+     Collection<String> reversedict = reverse(dict);
+
+      // predicate p1 denotes words longer than 20 characters
+       System.out.println("Longer than 20 characters:");
+      Predicate<String> p1 = s-> s.length()>20;
+      printWords(reversedict, p1);
+
+      System.out.println();
+      
+      // predicate p2 denotes words beginning with "chori".
+       System.out.println("Starts with 'chori':");
+      Predicate<String> p2 = s-> s.startsWith("chori");
+      printWords(reversedict, p2);
+   }
+
+
+}

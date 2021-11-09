@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 0 elements to &apos;oodesign/src/hw7&apos;&#x0A;- Destination element: &apos;oodesign/src/hw7&apos;" description="Copy compilation units" destination="=oodesign/src&lt;hw7" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1521227237875" units="0" version="1.0"/>
+</session>

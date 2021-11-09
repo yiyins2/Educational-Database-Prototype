@@ -1,0 +1,31 @@
+package hw7;
+
+import java.util.Iterator;
+
+public class LookAheadIterator<T> implements Iterator<T> {
+   private Iterator<T> iter;
+   private T value;
+   
+   public LookAheadIterator(Iterator<T> iter) {
+      this.iter = iter;
+      value = getNext();
+   }
+   
+   public boolean hasNext() {
+      return (value != null);
+   }
+   
+   public T next() {
+      T result = value;
+      value = getNext();
+      return result;
+   }
+   
+   public T peek() {
+      return value;
+   }
+   
+   private T getNext() {
+      return iter.hasNext() ? iter.next() : null;
+   }
+}

@@ -1,0 +1,65 @@
+package bank.version17;
+
+import java.io.Serializable;
+
+//Collateral ratio uses the strategy pattern
+
+public abstract class BankAccount implements Comparable<BankAccount>, Serializable {
+   protected int acctnum;
+   protected int balance;
+   protected FeeStrategy fstrategy;
+   protected PreferenceStrategy pstrategy;
+   
+   public BankAccount(int acctnum, boolean isforeign, boolean ispreferred) {
+      this.acctnum = acctnum;
+      setForeignOwner(isforeign);
+      setPreferredAccount(ispreferred);
+   }
+   
+   public int getAcctNum() { 
+      return acctnum; 
+   }
+
+   public int getBalance() { 
+      return balance; 
+   }
+
+   public void deposit(int amt) {
+      balance += amt;
+   }
+
+   public int compareTo(BankAccount ba) {
+      if (balance == ba.balance)
+         return acctnum = ba.acctnum;
+      else
+         return balance - ba.balance;
+   }
+   
+   public boolean hasEnoughCollateral(int loanamt) {
+      double ratio = collateralRatio();
+      return balance >= loanamt * ratio;
+   }
+   
+   public String toString() {
+      String accttype = accountType();
+      return accttype + " " + acctnum + ": " + balance;
+   }
+
+   public void addInterest() {
+      balance += (int) (balance * interestRate());
+   }
+   
+   public int fee() {
+      return fstrategy.fee();
+   }
+   
+   protected double collateralRatio() {
+      return pstrategy.collateralRatio();
+   }
+   
+   public abstract void setForeignOwner(boolean isforeign);
+   public abstract void setPreferredAccount(boolean ispreferred);
+   
+   protected abstract String accountType();
+   protected abstract double interestRate();
+}

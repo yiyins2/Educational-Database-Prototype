@@ -1,0 +1,56 @@
+package chapter5.bank13;
+
+import java.util.*;
+
+public class Bank {
+   private Map<Integer,BankAccount> accounts = new HashMap<>();
+   private int nextacct = 0;
+
+   public int newAccount(int type) {
+      int acctnum = nextacct++;
+      BankAccount ba;
+      if (type == 1)
+         ba = new SavingsAccount(acctnum);
+      else if (type == 2)
+         ba = new RegularChecking(acctnum);
+      else
+         ba = new InterestChecking(acctnum);
+      accounts.put(acctnum, ba);
+      return acctnum;
+   }
+
+   public int getBalance(int acctnum) {
+      BankAccount ba = accounts.get(acctnum);
+      return ba.getBalance();
+   }
+
+   public void setForeign(int acctnum, boolean isforeign) {
+      BankAccount ba = accounts.get(acctnum);
+      ba.setForeign(isforeign);
+   }
+
+   public void deposit(int acctnum, int amt) {
+      BankAccount ba = accounts.get(acctnum);
+      ba.deposit(amt);
+   }
+
+   public boolean authorizeLoan(int acctnum, int loanamt) {
+      BankAccount ba = accounts.get(acctnum);
+      return ba.hasEnoughCollateral(loanamt);
+   }
+
+   public String toString() {
+      String result = "The bank has " + accounts.size() + " accounts.";
+      for (BankAccount ba : accounts.values())
+         result += "\n\t" + ba.toString();
+      return result;
+   }
+
+   public void addInterest() {
+      for (BankAccount ba : accounts.values())
+            ba.addInterest();
+   }
+}
+
+
+

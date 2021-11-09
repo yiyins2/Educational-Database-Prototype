@@ -1,0 +1,19 @@
+package chapter09.cookbook;
+
+import java.util.Iterator;
+
+public class FoodItemAdapter implements Iterator<FoodItem> {
+   private Iterator<Ingredient> iter;
+   
+   public FoodItemAdapter(Iterator<Ingredient> iter) {
+      this.iter = iter;
+   }
+   
+   public boolean hasNext() {
+      return iter.hasNext();
+   }
+   
+   public FoodItem next() {
+      return iter.next().getItem();
+   }
+}

@@ -1,0 +1,77 @@
+1554640815333	Rename field 'blk'
+1554660206941	Rename local variable 'ok'
+1554662766844	Rename local variable 'loc'
+1554662824164	Rename local variable 'recordloc'
+1554662849343	Rename local variable 'recordloc'
+1554662857882	Rename local variable 'recordloc'
+1554662937318	Rename local variable 'recordloc'
+1554668324696	Rename method 'findEmptySlot'
+1554668439581	Rename method 'findEmptySlot'
+1554669468640	Rename field 'current'
+1554670273164	Rename method 'delete'
+1554670295642	Rename method 'insert'
+1554693165801	Rename field 'loc'
+1554693172271	Rename local variable 'loc'
+1554693198185	Rename method 'location'
+1554693261578	Rename method 'slotLocation'
+1554693283702	Rename method 'getRid'
+1554693365607	Rename method 'globalSlot'
+1554694161779	Rename method 'location'
+1554726199924	Rename method 'nextUsedSlot'
+1554730908962	Rename local variable 'globalslot'
+1554731132000	Copy compilation unit
+1554731158809	Rename local variable 'slot'
+1554731190463	Rename local variable 'slot'
+1554731937991	Rename local variable 'slot'
+1554732269155	Rename field 'currentslot'
+1554732535213	Rename local variable 'ti'
+1554732732953	Rename local variable 'tcatfile'
+1554732757240	Rename local variable 'ti'
+1554732772355	Rename field 'tcatInfo'
+1554732888381	Rename field 'fcatInfo'
+1554732948757	Rename local variable 'rid'
+1554747863131	Rename method 'insert'
+1554749020670	Rename method 'getTableInfo'
+1554749225081	Rename local variable 'ri'
+1554749364707	Rename local variable 'ti'
+1554749419532	Rename local variable 'ti'
+1554749558903	Rename local variable 'ti'
+1554749995609	Rename local variable 't'
+1554753318758	Rename local variable 'ri'
+1554771502679	Rename field 'current'
+1554772004161	Delete element
+1554772030109	Rename type 'Table'
+1554774302435	Delete element
+1554774320158	Rename type 'TableTest'
+1554824665062	Move compilation unit
+1554824676941	Move compilation unit
+1554824685864	Move compilation unit
+1554824732878	Delete element
+1554824794034	Rename local variable 'ts'
+1554824852230	Rename package 'simpledb.scans'
+1554833533849	Rename local variable 't'
+1554833776334	Rename type 'MetadataTest'
+1554834077677	Rename local variable 't'
+1554834100328	Rename local variable 't'
+1554834231508	Rename local variable 't'
+1554834398925	Rename field 'ti'
+1554834488120	Rename local variable 'idxti'
+1554834702045	Rename method 'getTableInfo'
+1554834731170	Rename field 'ti'
+1554834800988	Rename local variable 'iti'
+1554834809645	Rename local variable 'isi'
+1554836625840	Copy compilation unit
+1554837113078	Rename local variable 'sch'
+1554849031989	Rename local variable 'ri'
+1554849198580	Rename local variable 'md'
+1554849236923	Rename local variable 'tcatmd'
+1554863468336	Copy compilation unit
+1554864695241	Rename local variable 'ti'
+1555014885710	Copy compilation unit
+1555017674315	Rename method 'selectPred'
+1555017684829	Rename method 'joinPred'
+1555100750014	Delete element
+1555100752568	Delete element
+1555118868432	Delete element
+1555118875623	Delete element
+1555118951441	Move compilation unit

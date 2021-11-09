@@ -1,0 +1,23 @@
+1534113703045	Move compilation unit
+1534133620363	Rename local variable 'limit'
+1534298056933	Rename type 'ApproverWrapper'
+1534298084952	Rename type 'CreditScoreApprover'
+1534298094464	Rename type 'CollateralApprover'
+1534298110411	Rename type 'GoodCustomerApprover'
+1534298132795	Rename type 'LoanApprover'
+1534298150752	Rename local variable 'app'
+1534298176662	Rename method 'approveLoan'
+1534298186462	Rename local variable 'app'
+1534298203045	Rename local variable 'app'
+1534298228361	Rename local variable 'app'
+1534298236959	Rename field 'app'
+1534298259591	Rename local variable 'app'
+1534333142060	Copy compilation unit
+1534333171450	Rename type 'PredicateWrapper'
+1534333233148	Delete element
+1534333355336	Copy compilation unit
+1534333442316	Delete element
+1534333452380	Copy compilation unit
+1534333471163	Rename type 'OrPredicate2'
+1534341012006	Rename type 'Reducer'
+1534341450538	Rename local variable 'ckbx1'

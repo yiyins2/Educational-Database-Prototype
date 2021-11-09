@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;s&apos; in &apos;embedded.CreateLargeStudentDB.main(...)&apos; to &apos;cmd&apos;&#x0A;- Original project: &apos;SimpleDBClient&apos;&#x0A;- Original element: &apos;embedded.CreateLargeStudentDB.main(String[]).s&apos;&#x0A;- Renamed element: &apos;s&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;s&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;embedded{CreateLargeStudentDB.java[CreateLargeStudentDB~main~\[QString;@s!328!385!335!335!QString;!0!false" name="cmd" references="true" stamp="1556730134855" version="1.0"/>
+</session>

@@ -1,0 +1,34 @@
+package chapter5.bank12;
+
+public class SavingsAccount extends AbstractBankAccount {
+   private double RATE = 0.01;
+
+   public SavingsAccount(int acctnum) {
+      super(acctnum);
+   }
+
+   protected double collateralRatio() {
+      return 1.0 / 2.0;
+   }
+
+   protected String accountType() {
+      return "Savings";
+   }
+
+   protected double interestRate() {
+      return RATE;
+   }
+
+   protected Fees feeStrategy() {
+      return isforeign ? Fees.FOREIGN_SAVINGS : Fees.DOMESTIC;
+   }
+}
+
+
+
+
+
+
+
+
+

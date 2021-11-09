@@ -1,0 +1,31 @@
+1511145477676	Copy package
+1511145694604	Rename type 'AccountFactory'
+1511145914493	Copy compilation unit
+1511145935049	Copy compilation unit
+1511145951976	Copy compilation unit
+1511145977539	Copy compilation unit
+1511146096889	Delete element
+1511146122203	Copy package
+1511146857663	Delete element
+1511146869870	Rename type 'AccountFactory2'
+1511146900651	Delete element
+1511146911646	Delete element
+1511146917994	Delete element
+1511190060988	Copy package
+1511190141730	Delete element
+1511190157239	Delete element
+1511190583792	Delete element
+1511190591624	Delete element
+1511190598961	Delete element
+1511390801597	Rename method 'getInfo'
+1511390817388	Rename method 'saveInfo'
+1511390906009	Rename method 'getInfo'
+1511390923609	Rename method 'saveInfo'
+1511390953832	Rename method 'getInfo'
+1511390959885	Rename method 'saveInfo'
+1511401921395	Rename field 'farray'
+1511401928875	Rename local variable 'farray'
+1511401946435	Rename local variable 'farray'
+1511405446025	Rename field 'accttypes'
+1511644334661	Rename type 'BankStats'
+1511651042180	Rename local variable 'ok'

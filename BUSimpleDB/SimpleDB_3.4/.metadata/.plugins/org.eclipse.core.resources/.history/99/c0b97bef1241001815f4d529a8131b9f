@@ -1,0 +1,4 @@
+package chapter9.bank22;
+
+public interface BankInfo {
+}

@@ -1,0 +1,11 @@
+.topMargin{
+  margin: 5%;
+}
+
+.centered {
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3%;
+}

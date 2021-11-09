@@ -1,0 +1,40 @@
+package hw7;
+
+import java.util.*;
+
+public class MergedCollection<T> extends AbstractCollection<T> implements Iterable<T>{
+	private Collection<T> col1;
+	private Collection<T> col2;
+	private boolean bool = true;
+	private Comparator<T> comparator;
+	private MergedIterator<T> mit;
+	
+	
+	
+	public MergedCollection(Collection<T> c1 , Collection<T> c2 , Comparator<T> comp) {
+		col1 = c1;
+		col2 = c2;
+		comparator = comp;
+		mit = new MergedIterator(col1.iterator(), col2.iterator() ,comparator);
+
+	}
+	
+	public boolean add(T item) {
+		if(bool) {
+			bool = !bool;
+			return col1.add(item);
+		}
+		else {
+			bool = !bool;
+			return col2.add(item);
+		}
+	}
+	
+	public int size() {
+		return col1.size() + col2.size();
+	}
+	
+	public Iterator<T> iterator(){
+		return mit;
+	}
+}

@@ -1,0 +1,23 @@
+Banking Demo, Version 10.
+
+Bank accounts have a fee. The value of the fee depends
+on whether the account holder is foreign or domestic. We
+use the strategy pattern to handle the fees.
+
+There is an interface FeeStrategy, having a single method fee.
+There are three FeeStrategy implementation classes, one for each
+kind of fee. The classes are DomesticFee, ForeignSavingsFee, and
+ForeignCheckingFee.
+
+The BankAccount interface has the new method fee, which returns
+the fee. Its toString method is modified to display the fee.
+
+Each AbstractBankAccount object has a variable fstrategy, which holds
+the account's FeeStrategy object. It implements the method fee 
+by calling fstrategy.fee.  The feeStrategy method is 
+abstract in AbstractBankAccount, because the actual strategy is
+determined by the subclasses.
+
+The SavingsAccount and CheckingAccount classes implement the feeStrategy method. 
+
+

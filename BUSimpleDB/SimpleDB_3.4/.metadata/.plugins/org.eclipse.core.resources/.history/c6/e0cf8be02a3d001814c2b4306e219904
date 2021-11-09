@@ -1,0 +1,19 @@
+package chapter9.count2;
+
+class CountController {
+   private CountModel model;
+
+   public CountController(CountModel model) {
+      this.model = model;
+   }
+
+   public int incrementButtonPressed() {
+      model.updateBy(1);
+      return model.getCount();
+   }
+   public int decrementButtonPressed() {
+      model.updateBy(-1);
+      return model.getCount();
+   }
+}
+

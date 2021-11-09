@@ -1,0 +1,5 @@
+package bank.version17a;
+
+public interface AccountFactory {
+   BankAccount create(int acctnum, boolean isforeign, boolean ispreferred);
+}

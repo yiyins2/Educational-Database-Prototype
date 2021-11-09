@@ -1,0 +1,6 @@
+package bank.version17;
+//Collateral ratio uses the strategy pattern
+
+public interface PreferenceStrategy {
+   double collateralRatio();
+}

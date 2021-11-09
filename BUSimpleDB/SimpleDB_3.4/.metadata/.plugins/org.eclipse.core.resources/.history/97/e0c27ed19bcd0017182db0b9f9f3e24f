@@ -1,0 +1,25 @@
+package bank.version17;
+// Collateral ratio uses the strategy pattern
+
+public class SavingsAccount extends BankAccount {
+   public SavingsAccount(int acctnum, boolean isforeign, boolean ispreferred) {
+      super(acctnum, isforeign, ispreferred);
+   }
+
+   public void setForeignOwner(boolean isforeign) {
+      fstrategy = isforeign ? ForeignSavingsFee.INSTANCE : DomesticFee.INSTANCE;
+   }
+
+   public void setPreferredAccount(boolean ispreferred) {
+      pstrategy = ispreferred ? Preferred.INSTANCE : BasicSavings.INSTANCE;
+   }
+
+   protected String accountType() {
+      return "Savings";
+   }
+
+   protected double interestRate() {
+      return 0.01;
+   }
+}
+

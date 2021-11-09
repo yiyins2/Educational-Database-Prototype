@@ -1,0 +1,14 @@
+1529247820454	Delete element
+1529247913581	Rename package 'chapter3.testcode'
+1529247974469	Move compilation units
+1529248010725	Rename package 'chapter4.comparison'
+1529248032260	Rename type 'RunnableReadLine'
+1529248352468	Move compilation unit
+1529248418837	Delete element
+1529257627251	Rename type 'SavingsType'
+1529257636904	Rename type 'RegularCheckingType'
+1529257643311	Rename type 'InterestCheckingType'
+1529542167380	Rename method 'nextInt'
+1529542188667	Rename method 'nextAccount'
+1529542492512	Rename field 'nextacct'
+1529542514504	Rename field 'accts'

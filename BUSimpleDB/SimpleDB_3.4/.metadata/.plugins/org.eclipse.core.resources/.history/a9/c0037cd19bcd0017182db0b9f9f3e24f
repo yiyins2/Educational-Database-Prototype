@@ -1,0 +1,21 @@
+package bank.version17;
+//Collateral ratio uses the strategy pattern
+
+import java.io.*;
+import java.util.*;
+
+public class BankProgram {
+   public static void main(String[] args) {      
+      InputStream is = System.in;
+      BankConnection conn = new BankConnection("bank.info");
+      Map<Integer,BankAccount> m = conn.getInfo();
+      Bank bank = new Bank(m);
+      InputClient bc = new BankClient(is, bank);
+
+      while (!bc.isDone()) {
+         int cmd = bc.getCommand();
+         bc.processCommand(cmd);
+      }
+      conn.saveInfo(m);      
+   }
+}

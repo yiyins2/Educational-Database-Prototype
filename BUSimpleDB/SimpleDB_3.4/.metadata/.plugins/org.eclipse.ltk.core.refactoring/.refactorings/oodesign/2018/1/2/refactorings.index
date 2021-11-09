@@ -1,0 +1,21 @@
+1515384779833	Move compilation unit
+1515388098625	Rename package 'chapter5.bank20'
+1515427471048	Copy package
+1515427493309	Delete element
+1515427498076	Delete element
+1515427501590	Delete element
+1515427511198	Delete element
+1515427514734	Delete element
+1515427521646	Delete element
+1515427526352	Delete element
+1515427535718	Delete element
+1515427539325	Delete element
+1515511659480	Rename field 'l'
+1515586678809	Copy compilation unit
+1515588371328	Rename method 'read'
+1515588724288	Rename type 'BufferTest'
+1515590625750	Rename type 'BufferedCopy'
+1515590654308	Rename method 'copy'
+1515590683804	Rename method 'copyArray'
+1515592100319	Copy compilation unit
+1515608560796	Rename type 'BufferedFileRead'

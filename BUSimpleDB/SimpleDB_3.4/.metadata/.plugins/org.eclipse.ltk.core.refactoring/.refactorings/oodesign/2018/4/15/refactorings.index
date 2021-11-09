@@ -1,0 +1,95 @@
+1523239983139	Rename method 'newAccount'
+1523239996254	Rename method 'getBalance'
+1523240010013	Rename method 'deposit'
+1523240019118	Rename method 'authorizeLoan'
+1523240027186	Rename method 'showAll'
+1523240036347	Rename method 'addInterest'
+1523240045780	Rename method 'getAccount'
+1523298673371	Copy compilation unit
+1523298692826	Move compilation unit
+1523298701848	Copy compilation unit
+1523298712464	Move compilation unit
+1523298721199	Copy compilation unit
+1523298726804	Move compilation unit
+1523298739959	Rename type 'AccountCreationController2'
+1523298767672	Copy compilation unit
+1523298773353	Move compilation unit
+1523298782598	Copy compilation unit
+1523298786940	Move compilation unit
+1523298906012	Copy compilation unit
+1523298912106	Move compilation unit
+1523298927308	Rename type 'AccountCreationView2'
+1523298934020	Rename type 'AccountInfoController2'
+1523298946895	Rename type 'AccountInfoView2'
+1523298954314	Rename type 'AccountAllView2'
+1523298971780	Rename type 'AccountAllController2'
+1523301406342	Rename local variable 'p2'
+1523301413451	Rename local variable 'p1'
+1523301417863	Rename local variable 'zz'
+1523301788382	Rename field 'model'
+1523306504666	Rename type 'AccountAllController'
+1523306513758	Rename type 'AccountAllView'
+1523306529686	Rename type 'AccountCreationController'
+1523306537026	Rename type 'AccountCreationView'
+1523306546698	Rename type 'AccountInfoController'
+1523306558356	Rename type 'AccountInfoView'
+1523370515103	Copy package
+1523370539897	Delete element
+1523370542739	Delete element
+1523370545419	Delete element
+1523370548048	Delete element
+1523370550292	Delete element
+1523377084568	Delete element
+1523377096703	Copy compilation unit
+1523379077068	Copy compilation unit
+1523379110840	Copy compilation unit
+1523379147476	Copy compilation unit
+1523379265366	Copy compilation unit
+1523379276375	Copy compilation unit
+1523380009908	Rename type 'MergedIterator'
+1523380016663	Copy compilation unit
+1523380043602	Rename type 'SortedCollection'
+1523380051767	Copy compilation unit
+1523380242374	Delete element
+1523380371358	Copy package
+1523380387125	Copy compilation unit
+1523380660508	Copy compilation unit
+1523380676075	Copy compilation unit
+1523380786429	Copy compilation unit
+1523380802388	Copy compilation unit
+1523380820821	Copy compilation unit
+1523382357305	Delete element
+1523382409325	Delete element
+1523382422146	Rename package 'hw7sciore'
+1523388181762	Rename package 'chapter9.bank23'
+1523388194412	Copy package
+1523390192891	Rename field 'root'
+1523390360662	Rename field 'root'
+1523390422814	Rename field 'root'
+1523390753187	Rename field 'root'
+1523392103238	Copy compilation unit
+1523392114550	Copy compilation unit
+1523392134167	Copy compilation unit
+1523392339108	Copy compilation unit
+1523392344099	Copy compilation unit
+1523392365844	Copy compilation unit
+1523392369202	Copy compilation unit
+1523393768576	Rename method 'refreshAll'
+1523394483999	Delete element
+1523394487680	Delete element
+1523394493706	Copy compilation unit
+1523394497455	Copy compilation unit
+1523394742649	Delete element
+1523394745799	Delete element
+1523394748477	Delete element
+1523395457829	Delete element
+1523395467849	Delete element
+1523414144240	Delete element
+1523656094178	Delete element
+1523656099260	Delete element
+1523656101844	Delete element
+1523657713054	Rename package 'chapter9.bank23'
+1523657733107	Rename package 'chapter9.count1'
+1523657746984	Rename package 'chapter9.count2'
+1523657758461	Rename package 'chapter9.count3'
+1523657788694	Rename package 'chapter9.tttmvc'

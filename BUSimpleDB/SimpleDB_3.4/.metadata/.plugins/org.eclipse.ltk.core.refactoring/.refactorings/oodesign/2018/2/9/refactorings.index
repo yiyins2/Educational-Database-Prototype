@@ -1,0 +1,15 @@
+1519525402235	Rename type 'WindowInternalTraversal'
+1519526800763	Rename type 'WindowExternalTraversal'
+1519527108685	Rename local variable 'p2'
+1519527120451	Rename local variable 'p3'
+1519527549065	Rename local variable 'choicebox'
+1519528257967	Rename method 'printNodeLocation'
+1519590155950	Rename method 'printNodeSizes'
+1519665876288	Delete element
+1519695932638	Rename type 'MaxBalanceVisitor'
+1519741191662	Rename type 'Visitor'
+1519741271989	Rename type 'MaxBalVisitor'
+1519741338243	Delete element
+1519829085153	Delete element
+1519847526557	Copy package
+1519849133637	Rename package 'hw6'

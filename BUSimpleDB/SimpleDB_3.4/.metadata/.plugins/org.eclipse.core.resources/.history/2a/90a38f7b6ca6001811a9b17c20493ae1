@@ -1,0 +1,24 @@
+package chapter09.cookbook;
+
+import java.util.*;
+
+public class Cookbook {
+   private static Map<String,Recipe> cookbook = new HashMap<>();
+   public static void main(String[] args) {
+      addRecipes();
+   }
+   
+   private static void addRecipes() {
+      Recipe dressing = new Recipe("dressing", "Mix thoroughly.");
+      dressing.addIngredient(new BasicFood("oil", true), 4);
+      dressing.addIngredient(new BasicFood("vinegar", true), 2);
+      cookbook.add("dressing", dressing);
+      
+      Recipe salad = new Recipe("salad", "Chop lettuce, pour dressing over it.");
+      salad.addIngredient(new BasicFood("lettuce", true), 1);
+      salad.addIngredient(dressing, 1);
+      cookbook.add()
+      
+      
+   }
+}

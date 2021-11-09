@@ -1,0 +1,52 @@
+package bank.version17;
+//Collateral ratio uses the strategy pattern
+
+import java.util.*;
+
+public class Bank {
+   private Map<Integer,BankAccount> accounts;
+   private int nextacct = 0;
+   
+   public Bank(Map<Integer,BankAccount> accounts) {
+      this.accounts = accounts;
+   }
+   
+   public int newAccount(int type, boolean isforeign, boolean ispreferred) {
+      int acctnum = nextacct++;
+      BankAccount ba;
+      if (type == 1) 
+         ba = AccountFactory.createSavings(acctnum, isforeign, ispreferred);
+      else if (type == 2)
+         ba = AccountFactory.createRegularChecking(acctnum, isforeign, ispreferred);
+      else
+         ba = AccountFactory.createInterestChecking(acctnum, isforeign, ispreferred);
+      accounts.put(acctnum, ba);
+      return acctnum;
+   }
+
+   public BankAccount getAccount(int acctnum) {
+      return accounts.get(acctnum);
+   }
+
+   public boolean authorizeLoan(BankAccount ba, int loanamt) {
+      return ba.hasEnoughCollateral(loanamt);
+   }
+
+   public String toString() {
+      Set<Integer> accts = accounts.keySet();
+      String result = "The bank has " + accts.size() + " accounts.";
+      for (int i : accts) {
+         BankAccount ba = accounts.get(i);
+         result += "\n\t" + ba.toString();
+      }
+      return result;
+   }
+
+   public void addInterest() {
+      Set<Integer> accts = accounts.keySet();
+      for (int i : accts) {
+         BankAccount ba = accounts.get(i);
+         ba.addInterest();
+      }
+   }
+}

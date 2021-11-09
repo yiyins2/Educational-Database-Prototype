@@ -1,0 +1,68 @@
+package hw10;
+
+import java.util.*;
+
+import javafx.scene.Parent;
+import javafx.geometry.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+
+
+
+public class ScoreService {
+
+	private List<Client> observers = new ArrayList<>();
+	
+	public void addObserver (Client obs){
+		observers.add(obs);
+	}
+	
+	public Parent getRoot(){
+		VBox p1 = new VBox(8);
+	    p1.setAlignment(Pos.CENTER_LEFT);
+	    p1.setPadding(new Insets(10));
+	    Label label0 = new Label ("Home Team");
+	    Label label1 = new Label ("Name");
+	    TextField textfield1 = new TextField ();
+	    Label label2 = new Label("Score");
+	    TextField textfield2 = new TextField ();
+	    p1.getChildren().addAll(label0, label1,textfield1,label2, textfield2);
+	    
+	    VBox p2 = new VBox(8);
+	    p2.setAlignment(Pos.CENTER_LEFT);
+	    p2.setPadding(new Insets(10));
+	    Label label20 = new Label ("Away Team");
+	    Label label21 = new Label ("Name");
+	    TextField textfield21 = new TextField ();
+	    Label label22 = new Label("Score");
+	    TextField textfield22 = new TextField ();
+	    p2.getChildren().addAll(label20,label21,textfield21,label22, textfield22);
+	    
+	    VBox p4 = new VBox(8);
+	    p4.setAlignment(Pos.CENTER);
+	    p4.setPadding(new Insets(10));
+	    Label label41 = new Label ("Sport");
+	    TextField textfield41 = new TextField ();
+	    Button btn = new Button("Submit");
+	    p4.getChildren().addAll(label41,textfield41,btn);
+	    
+	    btn.setOnAction(e-> {
+	    	String value0 = String.valueOf(textfield41.getText());
+	    	String value1 = String.valueOf(textfield1.getText());
+	    	String value2 = String.valueOf(textfield2.getText());
+	    	String value3 = String.valueOf(textfield21.getText());
+	    	String value4 = String.valueOf(textfield22.getText());
+	    	
+	    	//SportClient.newScore(value0, value1, value3, value2, value4);
+	    	
+	    	System.out.println("New " + value0 + " score: " + value1 + " " + value2 + ", " + value3 + " " + value4);
+	    });
+		
+	    HBox p3 = new HBox(8);
+	    p3.setAlignment(Pos.CENTER);
+	    p3.setPadding(new Insets(10));
+	    p3.getChildren().addAll(p1,p2,p4);
+	    return p3;		
+	    
+	}
+}

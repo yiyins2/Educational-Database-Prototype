@@ -1,0 +1,25 @@
+1506379217988	Rename package 'bank.version13'
+1506379240557	Copy package
+1506379268140	Delete element
+1506536746812	Rename package 'bank.version14'
+1506536763834	Copy package
+1506536934450	Copy compilation unit
+1506536985155	Copy compilation unit
+1506537081534	Copy compilation unit
+1506537088099	Copy compilation unit
+1506540609077	Rename package 'bank.version15'
+1506540623433	Copy package
+1506540908618	Delete element
+1506540934959	Rename package 'bank.version13c'
+1506566067029	Rename type 'LoanStrategy'
+1506566117467	Rename type 'ForeignFee'
+1506566142642	Copy compilation unit
+1506566229973	Rename type 'CheckingType'
+1506566243148	Copy compilation unit
+1506617674333	Rename type 'NoCollateralLoan'
+1506617702358	Rename type 'LowCollateralLoan'
+1506617716799	Rename type 'HighCollateralLoan'
+1506617845610	Rename field 'ts'
+1506617858466	Rename field 'ls'
+1506617884369	Rename field 'fs'
+1506617965642	Rename field 'lstrategy'

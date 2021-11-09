@@ -1,0 +1,27 @@
+package chapter9.count2;
+
+class CountController implements ModelObserver {
+   private CountModel model;
+   private CountView view;
+
+   public CountController(CountModel model, CountView view) {
+      this.model = model;
+      this.view = view;
+      model.addObserver(this);
+      view.setController(this);
+   }
+
+   // Methods called by the view
+   public void incrementButtonPressed() {
+      model.updateBy(1);
+   }
+   public void decrementButtonPressed() {
+      model.updateBy(-1);
+   }
+
+   // Methods called by the model
+   public void countUpdated(int count) {
+      view.setLabel(count);
+   }
+}
+

@@ -1,0 +1,13 @@
+package bank.version17;
+
+import java.io.Serializable;
+
+//Collateral ratio uses the strategy pattern
+
+public enum ForeignCheckingFee implements FeeStrategy, Serializable {
+   INSTANCE;
+   
+   public int fee() {
+      return 500;  // $5
+   }
+}

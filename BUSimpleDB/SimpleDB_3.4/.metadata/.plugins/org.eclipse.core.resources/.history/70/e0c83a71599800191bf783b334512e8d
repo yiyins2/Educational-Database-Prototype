@@ -1,0 +1,5 @@
+package simpledb.index.query;
+
+public class IndexTest {
+
+}

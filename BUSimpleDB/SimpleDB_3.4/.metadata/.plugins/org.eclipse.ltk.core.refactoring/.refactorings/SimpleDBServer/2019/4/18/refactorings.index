@@ -1,0 +1,30 @@
+1556624629108	Rename field 'tx'
+1556642970548	Rename local variable 'ti2'
+1556642979116	Rename local variable 'ti1'
+1556643398846	Copy compilation unit
+1556645398048	Copy compilation unit
+1556645410547	Copy compilation unit
+1556645417666	Copy compilation unit
+1556645429161	Move compilation unit
+1556645434834	Move compilation unit
+1556645439463	Move compilation unit
+1556645469838	Rename local variable 's'
+1556649208382	Copy compilation unit
+1556663761810	Rename local variable 's1'
+1556663768342	Rename local variable 'ts1'
+1556663786970	Rename local variable 'ti1'
+1556663995018	Delete element
+1556664001207	Rename type 'ScanTest2'
+1556664011502	Rename type 'ScanTest3'
+1556664083686	Rename local variable 'ts1'
+1556664089206	Rename local variable 'ts2'
+1556664274455	Rename local variable 's'
+1556664294606	Rename local variable 's3'
+1556664299180	Rename local variable 's'
+1556664304740	Rename local variable 'p3'
+1556664311305	Rename local variable 'p2'
+1556664317904	Rename local variable 'p1'
+1556664327367	Rename local variable 'p'
+1556664332964	Rename local variable 'us'
+1556664468566	Delete element
+1556664476448	Rename type 'PlanTest3'

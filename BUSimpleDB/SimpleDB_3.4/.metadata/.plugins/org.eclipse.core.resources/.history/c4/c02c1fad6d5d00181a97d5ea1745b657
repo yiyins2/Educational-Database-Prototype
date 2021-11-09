@@ -1,0 +1,68 @@
+package chapter3.bank09;
+
+import java.util.*;
+
+public class BankClient {
+   private Scanner sc = new Scanner(System.in);
+   private boolean done = false;
+   private Bank bank = new Bank();
+   private int current = -1;
+
+   public void run() {
+      while (!done) {
+         int cmd = getCommand();
+         processCommand(cmd);
+      }
+   }
+
+   private int getCommand() {
+      System.out.print("Enter command (0=quit, 1=new, 2=select, 3=deposit, 4=loan, 5=show, 6=interest, 7=setforeign): ");
+      return sc.nextInt();
+   }
+
+   private void processCommand(int cmd) {
+      if (cmd == 0) {
+         done = true;
+         sc.close();
+         System.out.println("Goodbye!");
+      }
+      else if (cmd == 1) {
+         System.out.print("Enter account type(1=savings, 2=checking, 3=interest checking): ");
+         int type = sc.nextInt();
+         int acctnum = bank.newAccount(type);
+         System.out.println("Your new account number is " + acctnum);
+      }
+      else if (cmd == 2) {
+         System.out.print("Enter acct#: ");
+         current = sc.nextInt();
+         int balance = bank.getBalance(current);
+         System.out.println("The balance of account " + current + " is " + balance);
+      }
+      else if (cmd == 3) {
+         System.out.print("Enter deposit amt: ");
+         int amt = sc.nextInt();
+         bank.deposit(current, amt);
+      }
+      else if (cmd == 4) {
+         System.out.print("Enter loan amt: ");
+         int amt = sc.nextInt();
+         boolean ok = bank.authorizeLoan(current, amt);
+         if (ok) 
+            System.out.println("Your loan is approved");
+         else
+            System.out.println("Your loan is denied");
+      }
+      else if (cmd == 5) 
+         System.out.println(bank.toString());
+      else if (cmd == 6)
+         bank.addInterest();     
+      else if (cmd == 7) {
+         System.out.print("Enter 1 for foreign, 2 for domestic: ");
+         int val = sc.nextInt();
+         boolean isforeign = (val == 1);
+         bank.setForeign(current, isforeign);
+      }
+      else
+         System.out.println("illegal command");
+   }
+}

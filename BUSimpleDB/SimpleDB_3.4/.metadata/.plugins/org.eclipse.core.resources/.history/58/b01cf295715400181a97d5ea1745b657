@@ -1,0 +1,87 @@
+package hw10;
+
+import java.util.ArrayList;
+import java.util.List;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.*;
+
+public class ScoreService {
+   private Button btn = new Button("Submit");
+   private TextField hometeam  = new TextField();
+   private TextField awayteam  = new TextField();
+   private TextField homescore = new TextField();
+   private TextField awayscore = new TextField();
+   private TextField sport     = new TextField();
+   private List<Client> clients = new ArrayList<>();
+   private Pane root;
+   
+   public ScoreService() {
+      root = createNodeHierarchy();
+
+      btn.setOnAction(event -> {
+         for(Client c : clients) 
+            c.newScore(sport.getText(), hometeam.getText(), awayteam.getText(),
+                  homescore.getText(), awayscore.getText());
+      });
+   }
+   
+   public Pane getRoot() {
+      return root;
+   }
+   
+   public void addObserver(Client c) {
+      clients.add(c);
+   }
+
+   private Pane labeledField(String s, TextField tf) {
+      HBox hb = new HBox(8);
+      hb.setAlignment(Pos.CENTER);
+      hb.setPadding(new Insets(10));
+      Label lbl = new Label(s);
+      tf.setPrefWidth(80);
+      hb.getChildren().addAll(lbl, tf);
+      return hb;
+   }
+
+   private Pane createNodeHierarchy() {
+      VBox p3 = new VBox(8);
+      p3.setAlignment(Pos.CENTER); 
+      p3.setPadding(new Insets(10));
+      Pane p1 = labeledField("Name", hometeam);
+      Pane p2 = labeledField("Score", homescore);
+      p3.getChildren().addAll(p1, p2);
+      TitledPane home = new TitledPane("Home Team", p3);
+      home.setCollapsible(false);
+      VBox p6 = new VBox(8);
+      p6.setAlignment(Pos.CENTER); 
+      p6.setPadding(new Insets(10));
+      Pane p4 = labeledField("Name", awayteam);
+      Pane p5 = labeledField("Score", awayscore);
+      p6.getChildren().addAll(p4, p5);
+      TitledPane away = new TitledPane("Away Team", p6);
+      away.setCollapsible(false);
+
+      sport.setPrefWidth(80);
+      VBox p7 = new VBox(8);
+      p7.setAlignment(Pos.CENTER); 
+      p7.setPadding(new Insets(10));
+      p7.getChildren().add(sport);
+      TitledPane sport = new TitledPane("Sport", p7);
+      sport.setCollapsible(false);
+
+      VBox p8 = new VBox(8);
+      p8.setAlignment(Pos.TOP_CENTER);
+      p8.getChildren().addAll(sport, btn);
+
+      HBox p9 = new HBox(8);
+      p9.setAlignment(Pos.TOP_CENTER);
+      p9.setPadding(new Insets(10));
+      p9.getChildren().addAll(home, away, p8);
+      return p9;
+   }
+}

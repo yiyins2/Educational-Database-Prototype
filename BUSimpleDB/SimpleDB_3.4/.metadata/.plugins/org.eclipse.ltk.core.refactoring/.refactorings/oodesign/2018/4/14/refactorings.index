@@ -1,0 +1,30 @@
+1522606909573	Delete element
+1522606920035	Rename package 'hw6sciore'
+1522625744818	Rename method 'registerObserver'
+1522793632910	Delete element
+1522793681993	Rename package 'chapter9.bank23'
+1522793693014	Rename package 'chapter9.bank22'
+1522793717584	Copy package
+1522809142591	Rename package 'chapter7.bank22'
+1522880249327	Rename local variable 'p'
+1522880264327	Rename local variable 'p'
+1522880284240	Rename local variable 'p'
+1522880296980	Rename local variable 'p'
+1522887838012	Rename type 'HW7Test'
+1522896329837	Delete element
+1522933880230	Rename method 'notifyObserversNew'
+1522933908116	Rename method 'notifyObserversDeposit'
+1522933921290	Rename method 'notifyObserversForeign'
+1522933964035	Rename method 'notifyObserversPreferred'
+1522968672934	Copy compilation unit
+1523025936836	Rename type 'P'
+1523025960327	Rename type 'AndP'
+1523026132446	Rename type 'MyPredicate'
+1523026146113	Copy compilation unit
+1523037535281	Copy compilation unit
+1523043023186	Move compilation unit
+1523043677203	Move compilation unit
+1523043697951	Delete element
+1523043706020	Rename type 'BankClient2'
+1523050876358	Rename type 'Bank2'
+1523050884875	Rename type 'Auditor2'

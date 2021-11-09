@@ -1,0 +1,65 @@
+package hw7;
+
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class SortedCollection<T> extends AbstractCollection<T> {
+
+	private Collection<T> result;
+	private int size;
+	private boolean done;
+	private boolean start = true;
+	
+	private T prev = null;
+	private T current = null;
+	
+	private Collection<T> c1 = new TreeSet<T>();
+	private Collection<T> c2 = new TreeSet<T>();
+	
+	public SortedCollection (Collection<T> c, Comparator<T> comp) {
+		result = sort(c,comp);
+	}
+	
+	public Iterator<T> iterator() {
+		return result.iterator();
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	private Collection<T> sort(Collection<T> c, Comparator<T> comp) {
+		
+		while(!done) {
+			// Will add to c1 when toggle is set HIGH
+			boolean toggle = true;
+		
+			Iterator<T> i = c.iterator();
+		
+			while(i.hasNext()) {
+				current = i.next();
+				if (start) {
+					prev = current;
+					start = false;
+				} else {
+					toggle = (comp.compare(current,  prev) < 0 ? !toggle : toggle);
+				}
+				if (toggle) {
+					c1.add(current);
+				} else {
+					c2.add(current);
+				}
+				prev = current;
+			}
+			c = new MergedCollection<T>(c1, c2, comp);
+			if (c2.size() == 0)
+				done = true;
+		}
+			return c1;
+	}
+	
+	
+}

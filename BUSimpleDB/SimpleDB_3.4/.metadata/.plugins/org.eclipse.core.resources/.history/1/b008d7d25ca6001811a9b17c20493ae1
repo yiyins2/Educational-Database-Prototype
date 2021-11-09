@@ -1,0 +1,37 @@
+package chapter09.cookbook;
+
+import java.util.*;
+
+public class Recipe implements FoodItem {
+   private String name;
+   private List<Ingredient> ingredients = new ArrayList<>();
+   
+   public Recipe(String name) {
+      this.name = name;
+   }
+   
+   public addIngredient(FoodItem fi, int qty) {
+      ingredients.add(new Ingredient(fi, qty));
+   }
+   
+   public String name() {
+      return name;
+   }
+   
+   public boolean isvegan() {
+      Iterator<FoodItem> iter = childIterator();
+      while (iter.hasNext())
+         if (!iter.next().isvegan()) 
+            return false;
+      return true;
+   }
+   
+   public Iterator<FoodItem> childIterator() {
+      return ingredients.iterator();
+   }
+   
+   public String toString() {
+      String veg = isvegan() ? "(vegan)" : "";
+      return name + veg;
+   }
+}

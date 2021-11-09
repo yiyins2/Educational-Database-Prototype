@@ -1,0 +1,27 @@
+package bank.version19;
+
+import java.util.Map;
+import java.util.function.*;
+
+public class StatProgram {
+   public static void main(String[] args) {      
+      BankConnection conn = new BankConnection("bank.info");
+      Map<Integer,BankAccount> m = conn.getMap();
+      AccountFactory[] factories = AccountFactories.values();
+      Bank bank = new Bank(m, factories);
+      AccountStats stats = new AccountStats(bank);
+      Predicate<BankAccount> pred = ba -> ba.accountType().equals("Savings");
+      System.out.println(stats.maxBalance1("Savings"));
+      System.out.println(stats.maxBalance2("Savings"));
+      System.out.println(stats.maxBalance3(pred));
+      System.out.println(stats.maxBalance4(pred));
+      
+      stats.printAccounts1("Savings");
+      stats.printAccounts2("Savings");
+      stats.printAccounts3(pred);
+      stats.printAccounts4(pred);
+     
+      stats.processAccounts1(pred, ba->System.out.println(ba));
+      stats.processAccounts2(pred, ba->System.out.println(ba));  
+   }
+}

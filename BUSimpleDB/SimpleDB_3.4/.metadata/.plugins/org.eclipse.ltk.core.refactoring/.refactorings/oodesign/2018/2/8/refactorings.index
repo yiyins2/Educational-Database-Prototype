@@ -1,0 +1,21 @@
+1518968840939	Rename type 'TraversableAcctCreationScreen'
+1518971294586	Rename type 'TraversableAcctCreationWindow'
+1518971326830	Rename type 'ExternalTraversalAcctCreationWindow'
+1518971370423	Copy compilation unit
+1519058541748	Rename package 'fishtank.images'
+1519082106735	Rename type 'FishTank'
+1519093265258	Rename local variable 'g'
+1519133926018	Rename local variable 'height'
+1519133932518	Rename local variable 'width'
+1519134095553	Delete element
+1519134101342	Delete element
+1519134105353	Delete element
+1519134111824	Delete element
+1519134167432	Rename type 'FishTankProgram'
+1519167332252	Copy package
+1519180976717	Rename type 'FishImage'
+1519180988453	Rename field 'fishtype'
+1519227166130	Rename type 'ErraticfBehavior'
+1519233178879	Rename type 'AquariumProgram'
+1519233187145	Rename type 'AquariumProgram'
+1519235825456	Rename field 'display'

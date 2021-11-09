@@ -1,0 +1,66 @@
+package chapter5.bank12;
+
+import java.util.Scanner;
+
+public enum InputCommands implements InputCommand {
+   DONE((sc, bank, current)->{
+      sc.close();
+      System.out.println("Goodbye!");
+      return true;
+   }),
+   NEW((sc, bank, current)->{
+      System.out.print("Enter account type(1=savings, 2=checking, 3=interest checking): ");
+      int type = sc.nextInt();
+      current[0] = bank.newAccount(type);
+      System.out.println("Your new account number is " + current[0]);
+      return false;
+   }),
+   SELECT((sc, bank, current)->{
+      System.out.print("Enter acct#: ");
+      current[0] = sc.nextInt();
+      int balance = bank.getBalance(current[0]);
+      System.out.println("The balance of account " + current[0] + " is " + balance);
+      return false;
+   }),
+   DEPOSIT((sc, bank, current)->{
+      System.out.print("Enter deposit amt: ");
+      int amt = sc.nextInt();
+      bank.deposit(current[0], amt);    
+      return false;
+   }),
+   LOAN((sc, bank, current)->{
+      System.out.print("Enter loan amt: ");
+      int amt = sc.nextInt();
+      boolean ok = bank.authorizeLoan(current[0], amt);
+      if (ok) 
+         System.out.println("Your loan is approved");
+      else
+         System.out.println("Your loan is denied");    
+      return false;
+   }),
+   SHOW((sc, bank, current)->{         
+      System.out.println(bank.toString());
+      return false;
+   }),
+   INTEREST((sc, bank, current)-> {         
+      bank.addInterest();     
+      return false;
+   }),
+   ISFOREIGN((sc, bank, current)-> {
+      System.out.print("Enter 1 for foreign, 2 for domestic: ");
+      int val = sc.nextInt();
+      boolean isforeign = (val == 1);
+      bank.setForeign(current[0], isforeign);   
+      return false;
+   });
+
+   private InputCommand cmd;
+   
+   private InputCommands(InputCommand cmd) {
+      this.cmd = cmd;
+   }
+
+   public boolean execute(Scanner sc, Bank bank, int[] current) {
+      return cmd.execute(sc, bank, current);
+   }
+}

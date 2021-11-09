@@ -1,0 +1,82 @@
+package chapter4.bank11;
+
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.util.*;
+
+public class SavedBankInfo {
+   private String fname;
+   private Map<Integer,BankAccount> accts = new HashMap<Integer,BankAccount>();
+   private int nextacct;
+
+   public SavedBankInfo(String fname) {
+      this.fname = fname;
+      if (new File(fname).exists()) {
+         byte[] a = new byte[16];
+         try (InputStream is = new FileInputStream(fname)) {
+            int x = is.read(a);
+            while (x == 16) {
+               BankAccount ba = createAccountFrom(a);
+               accts.put(ba.getAcctNum(), ba);
+               x = is.read(a);
+            }
+            nextacct = ByteBuffer.wrap(a).getInt(0);
+         }
+         catch (IOException ex) {
+            System.out.println(ex);
+            throw new RuntimeException("bank file read exception");
+         }
+      }
+   }
+
+   public Map<Integer,BankAccount> getAccounts() {
+      return accts;
+   }
+
+   public int nextAcctNum() {
+      return nextacct;
+   }
+
+   public void saveMap(Map<Integer,BankAccount> map, int n) {
+      byte[] a = new byte[16];
+      try (OutputStream os = new FileOutputStream(fname)) {
+         for (BankAccount ba : map.values()) {
+            fillArrayFrom(a, ba);
+            os.write(a);
+         }
+         ByteBuffer.wrap(a).putInt(0, n);
+         os.write(a, 0, 4);
+      }
+      catch (IOException ex) {
+         System.out.println(ex);
+         throw new RuntimeException("bank file write exception");
+      }
+   }
+
+   private BankAccount createAccountFrom(byte[] a) {
+      ByteBuffer bb = ByteBuffer.wrap(a);
+      int num       = bb.getInt(0);
+      int type      = bb.getInt(4);
+      int balance   = bb.getInt(8);
+      int isforeign = bb.getInt(12);
+
+      TypeStrategy ts = (type == 1) ? new SavingsAccount()
+                     : (type == 2) ? new RegularChecking()
+                     : new InterestCheckingType();
+      BankAccount ba = new AbstractBankAccount(num, ts);               
+      ba.deposit(balance);
+      ba.setForeign(isforeign == 1);
+      return ba;
+   }
+   
+   private void fillArrayFrom(byte[] a, BankAccount ba) {
+      ByteBuffer bb = ByteBuffer.wrap(a);
+      String accttype = ba.accountType();
+      int type = (accttype.equals("Savings"))  ? 1 
+               : (ba.equals("Regular checking")) ? 2 : 3;
+      bb.putInt(0, ba.getAcctNum());
+      bb.putInt(4, type);
+      bb.putInt(8, ba.getBalance());
+      bb.putInt(12, ba.isForeign() ? 1 : 2);
+   }
+}

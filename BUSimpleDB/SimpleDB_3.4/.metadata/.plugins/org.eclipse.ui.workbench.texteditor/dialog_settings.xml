@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="BlockId" key="selection"/>
+		<item value="true" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="Block"/>
+			<item value="asChar"/>
+			<item value="wrap"/>
+			<item value="forName"/>
+			<item value="run"/>
+			<item value="OP"/>
+			<item value="Count"/>
+			<item value="package mvc.ttt;"/>
+		</list>
+		<list key="replacehistory">
+			<item value="BlockId"/>
+			<item value="Op"/>
+			<item value="Temp"/>
+			<item value="ModelObserver"/>
+			<item value="private"/>
+			<item value="BankAccount"/>
+			<item value="Account"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="290" key="DIALOG_WIDTH"/>
+		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+		<item value="409" key="DIALOG_HEIGHT"/>
+		<item value="951" key="DIALOG_X_ORIGIN"/>
+		<item value="127" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

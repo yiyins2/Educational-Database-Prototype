@@ -1,0 +1,62 @@
+package hw7;
+
+import java.util.*;
+import java.util.function.Predicate;
+import java.io.*;
+
+public class HW7Test 
+{
+   public static void main(String[] args) throws IOException 
+   {
+      //System.out.println("first");
+      Collection<String> dict = readFromFile("dictionary.txt");
+      //System.out.println("check");
+      Collection<String> reversedict = reverse(dict);
+      //System.out.println("Second");
+      // predicate p1 denotes words longer than 20 characters
+      Predicate<String> p0 = ((n) -> n.length() > 20);
+      printWords(reversedict, p0);
+      //System.out.println("Third");
+
+      System.out.println();
+     
+
+      // predicate p2 denotes words beginning with "chori".
+      Predicate<String> p1 = (n) -> n.length() > 5;
+      Predicate<String> p2 = p0.and((n) -> n.substring(0, 5).equals("chori"));
+      printWords(reversedict, p2);
+   }
+   
+   public static Collection<String> readFromFile(String path) throws IOException
+   {
+       Scanner sc = new Scanner(new File(path));
+       Collection<String> coll = new ArrayList<String>();
+       while(sc.hasNext())
+       {
+           coll.add(sc.next());
+       }
+       sc.close();
+       return coll;
+   }
+   
+   public static Collection<String> reverse(Collection<String> dict)
+   {
+       //System.out.println("Check1");
+       Comparator<String> comp = (s2, s1) -> s1.compareTo(s2);
+       //System.out.println("Check2");
+       SortedCollection<String> reversedict = new SortedCollection(dict, comp);
+       //System.out.println("FinalCheck");
+       return reversedict;
+   }
+   
+   public static void printWords(Collection<String> coll, Predicate p)
+   {
+       for(String x : coll)
+       {
+           if(p.test(x))
+           System.out.println(x);
+       }
+   }
+
+
+}

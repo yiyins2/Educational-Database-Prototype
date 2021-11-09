@@ -1,0 +1,28 @@
+1516056485828	Move compilation unit
+1516062783443	Copy compilation unit
+1516069421430	Copy package
+1516069822466	Delete element
+1516069827130	Delete element
+1516069921001	Delete element
+1516071306980	Rename package 'stream'
+1516071340009	Rename package 'stream2'
+1516205723928	Rename type 'ObjectStream'
+1516206087628	Rename package 'chapter6.testcode'
+1516206186514	Rename package 'chapter7.stream'
+1516206248101	Rename package 'chapter7.markreset'
+1516206290181	Move compilation unit
+1516206350830	Move compilation unit
+1516206399397	Move compilation unit
+1516208873712	Rename type 'ReadLine'
+1516208884671	Rename type 'ThreadTest2'
+1516209703375	Move compilation unit
+1516209738670	Rename type 'ThreadFactoryTest'
+1516210252537	Move compilation unit
+1516210289275	Rename type 'ThreadGroupFactory'
+1516210315881	Rename package 'chapter5.threadfactory'
+1516220286263	Move compilation unit
+1516227433985	Rename type 'RandomCollection'
+1516227563451	Copy compilation unit
+1516227781349	Move compilation unit
+1516424225934	Rename type 'EvenBetterSimulation'
+1516479811124	Delete element

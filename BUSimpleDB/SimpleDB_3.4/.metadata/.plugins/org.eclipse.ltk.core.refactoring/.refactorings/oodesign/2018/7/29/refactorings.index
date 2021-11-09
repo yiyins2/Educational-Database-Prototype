@@ -1,0 +1,50 @@
+1531773555970	Copy compilation unit
+1531786322148	Rename local variable 'notdone'
+1531786339288	Rename local variable 'nodupsyet'
+1531786374491	Rename local variable 'noDupsYet'
+1531878379651	Copy package
+1531878392738	Delete element
+1531878419875	Copy file
+1531878573291	Copy compilation units
+1531882078534	Copy compilation units
+1531882429397	Rename package 'chapter7.collectionstream'
+1531882443913	Rename package 'chapter7.iostream'
+1531882463827	Rename package 'chapter8.fx'
+1531882474900	Rename package 'chapter8.predicate'
+1531882492230	Rename package 'chapter9.fx'
+1531929508048	Rename field 'info'
+1531935898189	Copy compilation unit
+1531935908892	Delete element
+1531935944959	Delete element
+1531935980145	Copy compilation unit
+1531940441219	Rename type 'UnmodifiableBAIterator'
+1532054840601	Copy compilation unit
+1532054974515	Move compilation unit
+1532055000389	Move compilation unit
+1532055132714	Rename method 'dosomething'
+1532055142270	Rename method 'dosomething'
+1532055688085	Rename type 'TestClient'
+1532055726449	Copy compilation unit
+1532094033359	Rename method 'doSomething'
+1532094355157	Rename method 'doSomething'
+1532097117638	Rename package 'chapter04.composition'
+1532097244431	Copy package
+1532097255400	Rename package 'chapter04.dosomething'
+1532097263003	Delete element
+1532097267332	Delete element
+1532097285672	Rename type 'TestTemplate'
+1532097307408	Rename type 'TestTemplate'
+1532097315902	Delete element
+1532097339111	Delete element
+1532097348211	Rename type 'TestComposition'
+1532097361136	Rename type 'Composition'
+1532097377685	Rename type 'CStrategy'
+1532097980899	Rename field 'cs'
+1532097985250	Rename local variable 'cs'
+1532108202533	Rename method 'doSomethingTo'
+1532108218800	Rename type 'Strategy'
+1532108353658	Rename type 'Template'
+1532108382385	Rename type 'Template'
+1532108591539	Rename method 'doSomethingTo'
+1532108699641	Rename type 'Double'
+1532108942249	Rename type 'OperationStrategy'

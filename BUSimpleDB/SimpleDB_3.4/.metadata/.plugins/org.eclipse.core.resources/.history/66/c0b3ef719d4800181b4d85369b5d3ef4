@@ -1,0 +1,71 @@
+package chapter10.bank23;
+
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.beans.value.*;
+
+public class AllView3 {
+   private Pane root;
+   TableView<BankAccount> accts = new TableView<>();
+   
+   public AllView3(AllController2 controller) { 
+      root = createNodeHierarchy(controller);
+      TableColumn<BankAccount,Integer> acctnumCol = new TableColumn<>("Account Number");
+      acctnumCol.setCellValueFactory(p -> {
+         BankAccount ba = p.getValue();
+         int bal = ba.getAcctNum();
+         ObservableValue<Integer> result =
+                 new ReadOnlyObjectWrapper<>(bal);
+         return result;
+      });
+      
+      TableColumn<BankAccount,Integer> balanceCol = new TableColumn<>("Balance");
+      balanceCol.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue().getBalance()));     
+      
+      TableColumn<BankAccount,Integer> feeCol = new TableColumn<>("Fee");
+      feeCol.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue().fee()));
+
+      accts.getColumns().addAll(acctnumCol, balanceCol, feeCol);        
+      accts.setItems(controller.getAccountList());
+      accts.setPrefSize(300, 200);
+   }
+
+   public Pane root() {
+      return root;
+   }
+
+   private Pane createNodeHierarchy(AllController2 cont) {
+      Button intbtn  = new Button("Add Interest");
+
+      Node p1 = new VBox(8, intbtn);
+      Node p2 = createBorderedHBox(accts, p1);
+
+      VBox p3 = new VBox(8);
+      p3.setAlignment(Pos.CENTER);
+      p3.setPadding(new Insets(10));
+      Label title = new Label("Manage All Accounts");
+      double size = title.getFont().getSize();
+      title.setFont(new Font(size*2));
+      title.setTextFill(Color.GREEN);
+      title.setPadding(new Insets(10));
+      p3.getChildren().addAll(title, p2);
+
+      intbtn.setOnAction(e -> cont.interestButton());
+
+      return p3;
+   }
+
+   private Node createBorderedHBox(Node... children) {
+      HBox hb = new HBox(10);
+      hb.setPadding(new Insets(10));
+      BorderStroke bs = new BorderStroke(Color.BROWN, BorderStrokeStyle.SOLID, null, null, new Insets(10));
+      hb.setBorder(new Border(bs));
+      hb.getChildren().addAll(children);
+      return hb;      
+   }
+}

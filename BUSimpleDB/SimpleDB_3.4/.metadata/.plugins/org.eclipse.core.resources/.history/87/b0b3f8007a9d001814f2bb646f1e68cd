@@ -1,0 +1,20 @@
+package chapter08.bank17;
+
+import java.util.Random;
+
+public class GoodCustomerApprover extends ApproverWrapper {
+   private boolean isgood;
+   
+   public GoodCustomerApprover(LoanApprover app, BankAccount ba) {
+      super(app);
+      Random rnd = new Random();
+      isgood = rnd.nextBoolean(); 
+   }
+   
+   public boolean approveLoan(int amt) {
+      if (isgood && amt < 1000) 
+         return true;
+      else
+         return app.approveLoan(amt);
+   }
+}

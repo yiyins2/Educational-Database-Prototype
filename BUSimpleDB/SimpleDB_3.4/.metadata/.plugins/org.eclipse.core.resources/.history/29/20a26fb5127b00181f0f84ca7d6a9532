@@ -1,0 +1,81 @@
+package chapter5.bank13;
+
+public abstract class AbstractBankAccount implements BankAccount {
+   protected int acctnum;
+   protected int balance;
+   protected boolean isforeign;
+   protected Fees fstrategy;
+
+   protected AbstractBankAccount(int acctnum) {
+      this.acctnum = acctnum;
+      fstrategy = feeStrategy();
+   }
+
+   public int getAcctNum() { 
+      return acctnum; 
+   }
+
+   public int getBalance() { 
+      return balance; 
+   }
+
+   public boolean isForeign() {
+      return isforeign;
+   }
+
+   public void setForeign(boolean b) {
+      if (isforeign != b) {
+         isforeign = b;
+         fstrategy = feeStrategy();
+      }
+   }
+
+   public void deposit(int amt) {
+      balance += amt;
+   }
+
+   public int compareTo(BankAccount ba) {
+      int bal1 = getBalance();
+      int bal2 = ba.getBalance();
+      if (bal1 == bal2)
+         return getAcctNum() - ba.getAcctNum();
+      else
+         return bal1 - bal2;
+   } 
+
+   public boolean hasEnoughCollateral(int loanamt) {
+      double ratio = collateralRatio();
+      return balance >= loanamt * ratio;
+   };
+
+   public String toString() {
+      String accttype = accountType();
+      return accttype + " account " + acctnum + ": balance=" + balance 
+            + ", fee=" + fee()
+            + ", is " + (isforeign ? "foreign" : "domestic");
+   }
+
+   public  void addInterest() {
+      balance += (int) (balance * interestRate());
+   }
+   
+   public int fee() {
+      return fstrategy.fee();
+   }
+
+   protected abstract double collateralRatio();
+   protected abstract String accountType();
+   protected abstract double interestRate();
+   protected abstract Fees feeStrategy();
+}
+
+
+
+
+
+
+
+
+
+
+

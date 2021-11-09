@@ -1,0 +1,86 @@
+package simpledb.tx;
+
+import simpledb.buffer.BufferMgr;
+import simpledb.file.*;
+import simpledb.log.LogMgr;
+import simpledb.server.SimpleDB;
+
+public class ConcurrencyTest {
+   private static FileMgr fm;
+   private static LogMgr lm;
+   private static BufferMgr bm;
+
+   public static void main(String[] args) {
+      //initialize the database system
+      SimpleDB db = new SimpleDB("concurrencytest", 400, 8); 
+      fm = db.fileMgr();
+      lm = db.logMgr();
+      bm = db.bufferMgr();
+      A tx1 = new A(); new Thread(tx1).start();
+      B tx2 = new B(); new Thread(tx2).start();
+      C tx3 = new C(); new Thread(tx3).start();
+   }
+
+   static class A implements Runnable { 
+      public void run() {
+         try {
+            Transaction tx = new Transaction(fm, lm, bm);
+            BlockId blk1 = new BlockId("testfile", 1);
+            BlockId blk2 = new BlockId("testfile", 2);
+            tx.pin(blk1);
+            tx.pin(blk2);
+            System.out.println("Tx A: read 1 start");
+            tx.getInt(blk1, 0);
+            System.out.println("Tx A: read 1 end");
+            Thread.sleep(1000);
+            System.out.println("Tx A: read 2 start");
+            tx.getInt(blk2, 0);
+            System.out.println("Tx A: read 2 end");
+            tx.commit();
+         }
+         catch(InterruptedException e) {};
+      }
+   }
+
+   static class B implements Runnable {
+      public void run() {
+         try {
+            Transaction tx = new Transaction(fm, lm, bm);
+            BlockId blk1 = new BlockId("testfile", 1);
+            BlockId blk2 = new BlockId("testfile", 2);
+            tx.pin(blk1);
+            tx.pin(blk2);
+            System.out.println("Tx B: write 2 start");
+            tx.setInt(blk2, 0, 0, false);
+            System.out.println("Tx B: write 2 end");
+            Thread.sleep(1000);
+            System.out.println("Tx B: read 1 start");
+            tx.getInt(blk1, 0);
+            System.out.println("Tx B: read 1 end");
+            tx.commit();
+         }
+         catch(InterruptedException e) {};
+      }
+   }
+
+   static class C implements Runnable {
+      public void run() {
+         try {
+            Transaction tx = new Transaction(fm, lm, bm);
+            BlockId blk1 = new BlockId("testfile", 1);
+            BlockId blk2 = new BlockId("testfile", 2);
+            tx.pin(blk1);
+            tx.pin(blk2);
+            System.out.println("Tx C: write 1 start");
+            tx.setInt(blk1, 0, 0, false);
+            System.out.println("Tx C: write 1 end");
+            Thread.sleep(1000);
+            System.out.println("Tx C: read 2 start");
+            tx.getInt(blk2, 0);
+            System.out.println("Tx C: read 2 end");
+            tx.commit();
+         }
+         catch(InterruptedException e) {};
+      }
+   }
+}

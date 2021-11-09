@@ -1,0 +1,12 @@
+package chapter08.bank17;
+
+public interface LoanApprover {
+   boolean approveLoan(int amt);
+   
+   static LoanApprover getApprover(BankAccount ba) {
+      LoanApprover app = new CollateralApprover(ba);
+      app = new CreditScoreApprover(app, ba);
+      return new GoodCustomerApprover(app, ba);
+   }
+   
+}

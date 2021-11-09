@@ -1,0 +1,27 @@
+package chapter9.count2;
+
+import java.util.*;
+
+public class CountModel {
+   private int count = 0;
+   private Collection<ModelObserver> observers = new ArrayList<ModelObserver>();
+
+   public void addObserver(ModelObserver mo) {
+      observers.add(mo);
+   }
+
+   public void updateBy(int n) {
+      count += n;
+      notifyObservers(count);
+   }
+
+   public int getCount() {
+      return count;
+   }
+
+   private void notifyObservers(int count) {
+      for (ModelObserver mo : observers)
+         mo.countUpdated(count);
+   }
+}
+

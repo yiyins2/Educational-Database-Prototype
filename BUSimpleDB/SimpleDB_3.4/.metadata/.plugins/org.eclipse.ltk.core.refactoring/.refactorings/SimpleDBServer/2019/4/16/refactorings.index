@@ -1,0 +1,30 @@
+1555417120438	Move compilation unit
+1555417132236	Move compilation unit
+1555417189408	Move compilation units
+1555417196455	Delete element
+1555417414965	Copy package
+1555417438000	Rename type 'SimpleDriver'
+1555417536854	Rename type 'SimpleResultSet'
+1555417966879	Rename type 'RemoteConnectionImpl'
+1555418191239	Delete element
+1555418208392	Rename type 'RemoteDriverImpl'
+1555418421239	Rename type 'RemoteStatementImpl'
+1555418844412	Rename type 'RemoteMetaDataImpl'
+1555419160194	Rename field 'rconn'
+1555419455073	Rename field 'conn'
+1555419461975	Rename local variable 'conn'
+1555421006293	Delete elements
+1555421015857	Delete elements
+1555421094993	Delete elements
+1555423102232	Rename package 'simpledb.embedded'
+1555423122734	Rename package 'simpledb.remote'
+1555423940771	Rename package 'simpledb.jdbc.remote'
+1555424632801	Copy compilation unit
+1555425206624	Delete element
+1555637973086	Rename local variable 'obj'
+1555671284145	Rename method 'createQueryPlan'
+1555673641044	Rename type 'Startup'
+1555767974950	Rename local variable 'tokenizer'
+1555767992091	Rename local variable 'tokenizer'
+1555776357747	Rename method 'getChars'
+1555776905332	Rename method 'getCharsFromUser'

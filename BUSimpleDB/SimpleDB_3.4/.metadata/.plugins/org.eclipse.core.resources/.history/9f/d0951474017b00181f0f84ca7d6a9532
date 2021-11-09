@@ -1,0 +1,34 @@
+package chapter5.bank12;
+
+import java.util.*;
+
+public class BankClient {
+   private Scanner sc = new Scanner(System.in);
+   private Bank bank = new Bank();
+   private int[] current = {-1};
+   private InputCommand[] commands = InputCommands.values();
+   private String usermessage = constructMessage();
+   
+   public void run() {
+      boolean done = false;
+      while (!done) {
+         InputCommand cmd = getCommand();
+         done = cmd.execute(sc, bank, current);
+      }
+   }
+
+   private InputCommand getCommand() {
+      System.out.print(usermessage);
+      int cnum = sc.nextInt();
+      return commands[cnum];
+   }
+
+   private String constructMessage() {
+      int last = commands.length-1;
+      String result = "Enter Account Type (";
+      for (int i=0; i<last; i++) 
+         result += i + "=" + commands[i] + ", ";
+      result += last + "=" + commands[last] + "): ";
+      return result;
+   }
+}

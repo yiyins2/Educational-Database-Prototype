@@ -1,0 +1,59 @@
+package hw7;
+import java.util.*;
+
+public class SortedCollection<T> extends AbstractCollection<T> 
+{
+    private Collection<T> result;
+    
+    public SortedCollection(Collection<T> c, Comparator<T> comp) 
+    {
+        result = sort(c, comp);  
+    }
+    private Collection<T> sort(Collection<T> coll, Comparator<T> comp) 
+    {
+        Collection<T> coll1, coll2, coll3;
+        result = coll;
+        boolean sorted = false;
+        boolean use;
+        T last;
+        
+        while(sorted == false)
+        {
+            coll1 = new ArrayList();
+            coll2 = new ArrayList();
+            use = true;
+            last = null;
+            for (T s : result){
+                if (last != null) {
+                    if (comp.compare(s, last) < 0)
+                        use = !use;
+                }
+                if (use == true){
+                    coll1.add(s);
+                    last = s;
+                }
+                else {
+                    coll2.add(s);
+                    last = s;
+                }
+                
+            }
+            if (coll2.isEmpty())
+                sorted = true;
+            else 
+            {
+                coll3 = new MergedCollection(coll1, coll2, comp);
+                result = coll3;
+            }
+        }
+        return result;
+    }
+    public int size() 
+    {
+        return result.size();
+    }
+    public Iterator iterator() 
+    {
+        return result.iterator();
+    }
+}

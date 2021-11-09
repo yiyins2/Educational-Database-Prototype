@@ -1,0 +1,22 @@
+package chapter08.bank17;
+
+import java.util.Random;
+
+public class CreditScoreApprover extends ApproverWrapper {
+   private int score;
+   
+   public CreditScoreApprover(LoanApprover app, BankAccount ba) {
+      super(app);
+      Random rnd = new Random();
+      this.score = 300 + rnd.nextInt(500);
+   }
+   
+   public boolean approveLoan(int amt) {
+      if (score > 700 && amt < 100000) 
+         return true;
+      else if (score < 500)
+         return false;
+      else
+         return app.approveLoan(amt);
+   }
+}

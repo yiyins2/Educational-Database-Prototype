@@ -1,0 +1,58 @@
+package chapter09.cookbook;
+
+import java.util.*;
+
+public class Cookbook {
+   private static Map<String,Recipe> cookbook = new HashMap<>();
+
+   public static void main(String[] args) {
+      addRecipes();
+      printAllRecipes();
+      printVeganRecipes();
+      printBasicRecipes();
+   }
+
+   private static void addRecipes() {
+      Recipe dressing = new Recipe("dressing", "Mix thoroughly.");
+      dressing.addIngredient(new BasicFood("oil", true), 4);
+      dressing.addIngredient(new BasicFood("vinegar", true), 2);
+      cookbook.put("dressing", dressing);
+
+      Recipe salad = new Recipe("salad", "Chop lettuce, add bacon. Pour dressing over it.");
+      salad.addIngredient(new BasicFood("lettuce", true), 1);
+      salad.addIngredient(new BasicFood("bacon", false), 6);
+      salad.addIngredient(dressing, 1);
+      cookbook.put("salad", salad);
+   }
+
+   private static void printAllRecipes() {
+      System.out.println("All recipes");
+      for (Recipe r : cookbook.values())
+         System.out.println(r);
+      System.out.println();
+   }
+
+   private static void printVeganRecipes() {
+      System.out.println("Vegan recipes");
+      for (Recipe r : cookbook.values())
+         if (r.isvegan())
+            System.out.println(r);
+      System.out.println();
+   }
+
+   private static void printBasicRecipes() {
+      System.out.println("Basic recipes");
+      for (Recipe r : cookbook.values()) {
+         Iterator<FoodItem> iter = r.childIterator();
+         boolean isbasic = true;
+         while (iter.hasNext())
+               if (! (iter.next() instanceof BasicFood)) {
+                  isbasic = false;
+                  break;
+               }
+         if (isbasic)
+            System.out.println(r);
+      }
+   }
+}
+

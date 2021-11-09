@@ -1,0 +1,16 @@
+package chapter09.predicate;
+
+import java.util.function.Predicate;
+
+public class OrPredicate<T> implements Predicate<T> {
+   Predicate<T> p1, p2;
+   
+   public OrPredicate(Predicate<T> p1, Predicate<T> p2) {
+      this.p1 = p1;
+      this.p2 = p2;
+   }
+   
+   public boolean test(T t) {
+      return p1.test(t) || p2.test(t);
+   }
+}

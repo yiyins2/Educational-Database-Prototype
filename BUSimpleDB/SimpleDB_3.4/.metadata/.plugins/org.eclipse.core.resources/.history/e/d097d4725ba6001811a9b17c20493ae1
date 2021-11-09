@@ -1,0 +1,25 @@
+package chapter09.cookbook;
+
+import java.util.*;
+
+public class BasicFood implements FoodItem {
+   private String name;
+   private boolean isvegan;
+   
+   public BasicFood(String name, boolean isvegan) {
+      this.name = name;
+      this.isvegan = isvegan;
+   }
+   
+   public String name() {
+      return name;
+   }
+   
+   public boolean isvegan() {
+      return isvegan;
+   }
+   
+   public Iterator<FoodItem> childIterator() {
+      return new ArrayList<FoodItem>().iterator();
+   }
+}

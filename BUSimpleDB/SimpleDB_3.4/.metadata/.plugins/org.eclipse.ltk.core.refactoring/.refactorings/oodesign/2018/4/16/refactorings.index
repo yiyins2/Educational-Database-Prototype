@@ -1,0 +1,45 @@
+1523800029738	Copy compilation unit
+1523811747916	Rename type 'BankAction'
+1523811974388	Copy compilation unit
+1523812055970	Copy compilation unit
+1523812143398	Copy compilation unit
+1523814070382	Rename type 'Auditor'
+1523815505352	Copy compilation unit
+1523815523109	Move compilation unit
+1523815539515	Move compilation unit
+1523815554676	Delete element
+1523815562152	Rename type 'BankClient2'
+1523815601622	Copy package
+1523815611364	Delete element
+1523815615478	Delete element
+1523815634603	Delete element
+1523815636410	Delete element
+1523815647692	Delete element
+1523815649755	Delete element
+1523815652042	Delete element
+1523815656108	Delete element
+1523845017784	Delete element
+1523845021129	Delete element
+1523845195037	Move compilation unit
+1523902703386	Copy package
+1523973428601	Rename type 'ModelObserver'
+1523973586691	Rename local variable 'mo'
+1523973594663	Rename local variable 'mo'
+1523980002448	Rename local variable 'cont'
+1523984790407	Rename local variable 'cont'
+1523987753740	Copy package
+1523988308574	Rename type 'SetOwnerInfo'
+1523988317616	Rename type 'SetPreferredInfo'
+1523988970061	Copy compilation unit
+1523989962046	Delete element
+1523989966900	Delete element
+1523990967734	Rename local variable 'cont'
+1523991037474	Rename local variable 'cont'
+1523991044547	Rename local variable 'cont'
+1523992486178	Delete element
+1523992555922	Copy compilation unit
+1523992577581	Delete element
+1524055105019	Copy compilation unit
+1524055161488	Rename type 'AccountCreationWindow'
+1524075376950	Rename field 'mysport'
+1524075900898	Rename type 'ScoreService'

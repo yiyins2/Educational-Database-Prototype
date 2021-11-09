@@ -1,0 +1,15 @@
+1555864416079	Rename method 'createQueryPlan'
+1555865371736	Rename method 'executeQuery'
+1555937671826	Rename package 'simpledb.planner'
+1555963744532	Delete element
+1555964852350	Copy compilation unit
+1556214697328	Rename local variable 'tt'
+1556249585122	Rename local variable 'ti'
+1556281969527	Rename type 'BTNode'
+1556283114553	Rename local variable 'ti'
+1556283126737	Rename field 'ti'
+1556298585259	Rename field 's'
+1556298637227	Rename local variable 'ts'
+1556298666628	Rename field 'ts'
+1556305064517	Rename type 'PlanTest1'
+1556305087639	Rename type 'PlanTest2'

@@ -1,0 +1,13 @@
+package chapter09.cookbook;
+
+public class Cookbook {
+   public static void main(String[] args) {
+      Recipe dressing = new Recipe("dressing");
+      dressing.addIngredient(new BasicFood("oil", true), 4);
+      dressing.addIngredient(new BasicFood("vinegar", true), 2);
+      Recipe salad = new Recipe("salad");
+      salad.addIngredient(new BasicFood("lettuce", true), 1);
+      salad.addIngredient(dressing, 1);
+      
+   }
+}

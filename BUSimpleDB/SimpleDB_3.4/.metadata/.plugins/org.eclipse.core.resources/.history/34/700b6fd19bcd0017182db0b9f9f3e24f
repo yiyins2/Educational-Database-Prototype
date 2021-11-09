@@ -1,0 +1,88 @@
+package bank.version17;
+
+import java.io.InputStream;
+import java.util.Scanner;
+
+//Collateral ratio uses the strategy pattern
+
+public class BankClient implements InputClient {
+   private Scanner sc;
+   private boolean done = false;
+   private Bank b;
+   private BankAccount current = null;
+
+   public BankClient(InputStream is, Bank b) {
+      sc = new Scanner(is);
+      this.b = b;
+   }
+   
+   public int getCommand() {
+      System.out.print("Enter command (0=quit, 1=new, 2=balance, 3=deposit, 4=loan, 5=show, 6=interest, 7=get): ");
+      return sc.nextInt();
+   }
+
+   public void processCommand(int cmd) {
+      if (cmd == 0) {
+         done = true;
+         sc.close();
+         System.out.println("Goodbye!");
+      }
+      else if (cmd == 1) {
+         System.out.print("Enter account type(1=savings, 2=checking, 3=interest checking): ");
+         int type = sc.nextInt();
+         System.out.print("Is the owner foreign? (1=yes, 2=no): ");
+         int foreigncode = sc.nextInt();
+         boolean isforeign = (foreigncode == 1 ? true : false);
+         System.out.print("Is the account preferred? (1=yes, 2=no): ");
+         int preferredcode = sc.nextInt();
+         boolean ispreferred = (preferredcode == 1 ? true : false);
+         int acctnum = b.newAccount(type, isforeign, ispreferred);
+         System.out.println("Your new account number is " + acctnum);
+      }
+      else if (cmd == 2) {
+         if (current == null) 
+            System.out.println("No current account");
+         else {
+            int balance = current.getBalance();
+            System.out.println("Your balance is " + balance);
+         }
+      }
+      else if (cmd == 3) {
+         if (current == null) 
+            System.out.println("No current account");
+         else {
+            System.out.print("Enter deposit amt: ");
+            int amt = sc.nextInt();
+            current.deposit(amt);
+         }
+      }
+      else if (cmd == 4) {
+         if (current == null) 
+            System.out.println("No current account");
+         else {
+            System.out.print("Enter loan amt: ");
+            int amt = sc.nextInt();
+            boolean ok = b.authorizeLoan(current, amt);
+            if (ok) 
+               System.out.println("Your loan is approved");
+            else
+               System.out.println("Your loan is denied");
+         }
+      }
+      else if (cmd == 5) 
+         System.out.println(b.toString());
+      else if (cmd == 6)
+         b.addInterest();
+      else if (cmd == 7) {
+         System.out.print("Enter acct#: ");
+         int acctnum = sc.nextInt();
+         current = b.getAccount(acctnum);
+      }
+      else
+         System.out.println("illegal command");
+   }
+
+   public boolean isDone() {
+      return done;
+   }
+}

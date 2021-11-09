@@ -1,0 +1,35 @@
+package chapter9.count2;
+
+import javafx.geometry.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
+class CountView {
+   private Label lbl = new Label("Count is 0");
+   Button inc = new Button("Increment");
+   Button dec = new Button("Decrement");
+   VBox p = new VBox(8);
+
+   public CountView() {
+      BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, null, new Insets(10));
+      p.setBorder(new Border(bs));
+
+      p.setAlignment(Pos.CENTER);
+      p.setPadding(new Insets(10));
+      p.getChildren().addAll(lbl, inc, dec);
+   }
+
+   public void setController(CountController cont) {
+      inc.setOnAction(e -> cont.incrementButtonPressed());
+      dec.setOnAction(e -> cont.decrementButtonPressed());
+   }
+
+   public void setLabel(int n) {
+      lbl.setText("Count is " + n);
+   }
+   
+   public Pane getRoot() {
+      return p;
+   }
+}

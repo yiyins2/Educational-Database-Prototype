@@ -1,0 +1,17 @@
+1524488410439	Delete element
+1524533023148	Rename local variable 'cont'
+1524580165266	Rename local variable 'cont'
+1524607148535	Delete element
+1524657873162	Delete element
+1524854116129	Copy compilation unit
+1524854474120	Copy compilation unit
+1524854487082	Rename type 'CountController'
+1524855034613	Rename compilation unit 'Count3.java'
+1524858106733	Rename field 'fld'
+1524858131747	Rename method 'set'
+1524858169603	Rename local variable 't'
+1524859468310	Rename field 'temp'
+1524952219227	Copy package
+1524952631188	Copy compilation unit
+1524952941963	Rename type 'PlusOP'
+1524952954010	Rename type 'ProductOP'

@@ -1,0 +1,71 @@
+package hw7;
+
+import java.util.*;
+
+public class SortedCollection<T> extends AbstractCollection<T> {
+   private Collection<T> result;
+
+   public SortedCollection(Collection<T> c, Comparator<T> comp) {
+      result = sort(c, comp);
+   }
+
+   public int size() {
+      return result.size();
+   }
+
+   public Iterator<T> iterator() {
+      return result.iterator();
+   }
+
+   private Collection<T> sort(Collection<T> c, Comparator<T> comp) {
+      Collection<T> c1;
+      Collection<T> c2;
+      while (true) {
+         c1 = new ArrayList<T>(c.size());
+         c2 = new ArrayList<T>(c.size());
+         split(c, c1, c2, comp);
+         if (c2.isEmpty())
+            return c1;
+         c = new MergedCollection<T>(c1, c2, comp);
+      }
+   }
+
+   private void split(Collection<T> c, Collection<T> c1, Collection<T> c2, Comparator<T> comp) {
+      Collection<T> current = c1;
+      Iterator<T> iter = c.iterator();
+      if (!iter.hasNext())
+         return;
+      T val = iter.next();
+      current.add(val);
+      while (iter.hasNext()) {
+         T t = iter.next();
+         if (comp.compare(val, t) > 0) 
+            current = (current == c1) ? c2 : c1; 
+         val = t;
+         current.add(val);
+      }
+   }   
+
+   public static void main(String[] args) {
+      Collection<String> c = Arrays.asList("a","e", "d", "c", "g");
+      Collection<String> cs = new SortedCollection<String>(c, (s1,s2)->s1.compareTo(s2));
+      cs.forEach(t->System.out.print(t + " "));
+      System.out.println();
+      Comparator<Integer> comp2 = (i1,i2)->i2.compareTo(i1);
+      Collection<Integer> d1 = new ArrayList<>();
+      Collection<Integer> d2 = new ArrayList<>();
+      Random rnd = new Random();
+      for (int i=0; i<100; i++) {
+         d1.add(rnd.nextInt(1000));
+         d2.add(rnd.nextInt(1000));
+      }
+
+      Collection<Integer> d3 = new SortedCollection<Integer>(d1, comp2);
+      for(Integer x : d3) 
+         System.out.print(x + " ");
+      System.out.println();
+
+      d3.forEach(x->System.out.print(x + " "));
+      System.out.println();
+   }
+}

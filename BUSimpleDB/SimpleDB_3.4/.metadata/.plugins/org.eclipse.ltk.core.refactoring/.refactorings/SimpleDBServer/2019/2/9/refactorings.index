@@ -1,0 +1,67 @@
+1551016652354	Rename method 'moveTo'
+1551042574988	Rename method 'nextInUse'
+1551042609289	Rename method 'nextEmpty'
+1551042659786	Rename field 'INUSE'
+1551061805975	Rename field 'bb'
+1551096641496	Rename type 'RecordPage'
+1551096681895	Delete element
+1551096685293	Delete element
+1551096912329	Delete element
+1551096954505	Rename field 'id'
+1551097013500	Rename method 'id'
+1551097074481	Delete element
+1551097270877	Rename type 'Buffer'
+1551097985337	Rename field 'cs'
+1551106456969	Rename type 'BufferListener'
+1551107006572	Rename field 'pg'
+1551109379190	Rename field 'pg'
+1551109692213	Rename method 'moveToNextBlock'
+1551118850480	Rename type 'StringBuffer'
+1551121785885	Move compilation unit
+1551121800586	Move compilation unit
+1551121809929	Move compilation unit
+1551126626494	Delete element
+1551127190524	Rename type 'LogIterator'
+1551129181506	Move compilation unit
+1551131244292	Rename type 'BufferModifier'
+1551143407992	Rename field 'myBuffers'
+1551144635119	Delete element
+1551146126846	Delete element
+1551146143022	Move compilation unit
+1551146158713	Move compilation unit
+1551146194434	Move compilation unit
+1551146351801	Move compilation unit
+1551147400361	Move compilation unit
+1551152687246	Rename type 'RecordInfo'
+1551152717151	Rename field 'ri'
+1551152727969	Rename local variable 'ri'
+1551189395964	Rename field 'currentloc'
+1551191088603	Rename method 'addAnotherBlock'
+1551197500179	Rename field 'ri'
+1551197508507	Rename local variable 'ri'
+1551197662591	Rename field 'rp'
+1551197684127	Rename field 'currentrec'
+1551198697165	Move compilation unit
+1551198948752	Move compilation unit
+1551198958296	Move compilation unit
+1551198965572	Delete element
+1551198982163	Move compilation unit
+1551198994014	Rename type 'Table'
+1551206807540	Move compilation unit
+1551206890654	Rename type 'TableInfo'
+1551209783129	Rename type 'TableInfoOld'
+1551210427309	Rename compilation unit 'TI.java'
+1551210837234	Delete element
+1551214772730	Rename package 'simpledb.query'
+1551214792788	Move compilation unit
+1551214802262	Move compilation unit
+1551214811554	Move compilation unit
+1551214817098	Move compilation unit
+1551214825579	Move compilation unit
+1551221954430	Rename local variable 'pg'
+1551222447528	Rename local variable 'pg2'
+1551274687944	Move compilation unit
+1551380721552	Rename type 'DBbuffer'
+1551382050675	Delete element
+1551388228032	Rename type 'RecordMgrTest'
+1551391517421	Rename local variable 'rf'

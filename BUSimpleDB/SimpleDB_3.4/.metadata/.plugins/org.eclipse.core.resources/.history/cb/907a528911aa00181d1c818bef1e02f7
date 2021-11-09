@@ -1,0 +1,21 @@
+package chapter09.cookbook;
+
+import java.util.*;
+import java.util.function.Consumer;
+
+public interface FoodItem extends Iterable<FoodItem> {
+   String name();
+   boolean isVegan();
+   Iterator<FoodItem> childIterator();
+   
+   default void forEachChild(Consumer<FoodItem> c) {
+      Iterator<FoodItem> iter = childIterator();
+      while (iter.hasNext())
+         c.accept(iter.next());
+   }
+   
+   default Iterator<FoodItem> iterator() {
+      Iterator<FoodItem> iter = Collections.singleton(this).iterator();
+      return new FoodIterator(iter);       
+   }
+}

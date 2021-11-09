@@ -1,0 +1,13 @@
+package bank.version17;
+
+import java.io.Serializable;
+
+//Collateral ratio uses the strategy pattern
+
+public enum Preferred implements PreferenceStrategy, Serializable {
+   INSTANCE;
+   
+   public double collateralRatio() {
+      return 1.0 / 4.0;
+   }
+}

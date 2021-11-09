@@ -1,0 +1,30 @@
+1535851766491	Rename enum constant 'FOREIGN'
+1535928678670	Delete element
+1535928685184	Delete element
+1535928691783	Delete element
+1535929263722	Rename type 'ForeignAuditor'
+1535996128606	Delete element
+1536024035887	Copy package
+1536024101087	Delete element
+1536024117902	Copy file
+1536024576312	Copy compilation unit
+1536060369296	Rename method 'newAccount'
+1536060379113	Rename method 'select'
+1536060390658	Rename method 'deposit'
+1536060396035	Rename method 'authorizeLoan'
+1536060406546	Rename method 'show'
+1536060416584	Rename method 'addInterest'
+1536060432911	Rename method 'setForeign'
+1536104792023	Copy compilation unit
+1536104798973	Copy compilation unit
+1536104807820	Copy compilation unit
+1536104815643	Copy compilation unit
+1536104820776	Copy compilation unit
+1536104842285	Copy compilation unit
+1536104849303	Copy compilation unit
+1536104864875	Copy compilation unit
+1536104887094	Copy compilation unit
+1536105557807	Copy compilation unit
+1536347147874	Rename local variable 'exp'
+1536347177173	Rename local variable 'btndisable'
+1536347191718	Rename local variable 'binding'

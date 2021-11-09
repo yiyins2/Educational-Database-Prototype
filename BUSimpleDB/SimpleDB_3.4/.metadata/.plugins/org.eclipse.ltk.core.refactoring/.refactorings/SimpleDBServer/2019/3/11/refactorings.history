@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;schema&apos; in &apos;simpledb.plans.ProjectPlan&apos; to &apos;sch&apos;&#x0A;- Original project: &apos;SimpleDBServer&apos;&#x0A;- Original element: &apos;simpledb.plans.ProjectPlan.schema&apos;&#x0A;- Renamed element: &apos;simpledb.plans.ProjectPlan.sch&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;schema&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;simpledb.plans{ProjectPlan.java[ProjectPlan^schema" name="sch" references="true" setter="false" stamp="1552223924919" textual="false" version="1.0"/>
+</session>

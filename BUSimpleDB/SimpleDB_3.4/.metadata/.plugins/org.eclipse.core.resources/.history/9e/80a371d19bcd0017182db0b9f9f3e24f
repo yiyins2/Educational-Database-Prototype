@@ -1,0 +1,50 @@
+package bank.version17;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+public class BankConnection {
+   private File f;
+   private Map<Integer,BankAccount> info;
+
+   public BankConnection(String id) {
+      f = new File(id);
+      if (!f.exists()) 
+         info = new HashMap<Integer,BankAccount>();
+      else {
+         try {
+            InputStream is = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(is);
+            info = (Map<Integer,BankAccount>) ois.readObject();
+            ois.close();
+         }
+         catch (Exception ex) {
+            System.out.println(ex);
+            throw new RuntimeException("bank file is corrupt");
+         }
+      }
+   }
+
+   public Map<Integer,BankAccount> getInfo() {
+      return info;
+   }
+
+   public void saveInfo(Map<Integer,BankAccount> m) {
+      try {
+         OutputStream os = new FileOutputStream(f);
+         ObjectOutputStream oos = new ObjectOutputStream(os);
+         oos.writeObject(m);
+         oos.close();
+      }
+      catch (Exception ex) {
+         throw new RuntimeException("bank file is corrupt");
+      }      
+   }
+}

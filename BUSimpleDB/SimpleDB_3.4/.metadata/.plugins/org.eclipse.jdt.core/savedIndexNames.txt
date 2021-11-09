@@ -1,0 +1,22 @@
+INDEX VERSION 1.130+/Users/sciore/Documents/EclipseWorkspace/.metadata/.plugins/org.eclipse.jdt.core
+2961435131.index
+487047335.index
+3637929226.index
+1271342938.index
+518397319.index
+2718728712.index
+2972272944.index
+4158956476.index
+357478278.index
+4166604845.index
+609331307.index
+3486815099.index
+4018134042.index
+3019451476.index
+1522203103.index
+659411456.index
+3969190818.index
+2309822661.index
+1524350763.index
+1260736551.index
+3040960534.index

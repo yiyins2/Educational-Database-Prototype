@@ -1,0 +1,74 @@
+package hw7;
+
+import java.util.*;
+
+
+public class MergedIterator<T> implements Iterator<T> {
+   private LookAheadIterator<T> i1, i2;
+   private Comparator<T> comp;
+   T previous1;
+   T previous2;
+   
+   public MergedIterator(Iterator<T> iter1, Iterator<T> iter2, Comparator<T> comp) {
+      i1 = new LookAheadIterator<T>(iter1);
+      i2 = new LookAheadIterator<T>(iter2);
+      this.comp = comp;
+   }
+   
+   public boolean hasNext() {  
+      return i1.hasNext() || i2.hasNext();
+   }
+   
+   public T next() {
+      T result;
+
+      if (!i1.hasNext()) {
+         result = i2.next();
+      }
+      else if (!i2.hasNext()) {
+         result = i1.next();
+
+      }
+      else if (previous1 == null || previous2 == null) {
+    	  if (comp.compare(i1.peek(), i2.peek()) > 0) {
+		         result = i1.next();
+		         previous1 = result;
+		      }
+		      else {
+		         result = i2.next();
+		         previous2 = result;
+		      }
+      }
+      else if (comp.compare(i1.peek(), previous1) > 0) { //start of a new run
+    	  if (comp.compare(i2.peek(), previous2) > 0) {
+    		  if (comp.compare(i1.peek(), i2.peek()) > 0) {
+    		         result = i1.next();
+    		         previous1 = result;
+    		      }
+    		      else {
+    		         result = i2.next();
+    		         previous2 = result;
+    		      }
+    	  }
+    	  else {
+    		  result = i2.next();
+    		  previous2 = result;
+    	  }
+    	  
+      }
+      else if (comp.compare(i2.peek(), previous2) > 0) {
+    	  result = i1.next();
+    	  previous1 = result;
+      }
+      else if (comp.compare(i1.peek(), i2.peek()) > 0) {
+         result = i1.next();
+         previous1 = result;
+      }
+      else {
+         result = i2.next();
+         previous2 = result;
+      }
+      return result;  
+   }
+}
+

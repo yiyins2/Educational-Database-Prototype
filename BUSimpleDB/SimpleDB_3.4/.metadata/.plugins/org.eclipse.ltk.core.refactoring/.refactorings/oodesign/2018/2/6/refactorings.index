@@ -1,0 +1,44 @@
+1517837286124	Delete element
+1517853088469	Delete element
+1517853110017	Delete element
+1517853127219	Copy package
+1517853142812	Delete element
+1517853147322	Delete element
+1517853164928	Delete element
+1517853170069	Delete element
+1517853196718	Rename type 'CashRegister2'
+1517853201663	Rename type 'Customer2'
+1517853210805	Rename type 'DiningHall2'
+1517853219629	Rename type 'Simulation2'
+1517858592961	Rename package 'hw3'
+1517858610345	Copy package
+1517861764855	Rename type 'HW2DiceGame'
+1517862476172	Rename local variable 'p'
+1517862484332	Rename local variable 'p'
+1517862497886	Rename local variable 'player'
+1517866619889	Delete element
+1517880922992	Rename local variable 'p'
+1517881042686	Rename local variable 'p'
+1517882821268	Rename local variable 'pp'
+1517884607282	Rename local variable 'pp'
+1517933304473	Rename type 'PlayerStats'
+1518042460404	Rename type 'CashRegister2'
+1518042468546	Rename type 'Customer2'
+1518042473232	Rename type 'DiningHall2'
+1518042479530	Rename type 'Simulation2'
+1518042706309	Rename package 'hw4'
+1518042727310	Copy package
+1518042760268	Move compilation unit
+1518042790835	Move compilation unit
+1518042822650	Move compilation unit
+1518042838262	Rename type 'Bimodal'
+1518043383204	Rename type 'Fast'
+1518043392173	Rename type 'NormalSpeed'
+1518043419224	Move compilation unit
+1518043432778	Move compilation unit
+1518043440743	Move compilation unit
+1518045047042	Rename type 'Simulation'
+1518045159051	Rename local variable 'distsize'
+1518047904243	Move compilation unit
+1518047913830	Move compilation unit
+1518122237349	Rename type 'AccountCreationScreen'

@@ -1,0 +1,57 @@
+1514771326274	Move file
+1514774384280	Rename package 'bank.version6'
+1514774875072	Rename package 'bank.version7'
+1514779872825	Rename package 'bank.version8'
+1514779887904	Rename package 'bank.version9'
+1514780301322	Rename package 'chapter2.version7'
+1514824793053	Rename package 'bank.version10'
+1514824970247	Move compilation unit
+1514824986096	Move compilation unit
+1514860196989	Rename type 'CompareAccounts'
+1514860214708	Rename type 'CompareAccounts2'
+1514863495176	Rename package 'bank.version11'
+1514871570463	Rename package 'bank.version12'
+1514911802722	Delete element
+1514912219871	Move compilation unit
+1514916463069	Move compilation unit
+1514933609997	Move compilation unit
+1514934859955	Rename package 'bank.version13'
+1514935171330	Rename package 'chapter3.collection'
+1514935896976	Rename package 'chapter1.bank1'
+1514935904544	Rename package 'chapter1.bank2'
+1514935912163	Rename package 'chapter1.bank3'
+1514935919172	Rename package 'chapter1.bank4'
+1514935926526	Rename package 'chapter1.bank5'
+1514935935775	Rename package 'chapter2.bank6'
+1514935942519	Rename package 'chapter2.bank7'
+1514935948537	Rename package 'chapter2.bank8'
+1514935955860	Rename package 'chapter2.bank9'
+1514935994143	Rename package 'bank.version14'
+1514936013053	Rename package 'bank.version15'
+1514936029106	Rename package 'bank.version16'
+1514936661484	Delete element
+1514942597570	Move compilation unit
+1514952157975	Move compilation unit
+1514952281709	Rename type 'ReadLine'
+1514954046178	Move compilation unit
+1514954080128	Rename type 'CompareAccounts3'
+1515011745818	Rename type 'ReadLine2'
+1515011809878	Rename local variable 'p'
+1515012269983	Rename package 'bank.version17'
+1515014255681	Rename package 'bank.version18'
+1515031774726	Rename package 'bank.version19'
+1515031892311	Rename package 'chapter5.bank18.bank19'
+1515031911777	Delete element
+1515031916450	Delete element
+1515031925660	Delete element
+1515031930299	Delete element
+1515031943105	Delete element
+1515031947911	Delete element
+1515031960105	Delete element
+1515031971065	Delete element
+1515031975037	Delete element
+1515031979065	Delete element
+1515031986286	Delete element
+1515031997302	Delete element
+1515032002250	Delete element
+1515268901197	Rename type 'ReadLineRunnable'

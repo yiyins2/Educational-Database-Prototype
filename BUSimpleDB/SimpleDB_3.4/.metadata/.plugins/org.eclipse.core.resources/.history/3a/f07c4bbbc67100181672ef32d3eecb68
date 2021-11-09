@@ -1,0 +1,19 @@
+package chapter4.bank11;
+
+public class RegularCheckingType implements TypeStrategy {
+   public String accountType() {
+      return "Regular checking";
+   }
+
+   public double collateralRatio() {
+      return 2.0 / 3.0;
+   }
+
+   public double interestRate() {
+      return 0.0;
+   }
+
+   public FeeStrategy fstrategy(boolean isforeign) {
+      return isforeign ? new ForeignCheckingFee() : new DomesticFee();
+   }
+}

@@ -1,0 +1,18 @@
+package chapter5.bank13;
+
+public class InterestChecking extends CheckingAccount {
+   private double RATE = 0.01;
+
+   public InterestChecking(int acctnum) {
+      super(acctnum);
+   }
+   
+   protected String accountType() {
+      return "Interest checking";
+   }
+   
+   protected double interestRate() {
+      return RATE;
+   }
+}
+

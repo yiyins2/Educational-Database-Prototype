@@ -1,0 +1,92 @@
+package chapter4.bank11;
+
+public class AbstractBankAccount implements BankAccount {
+   private int acctnum;
+   private int balance = 0;
+   private boolean isforeign = false;
+   private FeeStrategy  fs;
+   private TypeStrategy ts;
+
+   public AbstractBankAccount(int acctnum, TypeStrategy ts) {
+      this.acctnum = acctnum;
+      this.ts = ts;
+      fs = fstrategy(isforeign);
+   }
+
+   public int getAcctNum() { 
+      return acctnum; 
+   }
+
+   public int getBalance() { 
+      return balance; 
+   }
+
+   public boolean isForeign() {
+      return isforeign;
+   }
+
+   public void setForeign(boolean b) {
+      isforeign = b;
+      fs = fstrategy(isforeign);
+   }
+
+   public void deposit(int amt) {
+      balance += amt;
+   }
+
+   public int compareTo(BankAccount ba) {
+      int bal1 = getBalance();
+      int bal2 = ba.getBalance();
+      if (bal1 == bal2)
+         return getAcctNum() - ba.getAcctNum();
+      else
+         return bal1 - bal2;
+   } 
+
+   public boolean hasEnoughCollateral(int loanamt) {
+      double ratio = collateralRatio();
+      return balance >= loanamt * ratio;
+   };
+
+   public String toString() {
+      String accttype = accountType();
+      return accttype + " account " + acctnum + ": balance=" + balance 
+            + ", is " + (isforeign ? "foreign" : "domestic")
+            + ", fee=" + fee();
+   }
+
+   public  void addInterest() {
+      balance += (int) (balance * interestRate());
+   }
+
+   public int fee() {
+      return fs.fee();
+   }
+
+   private double collateralRatio() {
+      return ts.collateralRatio();
+   }
+
+   public String accountType() {
+      return ts.accountType();
+   }
+
+   public double interestRate() {
+      return ts.interestRate();
+   }
+
+   public FeeStrategy fstrategy(boolean b) {
+      return ts.fstrategy(b);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+

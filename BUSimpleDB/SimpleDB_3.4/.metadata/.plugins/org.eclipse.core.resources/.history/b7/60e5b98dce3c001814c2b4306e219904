@@ -1,0 +1,61 @@
+package hw7;
+
+import java.util.*;
+
+public class SortedCollection<T> extends AbstractCollection<T> {
+	private Collection<T> result;
+
+	public SortedCollection(Collection<T> c , Comparator<T> comp) {
+		//System.out.println(c);
+		result = sort(c, comp);
+	}
+	
+	public int size() {
+		return result.size();
+	}
+	
+	public Iterator<T> iterator(){
+		return result.iterator();
+	}
+	
+	private Collection<T> sort(Collection<T> c , Comparator<T> comp) {
+		Collection<T> c1 = new TreeSet<T>();
+		Collection<T> c2= new TreeSet<T>();
+		
+		LookAheadIterator<T> it = new LookAheadIterator<>(c.iterator());
+		
+		T prev = it.next();
+		T next = it.next();
+		c1.add(prev);
+		int run = 1;
+		while(it.hasNext()) {
+			if(!c1.isEmpty() && !c2.isEmpty()) {
+				c1 = new MergedCollection<T>(c1, c2, comp);
+				c2.removeAll(c2);
+			}
+			else {
+				if(comp.compare(prev, next) > 0) {
+					if(run % 2 == 1) {
+						c1.add(next);
+					}
+					else {
+						c2.add(next);
+					}
+					prev = next;
+					next = it.next();
+				}
+				else { // if out of order
+					run ++; 
+					if(run % 2 == 1) {
+						c1.add(next);
+					}
+					else {
+						c2.add(next);
+					}
+				}
+			}
+		}
+		return c1;
+		
+	}
+}

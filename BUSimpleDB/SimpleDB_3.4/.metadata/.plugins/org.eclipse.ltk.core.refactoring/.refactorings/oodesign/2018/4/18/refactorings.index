@@ -1,0 +1,73 @@
+1524961186122	Rename method 'setForeignOwner'
+1524961221426	Rename method 'setFee'
+1524961274748	Rename method 'setFeeStrategy'
+1524963769622	Rename field 'b'
+1524963793081	Rename field 'b'
+1524964736053	Rename field 'b'
+1524966595485	Delete element
+1524966600977	Copy compilation unit
+1524966626135	Rename type 'BankClient'
+1524966637592	Copy compilation unit
+1525010142612	Rename method 'execute'
+1525010411578	Rename method 'execute'
+1525010753692	Rename method 'execute'
+1525014588002	Rename package 'chapter1.bank05'
+1525014703330	Rename package 'chapter2.bank06'
+1525014727725	Copy package
+1525014756797	Delete element
+1525014777965	Copy file
+1525014807799	Copy compilation unit
+1525014855607	Delete element
+1525014861274	Copy compilation unit
+1525014866843	Copy compilation unit
+1525016088059	Rename package 'chapter2.bank07'
+1525016110271	Rename package 'chapter2.bank08'
+1525016132132	Copy package
+1525016141588	Delete element
+1525016159159	Copy file
+1525016693932	Rename package 'chapter2.bank09'
+1525016972993	Copy compilation unit
+1525017020874	Delete element
+1525017054625	Rename package 'chapter2.bank10'
+1525023243424	Rename package 'chapter3.bank11'
+1525047435661	Rename package 'chapter3.bank07'
+1525047472749	Copy package
+1525047489324	Delete element
+1525047502261	Copy file
+1525047549565	Copy compilation unit
+1525047950620	Delete element
+1525047958529	Copy compilation unit
+1525048004559	Copy compilation unit
+1525048286564	Rename local variable 'bc'
+1525048298913	Rename local variable 'bc'
+1525048328591	Rename local variable 'bc'
+1525048759398	Delete element
+1525049585359	Copy package
+1525049599060	Delete element
+1525049607322	Move file
+1525049665284	Copy compilation unit
+1525050051714	Delete element
+1525050064654	Copy package
+1525050076431	Delete element
+1525050079573	Move file
+1525108910855	Delete element
+1525109002864	Delete element
+1525110867104	Delete element
+1525110889122	Copy package
+1525110943715	Delete element
+1525110957628	Copy file
+1525111109182	Copy compilation units
+1525112214265	Delete element
+1525112238580	Delete element
+1525112312029	Copy package
+1525112338244	Delete element
+1525112351245	Copy file
+1525112566374	Copy compilation units
+1525114039163	Delete element
+1525114045175	Delete element
+1525114050615	Delete element
+1525114053203	Delete element
+1525114618133	Delete element
+1525117017576	Copy compilation unit
+1525117032962	Copy compilation unit
+1525117085687	Delete element

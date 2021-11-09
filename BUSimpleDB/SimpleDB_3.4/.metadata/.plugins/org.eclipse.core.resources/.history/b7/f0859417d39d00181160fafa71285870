@@ -1,0 +1,13 @@
+package chapter08.bank17;
+
+public class ApproverWrapper implements LoanApprover {
+   protected LoanApprover app;
+   
+   protected ApproverWrapper(LoanApprover app) {
+      this.app = app;
+   }
+   
+   public boolean approveLoan(int amt) {
+      return app.approveLoan(amt);
+   }
+}

@@ -1,0 +1,42 @@
+package hw7;
+
+import java.util.*;
+import java.util.function.Predicate;
+import java.io.*;
+
+public class HW7Test {
+   public static void main(String[] args) throws IOException {
+      Collection<String> dict = readFromFile("dictionary.txt");
+      Collection<String> reversedict = reverse(dict);
+
+      // predicate p1 denotes words longer than 20 characters
+      Predicate<String> p1 = s -> s.length() > 20;
+      printWords(reversedict, p1);
+      System.out.println();
+      // predicate p2 denotes words beginning with "chori".
+      Predicate<String> p2 = s -> s.startsWith("chori");
+      printWords(reversedict, p2);
+   }
+
+   private static Collection<String> readFromFile(String filename) throws IOException {
+      Collection<String> result = new ArrayList<>();
+
+      InputStream is = new FileInputStream(filename);
+      Scanner sc = new Scanner(is);
+      while (sc.hasNext()) 
+         result.add(sc.next());
+      sc.close();         
+      return result;
+   }
+
+   private static Collection<String> reverse(Collection<String> c) {
+      Comparator<String> comp = (s1,s2)->s2.compareTo(s1);
+      return new SortedCollection<>(c, comp);
+   }
+
+   private static void printWords(Collection<String> c, Predicate<String> pred) {
+      for (String s : c)
+         if (pred.test(s))
+            System.out.println(s);
+   }
+}

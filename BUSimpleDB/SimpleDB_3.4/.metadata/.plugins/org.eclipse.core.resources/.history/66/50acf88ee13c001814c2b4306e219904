@@ -1,0 +1,34 @@
+package hw7;
+
+import java.util.*;
+/**
+ * Write a description of class MergedCollection here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class MergedCollection<E> extends AbstractCollection<String>
+{
+    private Comparator<String> comp;
+    private Collection<String> coll1;
+    private Collection<String> coll2;
+    private int size;
+    
+    public MergedCollection(Collection<String> coll1, Collection <String> coll2, Comparator<String> comp)
+    {
+        this.coll1 = coll1;
+        this.coll2 = coll2;
+        this.comp = comp;
+    }
+    
+    public int size()
+    {
+        return size;
+    }
+    
+    public Iterator<String> iterator()
+    {
+        return new MergedIterator(coll1.iterator(), coll2.iterator(), comp);
+    }
+    
+}

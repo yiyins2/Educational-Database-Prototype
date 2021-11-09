@@ -1,0 +1,79 @@
+1531105050785	Copy package
+1531105061933	Delete element
+1531105064687	Delete element
+1531105430851	Delete element
+1531105433772	Delete element
+1531105436963	Delete element
+1531105495953	Delete element
+1531105502104	Rename type 'AccountFactoryAlt'
+1531187695002	Delete element
+1531187704965	Copy compilation unit
+1531187777374	Delete element
+1531187783484	Copy compilation unit
+1531188494064	Delete element
+1531188500381	Copy compilation unit
+1531188685367	Delete element
+1531188691585	Copy compilation unit
+1531337973661	Delete element
+1531337979215	Copy compilation unit
+1531338014679	Delete element
+1531338020234	Copy compilation unit
+1531359117092	Delete element
+1531359128271	Delete element
+1531359144072	Delete element
+1531359147019	Delete element
+1531359149391	Delete element
+1531359189420	Rename package 'chapter1.bank01'
+1531359206222	Rename package 'chapter1.bank02'
+1531359215273	Rename package 'chapter1.bank03'
+1531359224525	Rename package 'chapter1.bank04'
+1531359234322	Delete element
+1531359246186	Rename package 'chapter2.bank05'
+1531359252768	Rename package 'chapter2.bank06'
+1531359263600	Rename package 'chapter2.comparable'
+1531359270005	Rename package 'chapter3.bank07'
+1531359276860	Rename package 'chapter3.bank08'
+1531359283266	Rename package 'chapter3.bank09'
+1531359291079	Rename package 'chapter3.bytestream'
+1531359302286	Rename package 'chapter3.rangelist'
+1531359310524	Rename package 'chapter3.thread'
+1531359316291	Delete element
+1531359328810	Rename package 'chapter4.bank10'
+1531359334779	Rename package 'chapter4.bank11'
+1531359340392	Rename package 'chapter4.comparator'
+1531359348286	Rename package 'chapter4.thread'
+1531359351779	Delete element
+1531359358795	Rename package 'chapter5.bank12'
+1531359364757	Rename package 'chapter5.bank13'
+1531359375122	Rename package 'chapter5.bank14'
+1531359383067	Rename package 'chapter5.thread'
+1531359562693	Rename package 'chapter6.iteration'
+1531359588966	Copy package
+1531359607158	Delete element
+1531359637544	Copy file
+1531359911870	Copy compilation units
+1531359983741	Copy compilation unit
+1531360523312	Copy file
+1531365622604	Delete element
+1531365629583	Rename type 'Reducer'
+1531365657896	Rename type 'MaxBalReducer'
+1531365675781	Rename type 'IteratorAcctStats'
+1531365702562	Rename type 'IteratorStatProgram'
+1531365777987	Copy compilation units
+1531365815814	Rename type 'StreamStatProgram'
+1531365824456	Rename type 'StreamAcctStats'
+1531580585340	Delete element
+1531580592076	Copy compilation unit
+1531580606982	Copy compilation units
+1531580612375	Delete element
+1531580619239	Delete element
+1531580621258	Delete element
+1531580625097	Delete element
+1531581303013	Rename type 'AccountStats'
+1531581314080	Rename type 'StatProgram'
+1531581323149	Rename type 'AccountStats'
+1531581332570	Rename type 'StatProgram'
+1531581338760	Copy compilation units
+1531581347116	Delete element
+1531581354786	Delete element
+1531594985439	Rename type 'MaxBalVisitor'

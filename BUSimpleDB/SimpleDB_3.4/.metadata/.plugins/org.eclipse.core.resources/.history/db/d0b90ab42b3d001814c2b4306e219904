@@ -1,0 +1,20 @@
+package chapter9.count2;
+
+import javafx.application.Application;
+import javafx.stage.*;
+import javafx.scene.Scene;
+
+public class Count2 extends Application {
+   public void start(Stage stage) {
+      CountModel model = new CountModel();
+      CountView view = new CountView();
+      CountController controller = new CountController(model, view);
+      Scene scene = new Scene(view.getRoot());
+      stage.setScene(scene);
+      stage.show();
+   }
+
+   public static void main(String[] args) {
+      Application.launch(args);
+   } 
+}

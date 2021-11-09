@@ -1,0 +1,18 @@
+package chapter5.bank12;
+
+public class AccountFactory {
+   public static BankAccount createSavings(int acctnum,
+         boolean isforeign, boolean ispreferred) {
+      return new SavingsAccount(acctnum, isforeign, ispreferred);
+   }
+
+   public static BankAccount createRegularChecking(
+         int acctnum, boolean isforeign, boolean ispreferred) {
+      return new RegularChecking(acctnum, isforeign, ispreferred);
+   }
+
+   public static BankAccount createInterestChecking(
+         int acctnum, boolean isforeign, boolean ispreferred) {
+      return new InterestChecking(acctnum, isforeign, ispreferred);
+   }
+}

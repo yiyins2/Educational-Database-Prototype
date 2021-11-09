@@ -1,0 +1,27 @@
+package chapter09.cookbook;
+
+import java.util.*;
+
+public class FoodIterator implements Iterator<FoodItem> {
+   private Stack<Iterator<FoodItem>> s = new Stack<>();
+   
+   public FoodIterator(Iterator<FoodItem> iter) {
+      s.push(iter);
+   }
+   
+   public boolean hasNext() {
+      while (!s.isEmpty() && !s.peek().hasNext())
+         s.pop();
+      return !s.isEmpty();
+   }
+   
+   public FoodItem next() {
+      boolean b = hasNext(); // just in case
+      if (!b)
+         throw new NoSuchElementException();
+      FoodItem item = s.peek().next();
+      s.push(item.childIterator());
+      return item;
+   }
+}
+

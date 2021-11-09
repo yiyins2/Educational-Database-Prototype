@@ -1,0 +1,22 @@
+1521983242177	Rename field 'lastFill'
+1521983271129	Rename field 'nomoreinput'
+1521983320099	Rename field 'noMoreInput'
+1521988373236	Rename local variable 'x'
+1521988381821	Rename local variable 'numchars'
+1521988471493	Rename field 'noMoreBytes'
+1521988487639	Rename field 'inputexhausted'
+1521998909217	Rename local variable 'charsread'
+1521998920313	Rename local variable 'len'
+1522076511071	Copy compilation unit
+1522079711538	Rename field 'LENGTH'
+1522087927396	Move file
+1522090243967	Rename type 'LovesAsAnalyst'
+1522091908428	Rename type 'PERatioAnalyst'
+1522092270565	Rename resource 'appleInfo.txt'
+1522092339807	Rename type 'StockAnalystTester'
+1522167613645	Rename type 'InternalNodeTraversal'
+1522167715403	Copy compilation unit
+1522168301680	Copy compilation unit
+1522179609715	Rename type 'ManualNodeTraversal'
+1522179676434	Rename type 'GetNodeInformation'
+1522513363405	Rename package 'hw6'

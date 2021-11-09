@@ -1,0 +1,44 @@
+package chapter09.predicate;
+
+import java.util.function.Predicate;
+
+public class CompoundPredicateTest {
+   public static void main(String[] args) {
+      Predicate<Integer> p1 = n -> n%2 == 0;
+      Predicate<Integer> p2 = n -> n%3 == 0;
+      Predicate<Integer> p3 = n -> n < 20;
+      Predicate<Integer> result1 = predByClass(p1, p2, p3);
+      Predicate<Integer> result2 = predByFn(p1, p2, p3);
+
+      for (int i=1; i<100; i++) {
+         if (result1.test(i))
+            System.out.print(i + " ");
+      }
+      System.out.println();
+
+      for (int i=1; i<100; i++) {
+         if (result2.test(i))
+            System.out.print(i + " ");
+      }
+      System.out.println();
+   }
+
+   public static Predicate<Integer> predByClass(
+                           Predicate<Integer> p1, 
+                           Predicate<Integer> p2, 
+                           Predicate<Integer> p3) {
+      Predicate<Integer> p4 = new OrPredicate<Integer>(p1, p2);
+      Predicate<Integer> p5 = new AndPredicate<Integer>(p3, p4);
+      return p5;
+   }
+   
+   public static Predicate<Integer> predByFn(
+                           Predicate<Integer> p1, 
+                           Predicate<Integer> p2, 
+                           Predicate<Integer> p3) {
+      Predicate<Integer> p4 = p1.or(p2);
+      Predicate<Integer> p5 = p3.and(p4);
+      // Predicate<Integer> p5 = p3.and(p1.or(p2));
+      return p5;  
+   }
+}

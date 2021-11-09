@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;item&apos; in &apos;javaprogramdesign.chapter09.cookbook.FoodIterator.FoodIterator(...)&apos; to &apos;f&apos;&#x0A;- Original project: &apos;oodesign&apos;&#x0A;- Original element: &apos;javaprogramdesign.chapter09.cookbook.FoodIterator.FoodIterator(FoodItem).item&apos;&#x0A;- Renamed element: &apos;item&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;item&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;javaprogramdesign.chapter09.cookbook{FoodIterator.java[FoodIterator~FoodIterator~QFoodItem;@item!209!221!218!221!QFoodItem;!0!true" name="f" references="true" stamp="1541434959298" version="1.0"/>
+</session>

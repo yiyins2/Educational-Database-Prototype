@@ -1,0 +1,17 @@
+1550884694097	Rename type 'Block'
+1550884822161	Rename type 'BlockInfo'
+1550888449886	Delete element
+1550888459167	Delete element
+1550888486330	Rename type 'BasicBufferMgr'
+1550889448138	Move compilation unit
+1550889491414	Rename field 'BLOCK_SIZE'
+1550893773947	Rename type 'RecordPage'
+1550927553952	Rename type 'Schema'
+1550928091644	Rename type 'Page'
+1550929635968	Rename type 'DataBuffer'
+1550929662313	Move compilation unit
+1550930004182	Move compilation unit
+1550932618925	Rename type 'ValBuffer'
+1550938563341	Move compilation unit
+1550943716074	Rename compilation unit 'RecordBuffer.java'
+1550944990817	Rename type 'RecordFile'

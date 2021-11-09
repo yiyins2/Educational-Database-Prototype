@@ -1,0 +1,20 @@
+package chapter4.bank11;
+
+public class SavingsType implements TypeStrategy {
+   public String accountType() {
+      return "Savings";
+   }
+
+   public double collateralRatio() {
+      return 1.0 / 2.0;
+   }
+
+   public double interestRate() {
+      return 0.01;
+   }
+
+   public FeeStrategy fstrategy(boolean isforeign) {
+      return isforeign ? new ForeignSavingsFee() : new DomesticFee();
+   }
+}
+

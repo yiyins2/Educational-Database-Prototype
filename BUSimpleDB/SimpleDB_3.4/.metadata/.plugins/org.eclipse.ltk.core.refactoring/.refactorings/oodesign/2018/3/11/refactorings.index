@@ -1,0 +1,26 @@
+1520732942943	Rename method 'setResult'
+1520732961421	Rename field 'result'
+1520733064104	Rename method 'addObserver'
+1520733472928	Rename type 'BankView'
+1520823466493	Rename local variable 'v2'
+1520823474572	Rename local variable 'v1'
+1520823493774	Rename local variable 'c2'
+1520823499262	Rename local variable 'c1'
+1520876357723	Rename type 'BankAcctController'
+1520876367397	Rename type 'BankAcctView'
+1520956996689	Copy package
+1520971913896	Copy compilation unit
+1520971924694	Copy compilation unit
+1520975460236	Rename type 'AccountAllView'
+1521147610264	Copy package
+1521227258388	Copy compilation unit
+1521227279361	Move compilation unit
+1521227623139	Copy compilation unit
+1521227632841	Move compilation unit
+1521227707581	Rename type 'HW6TestSolution'
+1521227714155	Delete element
+1521228021726	Copy compilation unit
+1521229388224	Delete element
+1521229586403	Move compilation unit
+1521229651223	Rename type 'MergedIterator3'
+1521323240164	Rename local variable 'temp1'

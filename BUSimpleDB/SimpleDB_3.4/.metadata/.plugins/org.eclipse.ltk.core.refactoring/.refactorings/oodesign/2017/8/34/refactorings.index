@@ -1,0 +1,40 @@
+1503191720675	Rename type 'PrefferedLoan'
+1503191978890	Rename type 'PreferedLoan'
+1503194118015	Copy package
+1503194137956	Rename package 'bank.version12a'
+1503194148938	Rename package 'bank.version12b'
+1503194868130	Delete element
+1503194872944	Delete element
+1503194878308	Delete element
+1503194901942	Delete element
+1503202518101	Rename type 'AccountType'
+1503202561394	Rename type 'Checking'
+1503202576989	Rename type 'Savings'
+1503204212093	Rename type 'AccountType'
+1503204292261	Rename type 'Savings'
+1503204307289	Rename type 'Checking'
+1503204941228	Copy package
+1503205276758	Delete element
+1503205281777	Delete element
+1503205286185	Delete element
+1503205291071	Delete element
+1503205296155	Delete element
+1503205302094	Delete element
+1503205308335	Delete element
+1503205313493	Delete element
+1503205317687	Delete element
+1503370346229	Delete element
+1503371455208	Rename field 'at'
+1503590725928	Rename type 'CheckingInterest'
+1503590762298	Rename type 'CheckingLoan'
+1503590783602	Rename type 'SavingsLoan'
+1503590835518	Rename type 'SavingsInterest'
+1503601570407	Rename type 'CheckingInterest'
+1503601586162	Rename type 'SavingsInterest'
+1503601619624	Rename type 'SavingsLoan'
+1503601634041	Rename type 'PreferredLoan'
+1503601655584	Rename type 'CheckingLoan'
+1503601687537	Rename type 'CheckingType'
+1503601700879	Rename type 'SavingsType'
+1503601727425	Rename type 'CheckingAccount'
+1503601739092	Rename type 'SavingsAccount'

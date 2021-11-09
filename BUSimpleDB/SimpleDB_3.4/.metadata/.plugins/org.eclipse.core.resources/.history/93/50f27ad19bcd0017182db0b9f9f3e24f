@@ -1,0 +1,19 @@
+package bank.version17;
+
+import java.io.Serializable;
+
+public enum Preferences implements PreferenceStrategy, Serializable {
+   PREFERRED( () -> 1.0 / 4.0 ), 
+   BASIC_CHECKING( () -> 2.0 / 3.0 ),
+   BASIC_SAVINGS( () -> 1.0 / 2.0 );
+
+   private PreferenceStrategy ps;
+   
+   private Preferences(PreferenceStrategy ps) {
+      this.ps = ps;
+   }
+   
+   public double collateralRatio() {
+      return ps.collateralRatio();
+   }
+}

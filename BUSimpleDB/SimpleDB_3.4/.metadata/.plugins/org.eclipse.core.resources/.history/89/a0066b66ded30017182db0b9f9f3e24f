@@ -1,0 +1,102 @@
+package bank.version19;
+
+import java.util.*;
+import java.util.function.*;
+
+public class AccountStats {
+   private Bank bank;
+
+   public AccountStats(Bank b) {
+      bank = b;
+   }
+
+   public void printAccounts1(String type) {
+      Iterator<BankAccount> iter = bank.iterator();
+      while (iter.hasNext()) {
+         BankAccount ba = iter.next();
+         if (ba.accountType().equals(type)) 
+            System.out.println(ba);
+      }
+   }
+
+   public int maxBalance1(String type) {
+      Iterator<BankAccount> iter = bank.iterator();
+      int max = 0;
+      while (iter.hasNext()) {
+         BankAccount ba = iter.next();
+         if (ba.accountType().equals(type)) {
+            int balance = ba.getBalance();
+            if (balance > max) 
+               max = balance;
+         }
+      }
+      return max;
+   }
+
+   public void printAccounts2(String type) {
+      for (BankAccount ba : bank)
+         if (ba.accountType().equals(type)) 
+            System.out.println(ba);
+   }
+   
+   public int maxBalance2(String type) {
+      int max = 0;
+      for (BankAccount ba : bank) {
+         if (ba.accountType().equals(type)) {
+            int balance = ba.getBalance();
+            if (balance > max) 
+               max = balance;
+         }
+      }
+      return max;
+   }
+
+   public void printAccounts3(Predicate<BankAccount> pred) {
+      for (BankAccount ba : bank)
+         if (pred.test(ba)) 
+            System.out.println(ba);
+   }
+
+   public int maxBalance3(Predicate<BankAccount> pred) {
+      int max = 0;
+      for (BankAccount ba : bank) {
+         if (pred.test(ba)) {
+            int balance = ba.getBalance();
+            if (balance > max) 
+               max = balance;
+         }
+      }
+      return max;
+   }
+
+   public void printAccounts4(Predicate<BankAccount> pred) {
+      Consumer<BankAccount> action =
+                     ba -> { if (pred.test(ba)) System.out.println(ba); };
+      bank.forEach(action);
+   }
+   
+   public void processAccounts1(Predicate<BankAccount> pred, Consumer<BankAccount> action) {
+      bank.forEach(ba-> {
+         if (pred.test(ba)) action.accept(ba);
+      });
+   }
+   
+   public void printAccounts5(Predicate<BankAccount> pred) {
+      bank.stream()
+          .filter(pred)
+          .forEach(ba->System.out.println(ba));
+   }
+
+   public void processAccounts2(Predicate<BankAccount> pred, Consumer<BankAccount> action) {
+      bank.stream()
+          .filter(pred)
+          .forEach(action);
+   }
+   
+   public int maxBalance4(Predicate<BankAccount> pred) {
+      return bank.stream()
+                 .filter(pred)
+                 .map(ba->ba.getBalance())
+                 .reduce(0, (x,y)->Math.max(x,y));
+   }
+}

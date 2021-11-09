@@ -1,0 +1,81 @@
+package chapter09.cookbook;
+
+import java.util.*;
+import java.util.function.Predicate;
+
+public class Cookbook {
+   private static Map<String,Recipe> cookbook = new HashMap<>();
+
+   public static void main(String[] args) {
+      addRecipes();
+      System.out.println("---ALL RECIPES---"); 
+      printRecipes(r->true);
+      System.out.println("\n---VEGAN RECIPES---"); 
+      printRecipes(r->r.isVegan());
+      System.out.println("\n---RECIPES USING 4+ ITEMS---"); 
+      printRecipes(r -> foodsUsed(r)>=4);
+      System.out.println("\n---RECIPES USING 4+ ITEMS---"); 
+      printRecipes(r -> foodsUsed2(r)>=4);
+      System.out.println("\n---SHOPPING LIST FOR SALAD---"); 
+      printShoppingList(cookbook.get("salad"));
+      System.out.println("\n---RECIPES COMPRISING SALAD---"); 
+      printRecipesUsedIn(cookbook.get("salad"));
+   }
+
+   private static void addRecipes() {
+      Recipe dressing = new Recipe("dressing", "Mix thoroughly.");
+      dressing.addIngredient(new BasicFood("oil", true), 4);
+      dressing.addIngredient(new BasicFood("vinegar", true), 2);
+      cookbook.put("dressing", dressing);
+
+      Recipe salad = new Recipe("salad", "Chop lettuce, add bacon. Pour dressing over it.");
+      salad.addIngredient(new BasicFood("lettuce", true), 1);
+      salad.addIngredient(new BasicFood("bacon", false), 6);
+      salad.addIngredient(dressing, 1);
+      cookbook.put("salad", salad);
+   }
+
+   private static void printRecipes(Predicate<Recipe> pred) {
+      for (Recipe r : cookbook.values())
+         if (pred.test(r))
+            System.out.println(r);
+   }
+
+   private static int foodsUsed(Recipe r) {
+      int count = 0;
+      Iterator<FoodItem> iter = r.childIterator();
+      while (iter.hasNext()) {
+         FoodItem item = iter.next();
+         if (item instanceof BasicFood)
+            count++;
+         else {
+            Recipe r2 = (Recipe) item;
+            count += foodsUsed(r2);
+         }
+      }
+      return count;
+   }
+   
+   private static int foodsUsed2(Recipe r) {
+      int count = 0;
+      for (FoodItem item : r)
+         if (item instanceof BasicFood) 
+            count++;
+      return count;
+   }
+
+   private static void printShoppingList(Recipe r) {
+      r.forEach(item -> {
+         if (item instanceof BasicFood)
+            System.out.println(item.name() + " " + r.getQuantity(item));
+      });
+   }
+
+   private static void printRecipesUsedIn(Recipe r) {
+      r.forEach(item -> {
+         if (item instanceof Recipe) {
+            System.out.println(item.name());
+         }});
+   }
+}
+

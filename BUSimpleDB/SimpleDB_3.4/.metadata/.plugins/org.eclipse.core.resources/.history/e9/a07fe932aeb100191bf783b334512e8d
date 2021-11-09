@@ -1,0 +1,40 @@
+package simpledb.metadata;
+
+import simpledb.server.SimpleDB;
+import simpledb.tx.Transaction;
+import simpledb.record.*;
+
+public class CatalogTest {
+   public static void main(String[] args) throws Exception {
+      SimpleDB db = new SimpleDB("tblemgrtest", 400, 8);
+      Transaction tx = db.newTx();
+      TableMgr tm = new TableMgr(true, tx);
+
+      Schema sch = new Schema();
+      sch.addIntField("A");
+      sch.addStringField("B", 9);
+      tm.createTable("MyTable", sch, tx);
+
+      System.out.println("Here are the tables and their lengths.");
+      Layout layout = tm.getLayout("tblcat", tx);
+      TableScan ts = new TableScan(tx, "tblcat", layout);
+      while (ts.next()) {
+         String tname = ts.getString("tblname");
+         int reclen   = ts.getInt("reclength");
+         System.out.println(tname + " " + reclen);
+      }
+      ts.close();
+
+      System.out.println("\nHere are the fields for each table and their offsets");
+      layout = tm.getLayout("fldcat", tx);
+      ts = new TableScan(tx, "fldcat", layout);
+      while (ts.next()) {
+         String tname = ts.getString("tblname");
+         String fname = ts.getString("fldname");
+         int offset   = ts.getInt("offset");
+         System.out.println(tname + " " + fname + " " + offset);
+      }
+      ts.close();
+   }
+}
+

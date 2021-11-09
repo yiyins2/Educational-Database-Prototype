@@ -1,0 +1,61 @@
+1520204391608	Rename package 'fx'
+1520221643533	Delete element
+1520221649358	Delete element
+1520221794428	Rename type 'FXCount1'
+1520221801537	Rename type 'FXCount2'
+1520222060236	Rename type 'CountButtonHandler'
+1520263999964	Rename type 'ViewButtonHandler'
+1520264262204	Rename type 'ViewHandler'
+1520265264041	Rename type 'PlayerFrame'
+1520265295652	Rename type 'WatcherFrame'
+1520265447968	Rename type 'GameManager'
+1520282419676	Rename local variable 'cont'
+1520282496147	Delete element
+1520282524542	Rename package 'mvc.ttt.threeviews'
+1520282537699	Delete element
+1520282544255	Rename package 'mvc.ttta'
+1520282565639	Delete element
+1520282575028	Delete element
+1520282959873	Rename field 'lastPlayer'
+1520283004243	Rename field 'gameStatus'
+1520299683096	Delete element
+1520299700981	Delete element
+1520299704700	Delete element
+1520299709726	Delete element
+1520299712909	Delete element
+1520299714926	Delete element
+1520299756324	Delete element
+1520304701262	Rename package 'mvc.count'
+1520304715685	Rename package 'mvc.ttt'
+1520351638392	Copy package
+1520387071065	Copy compilation unit
+1520387127269	Rename type 'CountController'
+1520387199701	Delete element
+1520387221913	Rename type 'CountView'
+1520390844421	Rename package 'chapter9.countmvc'
+1520390891044	Move compilation units
+1520390906798	Delete element
+1520390921391	Copy package
+1520391000343	Rename type 'Count2'
+1520391009912	Rename type 'Count2Controller'
+1520391017910	Rename type 'Count2View'
+1520391632678	Rename type 'Count3Controller'
+1520428364020	Rename type 'Count2Controller'
+1520428376089	Rename type 'Count2View'
+1520428457758	Rename type 'Count3Controller1'
+1520428476884	Rename type 'Count3View'
+1520428559668	Rename type 'CountView2'
+1520428577823	Rename type 'CountController2'
+1520428626278	Rename type 'CountButtonView'
+1520428636588	Rename type 'CountButtonController'
+1520523889849	Rename method 'createSubBox'
+1520527775394	Rename local variable 'vb'
+1520527915746	Rename local variable 'hb'
+1520546065358	Rename method 'createBorderedBox'
+1520546074622	Rename method 'createBlueBox'
+1520546115870	Rename method 'createTitledBox'
+1520567117551	Rename method 'createBorderedBox'
+1520605591776	Rename type 'AccountInfoWindow'
+1520605604245	Rename type 'AccountCreationWindow'
+1520605812907	Rename type 'AcctInfoController'
+1520612439830	Rename local variable 'p15'

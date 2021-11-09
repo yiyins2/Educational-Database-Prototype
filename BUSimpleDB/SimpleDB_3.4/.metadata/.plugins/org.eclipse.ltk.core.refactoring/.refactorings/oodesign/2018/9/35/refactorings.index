@@ -1,0 +1,6 @@
+1535805071037	Rename type 'BankInfo'
+1535806313569	Rename type 'BankEventInfo'
+1535814090748	Rename type 'OwnerInfo'
+1535814169926	Rename local variable 'a'
+1535814185153	Rename local variable 'n'
+1535822689099	Rename enum constant 'SET_FOREIGN'

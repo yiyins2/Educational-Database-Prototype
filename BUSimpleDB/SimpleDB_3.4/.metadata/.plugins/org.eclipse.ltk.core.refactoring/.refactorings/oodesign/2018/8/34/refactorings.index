@@ -1,0 +1,13 @@
+1534708634326	Rename type 'CompoundPredicate'
+1534708646341	Rename type 'CompoundPredicateTest'
+1534710436811	Rename local variable 'p4'
+1534710442363	Rename local variable 'p5'
+1534907319650	Delete element
+1534907360786	Delete element
+1534907364876	Delete element
+1534977248562	Copy compilation unit
+1534988015673	Delete element
+1534988020408	Delete element
+1534989129090	Rename method 'isvegan'
+1535030133194	Rename method 'printRecipesSatisfying'
+1535144303958	Rename method 'printSatisfyingInts'

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS564 Database Leaderboard</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <h1 class="centered topMargin">Leaderboard</h1>
+    <p class="centered">
+      The leaderboard shows the best recorded time for each user for all
+      benchmarks cumulatively in the first tab, and for each one of the 8
+      available benchmarks individually in the following tabs. The CS165 testing
+      suite is comprised of 33 tests and 8 benchmarks. Each benchmark is about:
+      (B1) initial loading follows by inserts, (B2) a complex SQL query, (B3)
+      loading with index creation, (B4) queries using indexes, (B5) shared
+      scans, (B6) loading of files with skewed data and index creation (also
+      used for the joins), (B7) a complex join query, and (B8)
+      inserts/updates/deletes in a relation with an index.
+    </p>
+
+    <div id="ButtonForTests" class="centered"> </div>
+    
+    <div id="rankings" class="centered">
+      <Table id="rankTable">
+					<thead>
+						<tr>
+							<th>Students</th>
+							<th>Speed(ms)</th>
+						</tr>
+					</thead>
+					 <!-- <tbody >
+           
+              <tr >
+                <td> {value[0]} </td> 
+              </tr>
+           
+					</tbody>  -->
+				</Table>
+    </div>
+  </body>
+</html>
