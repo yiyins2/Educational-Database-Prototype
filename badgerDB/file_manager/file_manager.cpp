@@ -2,9 +2,9 @@
 #include <cerrno>
 #include <cstdlib>
 
-#include "block_id.h"
-#include "page.h"
-#include "file_manager.h"
+#include "block_id.hpp"
+#include "page.hpp"
+#include "file_manager.hpp"
 
 using namespace std;
 

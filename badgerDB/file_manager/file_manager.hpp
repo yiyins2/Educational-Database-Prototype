@@ -6,8 +6,8 @@
 #include <sys/stat.h>
 #include <fstream>
 
-#include "page.h"
-#include "block_id.h"
+#include "page.hpp"
+#include "block_id.hpp"
 using namespace std;
 
 class file_manager {

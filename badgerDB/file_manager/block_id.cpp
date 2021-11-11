@@ -1,4 +1,4 @@
-#include "block_id.h"
+#include "block_id.hpp"
 
 block_id::block_id(string filename, int blk_id)
 {

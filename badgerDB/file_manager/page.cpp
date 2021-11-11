@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "page.h"
+#include "page.hpp"
 using namespace std;
 
 page::page(int buffer_size) {

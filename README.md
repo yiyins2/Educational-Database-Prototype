@@ -16,3 +16,5 @@
 * Simple Prototype of FileManager
 
 * Simple Prototype of LeaderBoard
+
+* Simple Prototype of Server (Socket based)
