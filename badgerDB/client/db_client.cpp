@@ -33,8 +33,6 @@ void db_client::start_shell() {
 		cout << "SQL> ";
 		cin >> cmd;
 
-		cout << cmd << endl;
-
 		char cmd_resp_buf[buffer_size] = {0};
 		if (send_cmd(TEST_CMD, cmd_resp_buf) < 0)
 		{
@@ -68,8 +66,6 @@ int db_client::send_cmd(string cmd, char *buf)
 	{
 		return CONNECTION_FAILED;
 	}
-
-	cout << "Will send" << endl;
 
 	int l = send(socket_id, cmd.c_str(), strlen(cmd.c_str()), 0);
 
