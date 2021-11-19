@@ -5,8 +5,10 @@
 #include <netinet/in.h>
 #include <string>
 #include <pthread.h>
+#include <iostream>
 
 #include "db_server.hpp"
+using namespace std;
 
 int db_server::accept_sock_idx = 0;
 const int buffer_size = 1024;
@@ -23,11 +25,13 @@ void* db_server::database_operation(void *socket_id_addr)
 
 	// Read command
 	char buffer[buffer_size] = {0};
+
 	recv(socket_id, buffer, buffer_size, 0);
+	cout << "Request from " << socket_id << " : " << buffer << endl;
 
 	// TODO: add database operations
 	// std::string result = "hello, client " + std::to_string(accept_sock_idx++);
-	printf("%s\n", buffer);
+	// cout << buffer << endl;
 
 	// Send back response
 	send(socket_id, buffer, strlen(buffer), 0);
