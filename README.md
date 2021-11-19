@@ -18,3 +18,5 @@
 * Simple Prototype of LeaderBoard
 
 * Simple Prototype of Server (Socket based)
+
+* Simple Prototype of Client UI
