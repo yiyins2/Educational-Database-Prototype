@@ -15,5 +15,5 @@ int main(int argc, char *argv[]) {
     strcpy(str, temp.c_str());
     p->set_buf(str);
     cout << "The new value is "; 
-    cout << str << endl;
+    cout << buff1->get_page()->get_buf() << endl;
 }
