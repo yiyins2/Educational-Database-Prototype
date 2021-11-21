@@ -18,10 +18,6 @@ void buffer::setTransaction(int txn_num) {
     this->txn_num = txn_num;
 }
 
-bool buffer::isPinned() {
-    return pins > 0;
-}
-
 int buffer::currTransaction() {
     return txn_num;
 }
@@ -41,10 +37,17 @@ void buffer::flush() {
     }
 }
 
+//Used for buffer manager
+bool buffer::isPinned() {
+    return pins > 0;
+}
+
+//Used for buffer manager
 void buffer::pin() {
     pins++;
 }
 
+//Used for buffer manager
 void buffer::unpin() {
     pins--;
 }

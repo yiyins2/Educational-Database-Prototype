@@ -11,7 +11,7 @@ class buffer {
         file_manager *fm;
         //use of unique pointer due to temporal usage of page.
         unique_ptr<page> contents;
-        block_id* blk;
+        block_id* blk = nullptr;
         int pins = 0;
         int txn_num = -1;
 
