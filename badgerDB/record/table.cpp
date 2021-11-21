@@ -15,7 +15,7 @@ table::table(string table_name, file_manager fm) {
 
 pair<int, int> table::get_block_id_and_offset(int record_idx) {
 	int block_record_num = (this->block_size) / this->record_num;
-	int block_idx = record_idx / block_record_num - 1;
+	int block_idx = record_idx / block_record_num;
 	int offset = (record_idx % block_record_num) * this->record_num;
 	return make_pair<>(block_idx, offset);
 }

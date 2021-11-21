@@ -13,13 +13,9 @@ fstream* file_manager::get_file_handle(string filename)
 	fstream *f = new(fstream);
 	string file_dir = get_complete_file_path(filename);
 
-	f->open(file_dir);
-
-	if (!f) {
-		system(("touch " + file_dir).c_str());
-		// Create the file
-		f->open(file_dir);
-	}
+	f->open(file_dir, std::ios::out);
+	f->close();
+	f->open(file_dir, std::ios::in | std::ios::out);
 	return f;
 }
 
@@ -104,7 +100,7 @@ int file_manager::get_file_block_cnt(string filename)
 	int end = f->tellg();
 	int fsize = (end - begin);
 
-	return fsize / block_size;
+	return fsize / (block_size * sizeof(int));
 }
 
 int file_manager::get_block_size()

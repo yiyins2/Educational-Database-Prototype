@@ -1,9 +1,9 @@
 #include "db_server.hpp"
 
-
 const int buffer_size = 1024;
 
-db_server::db_server(int port) {
+db_server::db_server(int port)
+{
 	this->port = port;
 	this->accept_sock_idx = 0;
 	this->end = false;
@@ -11,7 +11,7 @@ db_server::db_server(int port) {
 	this->q_executor = query_executor();
 }
 
-void* db_server::database_operation(void *socket_id_addr)
+void *db_server::database_operation(void *socket_id_addr)
 {
 	int socket_id = *(int *)socket_id_addr;
 
@@ -25,13 +25,14 @@ void* db_server::database_operation(void *socket_id_addr)
 	std::string cmd;
 	cmd += buffer;
 	std::string result = this->q_executor.execute(cmd);
-	
+
 	// Send back response
 	send(socket_id, result.c_str(), strlen(result.c_str()), 0);
 	return NULL;
 }
 
-int db_server::start() {
+int db_server::start()
+{
 	int server_fd;
 	// Creating socket file descriptor
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -78,7 +79,9 @@ int db_server::start() {
 		if (new_socket_id < 0)
 		{
 			perror("server: Failed to accept socket");
-		} else {
+		}
+		else
+		{
 			database_operation(&new_socket_id);
 			// pthread_t pthread_id;
 			// pthread_create(&pthread_id, NULL, &database_operation, &new_socket_id);
@@ -95,7 +98,8 @@ int db_server::start() {
 	return 0;
 }
 
-int db_server::stop() {
+int db_server::stop()
+{
 	this->end = true;
 	return 0;
 }
