@@ -1,16 +1,26 @@
 #include <stdlib.h>
+#include <string>
+
+
 #include "page.hpp"
 using namespace std;
 
 page::page(int buffer_size) {
 	this->buffer_size = buffer_size;
-	buf = (char *)calloc(buffer_size, sizeof(char));
+	buf = (int *)calloc(buffer_size, sizeof(int));
 }
 
-char* page::get_buf() {
+page::~page()
+{
+	// delete buf;
+}
+
+int* page::get_buf() {
 	return buf;
 }
 
-page::~page() {
-	// delete buf;
+void page::write_record(record r, int offset) {
+	for (int field : r.get_value()) {
+		buf[offset++] = field;
+	}
 }

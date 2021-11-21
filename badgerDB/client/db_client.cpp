@@ -21,7 +21,6 @@ void db_client::start_shell() {
 	// Send test command for connection test
 	char conn_test_resp[buffer_size] = {0};
 
-	cout << "Aloha" << endl;
 	if (send_cmd(TEST_CMD, conn_test_resp) < 0) {
 		cout << "Connection failed" << endl;
 		return;
@@ -31,10 +30,10 @@ void db_client::start_shell() {
 	string cmd;
 	while(strcmp(cmd.c_str(), STOP_CMD.c_str()) != 0) {
 		cout << "SQL> ";
-		cin >> cmd;
+		getline(cin, cmd);
 
 		char cmd_resp_buf[buffer_size] = {0};
-		if (send_cmd(TEST_CMD, cmd_resp_buf) < 0)
+		if (send_cmd(cmd, cmd_resp_buf) < 0)
 		{
 			cout << "Connection failed" << endl;
 			return;
