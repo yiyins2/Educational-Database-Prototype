@@ -20,3 +20,17 @@
 * Simple Prototype of Server (Socket based)
 
 * Simple Prototype of Client UI
+
+## Compile
+1. in directory badgerDB/
+	Run Makefile to generate object file: server1 and client1
+2. Run these two objective files
+3. in client1, you can type in commands:
+	Successfully connected to server
+	SQL> CREATE TABLE t1 f1
+	SUCCESS
+	SQL> INSERT INTO TABLE t1 3
+	SUCCESS
+	SQL> exit
+4. Notice: Currently there is still something wrong with file operation: if you insert two records, the first one will be overwritten
+	I'll fix it asap.

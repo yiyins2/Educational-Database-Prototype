@@ -4,15 +4,20 @@
   # compiler flags:
   #  -g     - this flag adds debugging information to the executable file
   #  -Wall  - this flag is used to turn on most compiler warnings
-  CFLAGS  = -g -Wall
+  CFLAGS  = -g -std=c++11
  
   # The build target 
-  TARGET = myprogram
+  SERVER = server1
+  CLIENT = client1
+
+  all : $(SERVER) $(CLIENT) 
+  .PHONY : all
  
-  all: $(TARGET)
+  $(SERVER): server/db_server.cpp server/test_server.cpp query_executor/query_executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp
+			$(CC) $(CFLAGS) -o $(SERVER) server/db_server.cpp server/test_server.cpp query_executor/query_executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp
  
-  $(TARGET): $(TARGET).c
-              $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
- 
+  $(CLIENT): client/test_client.cpp client/db_client.cpp
+			$(CC) $(CFLAGS) -o $(CLIENT)  client/test_client.cpp client/db_client.cpp
+
   clean:
-              $(RM) $(TARGET)
+	$(RM) $(SERVER) $(CLIENT)
