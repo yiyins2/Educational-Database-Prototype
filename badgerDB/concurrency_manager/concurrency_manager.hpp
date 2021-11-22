@@ -7,7 +7,7 @@ using namespace std;
 
 class concurrency_manager {
     public:
-        void global_lock(block_id * p_blk);
+        void global_lock(block_id *p_blk);
         void release();
     
     private:

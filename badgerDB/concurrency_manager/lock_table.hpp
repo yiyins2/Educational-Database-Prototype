@@ -15,6 +15,6 @@ class lock_table {
     
     public:
         lock_table();
-        void global_lock(block_id * p_blk);
+        void global_lock(block_id *p_blk);
         void global_unlock();
 };
