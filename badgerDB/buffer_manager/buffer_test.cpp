@@ -12,10 +12,8 @@ int main(int argc, char *argv[]) {
     buffer *buff1 = new buffer(fm);
     page *p = buff1->get_page();
     buff1->setTransaction(1);
-    string temp = "testing";
-    char str[temp.length() + 1];
-    strcpy(str, temp.c_str());
-    p->set_buf(str);
+    int num = 0;
+    p->set_buf(num, 30);
     cout << "The new value for buffer is " << buff1->get_page()->get_buf() << endl;
 
 

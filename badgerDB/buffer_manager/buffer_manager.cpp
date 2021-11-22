@@ -38,6 +38,19 @@ void buffer_manager::unpin(buffer *bf) {
     }
 }
 
+void buffer_manager::unpin(block_id *blk) {
+    buffer *bf = find_linked_buffer(blk);
+    if (bf) {
+        unpin(bf);
+    }
+}
+
+void buffer_manager::unpin_all() {
+    for (auto buffer : buffer_pool) {
+        buffer->unpin();
+    }
+}
+
 buffer *buffer_manager::pin(block_id *blk) {
     //lock the process to prevent inconsistant result
     unique_lock<mutex> lock(m);

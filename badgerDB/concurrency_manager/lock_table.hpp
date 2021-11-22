@@ -12,6 +12,7 @@ class lock_table {
         queue<block_id *> wait_list;
         mutex m;
         condition_variable cv;
+        const int wait_time = 3000;
     
     public:
         lock_table();

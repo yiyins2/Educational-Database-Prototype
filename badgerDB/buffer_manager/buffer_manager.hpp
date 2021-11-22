@@ -15,7 +15,6 @@ class buffer_manager {
         condition_variable cv;
         const int MAX_TIME = 10000;
         buffer *pin_attempt(block_id *blk);
-        buffer *find_linked_buffer(block_id *blk);
         buffer *unpinned_buffer();
         bool wait_too_long(chrono::time_point<std::chrono::high_resolution_clock> start);
 
@@ -23,6 +22,9 @@ class buffer_manager {
         buffer_manager(file_manager *fm, int buff_num);
         int available();
         void flush(int txn_num);
+        buffer *find_linked_buffer(block_id *blk);
         buffer *pin(block_id *blk);
         void unpin(buffer *bf);
+        void unpin(block_id *blk);
+        void unpin_all();
 };
