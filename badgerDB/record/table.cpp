@@ -25,6 +25,12 @@ int table::insert_record(record new_record) {
 	int block_idx = pr.first;
 	int offset = pr.second;
 
+	int cur_block_num = this->fm.get_file_block_cnt(this->table_name);
+	while (cur_block_num++ < block_idx + 1)
+	{
+		this->fm.add_block(this->table_name);
+	}
+
 	page p = {BUFFER_SIZE};
 
 	block_id blk_id = {this->table_name, block_idx};

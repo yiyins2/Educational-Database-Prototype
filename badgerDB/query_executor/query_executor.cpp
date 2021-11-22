@@ -28,8 +28,10 @@ int query_executor::create_table(string table_name, vector<string> fields_str) {
 	}
 
 	table new_table (table_name, this->fm);
-	this->tables_layout.add_table_and_schema(new_table, new_table_schema);
-	this->fm.add_block(table_name);
+	if(this->tables_layout.add_table_and_schema(new_table, new_table_schema) < 0) {
+		return -1;
+	}
+	this->fm.create_data_file(table_name);
 	return 0;
 }
 
@@ -83,7 +85,9 @@ string query_executor::execute(string cmd) {
 			fields.push_back(parts[i]);
 		}
 
-		this->create_table(table_name, fields);
+		if (this->create_table(table_name, fields) < 0) {
+			return "FAILED";
+		}
 		return "SUCCESS";
 	}
 

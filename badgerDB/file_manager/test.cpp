@@ -19,7 +19,7 @@ void test_block_id()
 
 void test_file_manager()
 {
-	string db_dir = "../db";
+	string db_dir = "/Users/isabella/Desktop/UWMadison/courses/first/CS764/Educational-Database-Prototype/badgerDB/db";
 	struct stat info;
 	if (stat(db_dir.c_str(), &info) == 0) {
 		system(("rm -r " + db_dir).c_str());
