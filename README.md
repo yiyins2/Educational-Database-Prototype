@@ -19,4 +19,7 @@
 
 * Simple Prototype of Server (Socket based)
 
-* Simple Prototype of Client UI
+* Simple Prototype of ConcurrencyManager (Global lock)
+
+* Simple Prototype of NaiveBuffer and BufferManager
+
