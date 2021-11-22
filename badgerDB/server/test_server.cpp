@@ -2,7 +2,8 @@
 
 int PORT = 8080;
 
-int main() {
+int main()
+{
 	db_server server(PORT);
 	server.start();
 }

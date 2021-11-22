@@ -1,12 +1,15 @@
 #pragma once
 
+#include "../record/record.hpp"
+
 class page {
 	private:
-		char *buf;
-		int buffer_size;
+		int *buf;
+		int buffer_size;  // number of int
 
 	public:
 		page(int);
-		char *get_buf();
+		int *get_buf();
+		void write_record(record, int);
 		~page();
 };

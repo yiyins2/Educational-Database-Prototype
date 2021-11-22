@@ -1,0 +1,2 @@
+g++ -std=c++11 -o server1 server/db_server.cpp server/test_server.cpp query_executor/query_executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp
+g++ -o client test_client.cpp db_client.cpp -std=c++11                  

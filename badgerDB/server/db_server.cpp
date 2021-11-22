@@ -1,25 +1,17 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/socket.h>
-#include <stdlib.h>
-#include <netinet/in.h>
-#include <string>
-#include <pthread.h>
-#include <iostream>
-
 #include "db_server.hpp"
-using namespace std;
 
-int db_server::accept_sock_idx = 0;
 const int buffer_size = 1024;
 
-db_server::db_server(int port) {
+db_server::db_server(int port)
+{
 	this->port = port;
 	this->accept_sock_idx = 0;
 	this->end = false;
+
+	this->q_executor = query_executor();
 }
 
-void* db_server::database_operation(void *socket_id_addr)
+void *db_server::database_operation(void *socket_id_addr)
 {
 	int socket_id = *(int *)socket_id_addr;
 
@@ -27,18 +19,20 @@ void* db_server::database_operation(void *socket_id_addr)
 	char buffer[buffer_size] = {0};
 
 	recv(socket_id, buffer, buffer_size, 0);
-	cout << "Request from " << socket_id << " : " << buffer << endl;
+	std::cout << "Request from " << socket_id << " : " << buffer << endl;
 
 	// TODO: add database operations
-	// std::string result = "hello, client " + std::to_string(accept_sock_idx++);
-	// cout << buffer << endl;
+	std::string cmd;
+	cmd += buffer;
+	std::string result = this->q_executor.execute(cmd);
 
 	// Send back response
-	send(socket_id, buffer, strlen(buffer), 0);
+	send(socket_id, result.c_str(), strlen(result.c_str()), 0);
 	return NULL;
 }
 
-int db_server::start() {
+int db_server::start()
+{
 	int server_fd;
 	// Creating socket file descriptor
 	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
@@ -62,7 +56,7 @@ int db_server::start() {
 	address.sin_port = htons(this->port);
 
 	// Forcefully attaching socket to the port 8080
-	int bind_rc = bind(server_fd, (struct sockaddr *)&address, sizeof(address));
+	int bind_rc = ::bind(server_fd, (struct sockaddr *)&address, sizeof(address));
 	if (bind_rc < 0)
 	{
 		perror("server: bind failed");
@@ -85,7 +79,9 @@ int db_server::start() {
 		if (new_socket_id < 0)
 		{
 			perror("server: Failed to accept socket");
-		} else {
+		}
+		else
+		{
 			database_operation(&new_socket_id);
 			// pthread_t pthread_id;
 			// pthread_create(&pthread_id, NULL, &database_operation, &new_socket_id);
@@ -102,7 +98,8 @@ int db_server::start() {
 	return 0;
 }
 
-int db_server::stop() {
+int db_server::stop()
+{
 	this->end = true;
 	return 0;
 }
