@@ -13,6 +13,7 @@ class record {
 	
 	public:
 		record(string table_name, vector<int> value);
+		record(){}
 		vector<int> get_value();
 		string get_table_name();
 };

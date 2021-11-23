@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Constructor
 file_manager::file_manager(string db_dir, int block_size)
 {
 	this->db_dir = db_dir;
@@ -24,6 +25,14 @@ file_manager::file_manager(string db_dir, int block_size)
 	}
 }
 
+// Private utility function
+string file_manager::get_complete_file_path(string filename)
+{
+	string complete_file_path = this->db_dir + "/" + filename;
+	return complete_file_path;
+}
+
+// Public methods called by table
 int file_manager::read(block_id blk, page p)
 {
 	string filename = blk.get_filename();
@@ -102,11 +111,7 @@ int file_manager::get_block_size()
 	return block_size;
 }
 
-string file_manager::get_complete_file_path(string filename)
-{
-	string complete_file_path = this->db_dir + "/" + filename;
-	return complete_file_path;
-}
+
 
 int file_manager::delete_file(string filename) {
 	system(("rm " + get_complete_file_path(filename)).c_str());

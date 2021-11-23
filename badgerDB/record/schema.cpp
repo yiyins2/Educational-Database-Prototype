@@ -18,6 +18,10 @@ vector<string> schema::get_field_names() {
 }
 
 int schema::get_record_size() {
-	return this->field_names.size() * sizeof(int);
+	return this->field_names.size();
 }
 
+bool schema::has_field(string field_name) {
+	auto iter = find(this->field_names.begin(),this->field_names.end(), field_name);
+	return iter == this->field_names.end();
+}

@@ -17,4 +17,5 @@ class schema {
 		int addField(string);
 		vector<string> get_field_names();
 		int get_record_size();
+		bool has_field(string);
 };
