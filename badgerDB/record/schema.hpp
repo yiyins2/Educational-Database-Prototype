@@ -4,17 +4,17 @@
 #include <vector>
 #include <string>
 
-#include "field_info.hpp"
-
 using namespace std;
 
 class schema {
 	private:
 		vector<string> field_names;
+		vector<int> field_types; 
 	
 	public:
 		schema() {}
-		int addField(string);
+		bool add_field(string, int);
 		vector<string> get_field_names();
+		vector<int> get_field_types();
 		int get_record_size();
 };
