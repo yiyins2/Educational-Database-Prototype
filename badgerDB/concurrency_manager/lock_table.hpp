@@ -8,7 +8,7 @@ using namespace std;
 
 class lock_table {
     private:
-        const int lockTime = 5000;
+         int lockTime = 5000;
         queue<block_id *> wait_list;
         mutex m;
         condition_variable cv;

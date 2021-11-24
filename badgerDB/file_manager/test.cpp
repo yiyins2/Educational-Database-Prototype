@@ -4,6 +4,7 @@
 #include <string.h>
 #include <assert.h>
 #include <iostream>
+#include <filesystem>
 
 #include "file_manager.h"
 using namespace std;
@@ -19,7 +20,7 @@ void test_block_id()
 
 void test_file_manager()
 {
-	string db_dir = "/Users/isabella/Desktop/UWMadison/courses/first/CS764/Educational-Database-Prototype/badgerDB/db";
+	string db_dir = std::__fs::filesystem::current_path();
 	struct stat info;
 	if (stat(db_dir.c_str(), &info) == 0) {
 		system(("rm -r " + db_dir).c_str());

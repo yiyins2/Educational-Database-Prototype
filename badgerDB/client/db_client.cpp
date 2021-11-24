@@ -9,8 +9,8 @@ using namespace std;
 
 const int buffer_size = 1024;
 const int CONNECTION_FAILED = -1;
-const string TEST_CMD = "123";
-const string STOP_CMD = "exit";
+string TEST_CMD = "123";
+string STOP_CMD = "exit";
 
 db_client::db_client(int port)
 {
@@ -26,7 +26,7 @@ void db_client::start_shell() {
 		return;
 	}
 	cout << "Successfully connected to server" << endl;
-
+ 
 	string cmd;
 	while(strcmp(cmd.c_str(), STOP_CMD.c_str()) != 0) {
 		cout << "SQL> ";
@@ -71,4 +71,4 @@ int db_client::send_cmd(string cmd, char *buf)
 	recv(socket_id, buf, buffer_size, 0);
 
 	return 0;
-}
+}  

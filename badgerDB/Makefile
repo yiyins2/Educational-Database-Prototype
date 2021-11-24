@@ -13,8 +13,8 @@
   all : $(SERVER) $(CLIENT) 
   .PHONY : all
  
-  $(SERVER): server/db_server.cpp server/test_server.cpp query_executor/query_executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp
-			$(CC) $(CFLAGS) -o $(SERVER) server/db_server.cpp server/test_server.cpp query_executor/query_executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp
+  $(SERVER): server/db_server.cpp server/test_server.cpp executor/executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp query/*.cpp parser/lexer.cpp parser/parser.cpp parser/create_table_data.cpp parser/drop_table_data.cpp parser/insert_data.cpp parser/update_data.cpp parser/delete_data.cpp parser/query_data.cpp
+			$(CC) $(CFLAGS) -o $(SERVER) server/db_server.cpp server/test_server.cpp executor/executor.cpp record/*.cpp file_manager/file_manager.cpp file_manager/block_id.cpp file_manager/page.cpp query/*.cpp parser/lexer.cpp parser/parser.cpp parser/create_table_data.cpp parser/drop_table_data.cpp parser/insert_data.cpp parser/update_data.cpp parser/delete_data.cpp parser/query_data.cpp
  
   $(CLIENT): client/test_client.cpp client/db_client.cpp
 			$(CC) $(CFLAGS) -o $(CLIENT)  client/test_client.cpp client/db_client.cpp

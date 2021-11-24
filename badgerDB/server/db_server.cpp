@@ -8,14 +8,14 @@ db_server::db_server(int port)
 	this->accept_sock_idx = 0;
 	this->end = false;
 
-	this->q_executor = query_executor();
+	this->ex = executor();
 }
 
 void *db_server::database_operation(void *socket_id_addr)
 {
 	int socket_id = *(int *)socket_id_addr;
-
-	// Read command
+ 
+	// Read command 
 	char buffer[buffer_size] = {0};
 
 	recv(socket_id, buffer, buffer_size, 0);
@@ -23,8 +23,8 @@ void *db_server::database_operation(void *socket_id_addr)
 
 	// TODO: add database operations
 	std::string cmd;
-	cmd += buffer;
-	std::string result = this->q_executor.execute(cmd);
+	cmd += buffer; 
+	std::string result = this->ex.execute(cmd);
 
 	// Send back response
 	send(socket_id, result.c_str(), strlen(result.c_str()), 0);

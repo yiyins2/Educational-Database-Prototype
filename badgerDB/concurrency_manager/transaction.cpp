@@ -5,7 +5,7 @@ using namespace std;
 
 int transaction::next_tx_num = 0;
 
-transaction::transaction(file_manager* fm_mgr, buffer_manager * bm_mgr) : fm(fm_mgr), bm(bm_mgr){
+transaction::transaction(file_manager* fm_mgr, buffer_manager* bm_mgr) : fm(fm_mgr), bm(bm_mgr){
     //bad implementation using new keyword, will solve in the future
     cm = new concurrency_manager();
     //set transaction id to keep track of them
