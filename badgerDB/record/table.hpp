@@ -16,6 +16,7 @@ class table {
 
 		pair<int, int> get_block_id_and_offset(int);
 		bool check_predicate(vector<predicate>, record);
+		bool check_one_field(int, string, int);
 
 	public:
 		table() {}

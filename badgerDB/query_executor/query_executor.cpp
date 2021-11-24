@@ -116,11 +116,6 @@ int query_executor::select_records(string table_name, vector<int> field_pos, vec
 	// Check if the field names are valid
 	schema *s = this->tables_layout.get_table_schema(table_name);
 	for (predicate p : preds) {
-		string field_name = p.field;
-		if (!s->has_field(field_name)) {
-			return FIELD_NOT_EXIST;
-		}
-
 		if (!p.check_operator(p.op)) {
 			return OPERATOR_NOT_VALID;
 		}
@@ -230,22 +225,33 @@ string query_executor::execute(string cmd)
 			return "FAILED";
 		}
 
+		// Get corresponding field index
+		schema *s = this->tables_layout.get_table_schema(table_name);
+		if (s == nullptr)
+		{
+			return "FAILED";
+		}
+		vector<string> declared_field = s->get_field_names();
+
+		// Create predicate
 		while(++p_idx < parts.size()) {
 			if (!checkNumber(parts[p_idx+2])) {
 				return "FAILED";
 			}
-			preds.push_back({parts[p_idx], parts[p_idx+1], atoi(parts[p_idx+2].c_str())});
+
+			string field_name = parts[p_idx];
+			// Here we record the field idx in the record (the field is mentioned in the predicate)
+			auto p = find(declared_field.begin(), declared_field.end(), field_name);
+			if (p == declared_field.end()) {
+				return "FAILED";
+			}
+
+			preds.push_back({(int)(p-declared_field.begin()), parts[p_idx+1], atoi(parts[p_idx+2].c_str())});
 			p_idx += 3;
 		}
-		
-		// Get corresponding field index
-		schema *s = this->tables_layout.get_table_schema(table_name);
-		if (s == nullptr) {
-			return "FAILED";
-		}
 
+		// The selected field idx in the record
 		vector<int> field_pos;
-		vector<string> declared_field = s->get_field_names();
 		if (field_names.size() == 1 && strcmp(field_names[0].c_str(), "*") == 0) {
 			for (int i = 0; i < declared_field.size(); ++i) {
 				field_pos.push_back(i);

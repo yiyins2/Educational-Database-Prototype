@@ -23,5 +23,5 @@ int schema::get_record_size() {
 
 bool schema::has_field(string field_name) {
 	auto iter = find(this->field_names.begin(),this->field_names.end(), field_name);
-	return iter == this->field_names.end();
+	return iter != this->field_names.end();
 }

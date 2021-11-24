@@ -4,13 +4,13 @@
 using namespace std;
 
 struct predicate {
-	string field;
+	int field_idx;
 	string op;				// <=, >=, <, >, !=, ==
 	int value;
 
 	predicate() {}
-	predicate(string field, string op, int value) {
-		this->field = field;
+	predicate(int field_idx, string op, int value) {
+		this->field_idx = field_idx;
 		this->op = op;
 		this->value = value;
 	}

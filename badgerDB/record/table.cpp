@@ -29,9 +29,45 @@ string table::get_table_name()
 	return this->table_name;
 }
 
+bool table::check_one_field(int record_value, string op, int threshold) {
+	if (strcmp(op.c_str(), ">") == 0) {
+		return record_value > threshold;
+	}
+
+	if (strcmp(op.c_str(), "<") == 0) {
+		return record_value < threshold;
+	}
+
+	if (strcmp(op.c_str(), ">=") == 0) {
+		return record_value >= threshold;
+	}
+
+	if (strcmp(op.c_str(), "<=") == 0) {
+		return record_value <= threshold;
+	}
+
+	if (strcmp(op.c_str(), "==") == 0) {
+		return record_value == threshold;
+	}
+
+	if (strcmp(op.c_str(), "!=") == 0) {
+		return record_value != threshold;
+	}
+	return false;
+}
+
 bool table::check_predicate(vector<predicate> preds, record r) {
 	vector<int> field_values = r.get_value();
+	
 	// TODO:
+	for (predicate pr : preds) {
+		int record_value = r.get_value()[pr.field_idx];
+		string op = pr.op;
+		int threshold = pr.value;
+		if (!check_one_field(record_value, op, threshold)) {
+			return false;
+		}
+	}
 	return true;
 }
 
