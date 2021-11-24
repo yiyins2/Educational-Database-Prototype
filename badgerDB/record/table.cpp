@@ -16,11 +16,11 @@ table::table(string table_name, file_manager fm)
 }
 
 // Private utility functions
-pair<int, int> table::get_block_id_and_offset(int record_idx)
+pair<int, int> table::get_block_id_and_offset(int record_idx, int record_size)
 {
-	int block_record_num = (this->block_size) / this->record_num;
+	int block_record_num = this->block_size / record_size;
 	int block_idx = record_idx / block_record_num;
-	int offset = record_idx % block_record_num;
+	int offset = (record_idx % block_record_num) * record_size;
 	return make_pair<>(block_idx, offset);
 }
 
@@ -72,9 +72,9 @@ bool table::check_predicate(vector<predicate> preds, record r) {
 }
 
 // Public methods called by query_executor
-int table::insert_record(record new_record)
+int table::insert_record(record new_record, int record_size)
 {
-	auto pr = get_block_id_and_offset(this->record_num++);
+	auto pr = get_block_id_and_offset(this->record_num++, record_size);
 	int block_idx = pr.first;
 	int offset = pr.second;
 

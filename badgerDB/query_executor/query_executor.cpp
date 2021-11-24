@@ -101,7 +101,7 @@ int query_executor::insert_record(record r)
 		return INSERT_RECORD_FIELD_SIZE_INVALID;
 	}
 
-	t->insert_record(r);
+	t->insert_record(r, s->get_record_size());
 	return 0;
 }
 
@@ -234,7 +234,8 @@ string query_executor::execute(string cmd)
 		vector<string> declared_field = s->get_field_names();
 
 		// Create predicate
-		while(++p_idx < parts.size()) {
+		++p_idx;
+		while(p_idx < parts.size()) {
 			if (!checkNumber(parts[p_idx+2])) {
 				return "FAILED";
 			}
