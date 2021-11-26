@@ -11,5 +11,4 @@ class page {
 		page(int);
 		int *get_buf();
 		void write_record(record, int);
-		~page();
 };

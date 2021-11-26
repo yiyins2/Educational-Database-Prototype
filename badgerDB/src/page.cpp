@@ -4,14 +4,10 @@
 #include "../include/page.hpp"
 using namespace std;
 
+// Serves as a in-memory buffer for disk content
 page::page(int buffer_size) {
 	this->buffer_size = buffer_size;
 	buf = (int *)calloc(buffer_size, sizeof(int));
-}
-
-page::~page()
-{
-	// delete buf;
 }
 
 int* page::get_buf() {

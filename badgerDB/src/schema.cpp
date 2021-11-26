@@ -1,21 +1,20 @@
 #include "../include/schema.hpp"
 
 // Currently only support int type
-
 int schema::addField(string field_name) {
 	// Duplicate field name
 	if (find(this->field_names.begin(), this->field_names.end(), field_name) != this->field_names.end()) {
-		return -1;
+		return DUPLICATE_FIELD;
 	}
 
 	this->field_names.push_back(field_name);
-	return 0;
+	return SUCCESS;
 }
 
 int schema::get_field_idx(string field_name) {
 	auto iter = find(this->field_names.begin(), this->field_names.end(), field_name);
 	if (iter == this->field_names.end()) {
-		return -1;
+		return FIELD_NOT_EXIST;
 	} else {
 		return iter - this->field_names.begin();
 	}

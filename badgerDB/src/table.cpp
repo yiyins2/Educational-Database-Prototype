@@ -1,8 +1,6 @@
 #include <cerrno>
 
 #include "../include/table.hpp"
-#include "../include/page.hpp"
-
 const int BUFFER_SIZE = 512;
 
 // Constructor
@@ -84,35 +82,36 @@ bool table::check_predicate(vector<predicate> preds, record r)
 // Public methods called by query_executor
 int table::insert_record(record new_record, int record_size)
 {
+    // Determine where we should insert the record
 	auto pr = get_block_id_and_offset(this->record_num++, record_size);
 	int block_idx = pr.first;
 	int offset = pr.second;
 
+    // In case there is not enough block
 	int cur_block_num = this->fm.get_file_block_cnt(this->table_name);
 	while (cur_block_num++ < block_idx + 1)
 	{
 		this->fm.add_block(this->table_name);
 	}
 
+    // Read the block
 	page p = {BUFFER_SIZE};
-	block_id blk_id = {this->table_name, block_idx};
+	file_block_idx blk_id = {this->table_name, block_idx};
 	if (this->fm.read(blk_id, p) < 0)
 	{
-		string s = "Failed to read block: " + to_string(block_idx);
-		perror(s.c_str());
-		return -1;
+	    return FAILED_TO_READ_BLOCK;
 	}
 
+    // Write the new record
 	p.write_record(new_record, offset);
 
+    //
 	if (this->fm.write(blk_id, p) < 0)
 	{
-		string s = "Failed to read block: " + to_string(block_idx);
-		perror(s.c_str());
-		return -1;
+        return FAILED_TO_WRITE_BLOCK;
 	}
 
-	return 0;
+	return SUCCESS;
 }
 
 int table::update_records(vector<update_record> update_record_info, vector<predicate> preds, int record_field_num)
@@ -133,12 +132,10 @@ int table::update_records(vector<update_record> update_record_info, vector<predi
 	{
 		page p = {BUFFER_SIZE};
 		int *buf = p.get_buf();
-		block_id blk_id = {table_name, block_idx};
-		if (this->fm.read(blk_id, p))
+		file_block_idx file_blk_idx = {table_name, block_idx};
+		if (this->fm.read(file_blk_idx, p))
 		{
-			string s = "Failed to read block: " + to_string(block_idx);
-			perror(s.c_str());
-			return -1;
+		    return FAILED_TO_READ_BLOCK;
 		}
 
 		// Record idx in the current block
@@ -161,14 +158,16 @@ int table::update_records(vector<update_record> update_record_info, vector<predi
 				}
 			}
 
-			block_id blk_id = {table_name, block_idx};
-			this->fm.write(blk_id, p);
+			file_block_idx file_blk_idx = {table_name, block_idx};
+			int ret_val = this->fm.write(file_blk_idx, p);
+            if (ret_val < 0) {
+                return ret_val;
+            }
 
 			++record_idx;
 			++current_block_record_idx;
 		}
 	}
-
 	return 0;
 }
 
@@ -185,11 +184,9 @@ vector<record> table::select_records(vector<int> select_fields, vector<predicate
 	{
 		page p = {BUFFER_SIZE};
 		int *buf = p.get_buf();
-		block_id blk_id = {table_name, block_idx};
-		if (this->fm.read(blk_id, p))
+		file_block_idx file_blk_id = {table_name, block_idx};
+		if (this->fm.read(file_blk_id, p))
 		{
-			string s = "Failed to read block: " + to_string(block_idx);
-			perror(s.c_str());
 			return vector<record>{};
 		}
 

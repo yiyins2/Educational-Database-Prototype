@@ -5,6 +5,7 @@
 #include <string>
 
 #include "field_info.hpp"
+#include "constant.hpp"
 
 using namespace std;
 

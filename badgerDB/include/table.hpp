@@ -6,6 +6,7 @@
 #include "file_manager.hpp"
 #include "predicate.hpp"
 #include "update_record.hpp"
+#include "page.hpp"
 using namespace std;
 
 class table {
