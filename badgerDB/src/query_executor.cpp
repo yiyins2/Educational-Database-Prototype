@@ -48,7 +48,7 @@ string query_executor::query_result_format(vector<string> fields, vector<record>
 		s += this->format_row(r);
 		s += "\n";
 	}
-	s += "--------------\n";
+	s += "--------------";
 	return s;
 }
 
