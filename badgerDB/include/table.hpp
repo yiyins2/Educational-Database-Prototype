@@ -5,6 +5,7 @@
 #include "record.hpp"
 #include "file_manager.hpp"
 #include "predicate.hpp"
+#include "update_record.hpp"
 using namespace std;
 
 class table {
@@ -21,7 +22,11 @@ class table {
 	public:
 		table() {}
 		table(string, file_manager);
-		int insert_record(record, int);
-		vector<record> select_records(vector<int>, vector<predicate>, int);
 		string get_table_name();
+
+		int insert_record(record, int);
+		int update_records(vector<update_record>, vector<predicate>, int);
+		vector<record> select_records(vector<int>, vector<predicate>, int);
+
+		
 };

@@ -12,6 +12,14 @@ int schema::addField(string field_name) {
 	return 0;
 }
 
+int schema::get_field_idx(string field_name) {
+	auto iter = find(this->field_names.begin(), this->field_names.end(), field_name);
+	if (iter == this->field_names.end()) {
+		return -1;
+	} else {
+		return iter - this->field_names.begin();
+	}
+}
 
 vector<string> schema::get_field_names() {
 	return this->field_names;

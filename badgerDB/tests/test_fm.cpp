@@ -19,7 +19,7 @@ void test_block_id()
 
 void test_file_manager()
 {
-	string db_dir = "../db";
+	string db_dir = "./db";
 	struct stat info;
 	if (stat(db_dir.c_str(), &info) == 0) {
 		system(("rm -r " + db_dir).c_str());

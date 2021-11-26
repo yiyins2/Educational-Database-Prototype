@@ -29,42 +29,52 @@ string table::get_table_name()
 	return this->table_name;
 }
 
-bool table::check_one_field(int record_value, string op, int threshold) {
-	if (strcmp(op.c_str(), ">") == 0) {
+bool table::check_one_field(int record_value, string op, int threshold)
+{
+	if (strcmp(op.c_str(), ">") == 0)
+	{
 		return record_value > threshold;
 	}
 
-	if (strcmp(op.c_str(), "<") == 0) {
+	if (strcmp(op.c_str(), "<") == 0)
+	{
 		return record_value < threshold;
 	}
 
-	if (strcmp(op.c_str(), ">=") == 0) {
+	if (strcmp(op.c_str(), ">=") == 0)
+	{
 		return record_value >= threshold;
 	}
 
-	if (strcmp(op.c_str(), "<=") == 0) {
+	if (strcmp(op.c_str(), "<=") == 0)
+	{
 		return record_value <= threshold;
 	}
 
-	if (strcmp(op.c_str(), "==") == 0) {
+	if (strcmp(op.c_str(), "==") == 0)
+	{
 		return record_value == threshold;
 	}
 
-	if (strcmp(op.c_str(), "!=") == 0) {
+	if (strcmp(op.c_str(), "!=") == 0)
+	{
 		return record_value != threshold;
 	}
 	return false;
 }
 
-bool table::check_predicate(vector<predicate> preds, record r) {
+bool table::check_predicate(vector<predicate> preds, record r)
+{
 	vector<int> field_values = r.get_value();
-	
+
 	// TODO:
-	for (predicate pr : preds) {
+	for (predicate pr : preds)
+	{
 		int record_value = r.get_value()[pr.field_idx];
 		string op = pr.op;
 		int threshold = pr.value;
-		if (!check_one_field(record_value, op, threshold)) {
+		if (!check_one_field(record_value, op, threshold))
+		{
 			return false;
 		}
 	}
@@ -105,6 +115,63 @@ int table::insert_record(record new_record, int record_size)
 	return 0;
 }
 
+int table::update_records(vector<update_record> update_record_info, vector<predicate> preds, int record_field_num)
+{
+	string table_name = this->table_name;
+
+	// Total number of block in the data file
+	int table_block_num = this->fm.get_file_block_cnt(table_name);
+	// Current record idx
+	int record_idx = 0;
+	// Maximum number of records that can be in one block (the remaining byte in the block is abandoned)
+	int max_block_record_num = this->block_size / record_field_num;
+
+	// First iterate blocks, in each block check each record
+	// For each record, check whether they satisfy the requirement
+	// If yes, update it
+	for (int block_idx = 0; block_idx < table_block_num; ++block_idx)
+	{
+		page p = {BUFFER_SIZE};
+		int *buf = p.get_buf();
+		block_id blk_id = {table_name, block_idx};
+		if (this->fm.read(blk_id, p))
+		{
+			string s = "Failed to read block: " + to_string(block_idx);
+			perror(s.c_str());
+			return -1;
+		}
+
+		// Record idx in the current block
+		int current_block_record_idx = 0;
+		while (record_idx < this->record_num && current_block_record_idx < max_block_record_num)
+		{
+			vector<int> field_values;
+			for (int i = record_field_num * current_block_record_idx; i < record_field_num * (current_block_record_idx + 1); ++i)
+			{
+				field_values.push_back(buf[i]);
+			}
+			record r = {table_name, field_values};
+
+			// Check predicate
+			if (check_predicate(preds, r))
+			{
+				for (update_record ur : update_record_info)
+				{
+					buf[current_block_record_idx * record_field_num + ur.field_pos_idx] = ur.new_value;
+				}
+			}
+
+			block_id blk_id = {table_name, block_idx};
+			this->fm.write(blk_id, p);
+
+			++record_idx;
+			++current_block_record_idx;
+		}
+	}
+
+	return 0;
+}
+
 vector<record> table::select_records(vector<int> select_fields, vector<predicate> preds, int record_field_num)
 {
 	vector<record> result;
@@ -117,7 +184,7 @@ vector<record> table::select_records(vector<int> select_fields, vector<predicate
 	for (int block_idx = 0; block_idx < current_block_num; ++block_idx)
 	{
 		page p = {BUFFER_SIZE};
-		int* buf = p.get_buf();
+		int *buf = p.get_buf();
 		block_id blk_id = {table_name, block_idx};
 		if (this->fm.read(blk_id, p))
 		{

@@ -19,7 +19,7 @@ class file_manager {
 		string get_complete_file_path(string filename);
 
 	public:
-		file_manager(string db_dir = "../db", int block_size = 512);
+		file_manager(string db_dir = "./db", int block_size = 512);
 		int read(block_id blk, page p);
 		int write(block_id blk, page p);
 		int add_block(string filename);

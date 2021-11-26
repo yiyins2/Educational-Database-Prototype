@@ -2,7 +2,7 @@
 
 const int buffer_size = 1024;
 
-db_server::db_server(int port, string db_dir="../db")
+db_server::db_server(int port, string db_dir = "./db")
 {
 	this->port = port;
 	this->accept_sock_idx = 0;
@@ -41,7 +41,7 @@ int db_server::start()
 		return -1;
 	}
 
-	// Forcefully attaching socket to the port 8080
+	// Forcefully attaching socket to the port 8085
 	int opt = 1;
 	if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR,
 				   &opt, sizeof(opt)))
@@ -55,7 +55,7 @@ int db_server::start()
 	address.sin_addr.s_addr = INADDR_ANY;
 	address.sin_port = htons(this->port);
 
-	// Forcefully attaching socket to the port 8080
+	// Forcefully attaching socket to the port 8085
 	int bind_rc = ::bind(server_fd, (struct sockaddr *)&address, sizeof(address));
 	if (bind_rc < 0)
 	{
