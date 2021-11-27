@@ -3,7 +3,7 @@
 #include "table.hpp"
 #include "../file_manager/page.hpp"
 
-const int BUFFER_SIZE = 512;
+ int BUFFER_SIZE = 512;
 
 table::table(string table_name, file_manager fm) {
 	this->record_num = 0;

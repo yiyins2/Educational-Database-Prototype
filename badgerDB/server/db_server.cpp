@@ -24,8 +24,9 @@ void *db_server::database_operation(void *socket_id_addr)
 	// TODO: add database operations
 	std::string cmd;
 	cmd += buffer; 
+	
 	std::string result = this->ex.execute(cmd);
-
+	
 	// Send back response
 	send(socket_id, result.c_str(), strlen(result.c_str()), 0);
 	return NULL;
