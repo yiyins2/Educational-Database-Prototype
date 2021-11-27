@@ -3,13 +3,13 @@
 #include <string>
 using namespace std;
 
-class block_id {
+class file_block_idx {
 	private:
 		string filename;
 		int blk_id;
 
 	public:
-		block_id(string filename, int blk_id);
+		file_block_idx(string filename, int blk_id);
 		string get_filename();
 		int get_blk_id();
 };
