@@ -2,12 +2,13 @@
 #include <cerrno>
 #include <cstdlib>
 
-#include "block_id.hpp"
-#include "page.hpp"
-#include "file_manager.hpp"
+#include "../include/page.hpp"
+#include "../include/file_block_idx.hpp"
+#include "../include/file_manager.hpp"
 
 using namespace std;
 
+// Constructor
 file_manager::file_manager(string db_dir, int block_size)
 {
 	this->db_dir = db_dir;
@@ -24,7 +25,15 @@ file_manager::file_manager(string db_dir, int block_size)
 	}
 }
 
-int file_manager::read(block_id blk, page p)
+// Private utility function
+string file_manager::get_complete_file_path(string filename)
+{
+	string complete_file_path = this->db_dir + "/" + filename;
+	return complete_file_path;
+}
+
+// Public methods called by table
+int file_manager::read(file_block_idx blk, page p)
 {
 	string filename = blk.get_filename();
 	string dir = get_complete_file_path(filename);
@@ -46,7 +55,7 @@ int file_manager::read(block_id blk, page p)
 	return 0;
 }
 
-int file_manager::write(block_id blk, page p)
+int file_manager::write(file_block_idx blk, page p)
 {
 	string filename = blk.get_filename();
 	int cur_block_num = get_file_block_cnt(filename);
@@ -102,19 +111,13 @@ int file_manager::get_block_size()
 	return block_size;
 }
 
-string file_manager::get_complete_file_path(string filename)
-{
-	string complete_file_path = this->db_dir + "/" + filename;
-	return complete_file_path;
-}
-
 int file_manager::delete_file(string filename) {
 	system(("rm " + get_complete_file_path(filename)).c_str());
-	return 0;
+	return SUCCESS;
 }
 
 int file_manager::create_data_file(string filename) {
 	ofstream new_data_file(get_complete_file_path(filename));
 	new_data_file.close();
-	return 0;
+	return SUCCESS;
 }

@@ -6,6 +6,7 @@
 
 #include "table.hpp"
 #include "schema.hpp"
+#include "constant.hpp"
 using namespace std;
 
 class layout {

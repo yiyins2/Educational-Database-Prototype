@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 
+#include "field_info.hpp"
+#include "constant.hpp"
+
 using namespace std;
 
 class schema {
@@ -13,8 +16,11 @@ class schema {
 	
 	public:
 		schema() {}
-		bool add_field(string, int);
+		// bool add_field(string, int);
+		int addField(string);
+		int get_field_idx(string);
 		vector<string> get_field_names();
 		vector<int> get_field_types();
 		int get_record_size();
+		bool has_field(string);
 };
