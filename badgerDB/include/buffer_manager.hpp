@@ -4,7 +4,7 @@
 #include <mutex>
 
 #include "buffer.hpp"
-#include "../file_manager/file_manager.hpp"
+#include "file_manager.hpp"
 
 using namespace std;
 class buffer_manager {
@@ -14,8 +14,7 @@ class buffer_manager {
         mutex m;
         condition_variable cv;
         const int MAX_TIME = 10000;
-        buffer *pin_attempt(block_id *blk);
-        buffer *find_linked_buffer(block_id *blk);
+        buffer *pin_attempt(file_block_idx *blk);
         buffer *unpinned_buffer();
         bool wait_too_long(chrono::time_point<std::chrono::high_resolution_clock> start);
 
@@ -23,6 +22,9 @@ class buffer_manager {
         buffer_manager(file_manager *fm, int buff_num);
         int available();
         void flush(int txn_num);
-        buffer *pin(block_id *blk);
+        buffer *find_linked_buffer(file_block_idx *blk);
+        buffer *pin(file_block_idx *blk);
         void unpin(buffer *bf);
+        void unpin(file_block_idx *blk);
+        void unpin_all();
 };
