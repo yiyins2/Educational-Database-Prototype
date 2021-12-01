@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../include/file_manager.hpp"
-#include "../concurrency_manager/concurrency_manager.hpp"
-#include "../buffer_manager/buffer_manager.hpp"
+#include "file_manager.hpp"
+#include "concurrency_manager.hpp"
+#include "buffer_manager.hpp"
 
 class transaction {
     private:
@@ -17,8 +17,8 @@ class transaction {
     public:
         transaction(file_manager* fm, buffer_manager * bm);
         void commit();
-        void pin(block_id* blk);
-        void unpin(block_id* blk);
-        int read(block_id *blk);
-        void write(block_id *blk, int val, int offset);
+        void pin(file_block_idx* blk);
+        void unpin(file_block_idx* blk);
+        int read(file_block_idx *blk);
+        void write(file_block_idx *blk, int val, int offset);
 };

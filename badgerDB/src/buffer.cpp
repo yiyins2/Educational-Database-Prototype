@@ -1,4 +1,4 @@
-#include "buffer.hpp"
+#include "../include/buffer.hpp"
 #include <memory>
 using namespace std;
 
@@ -10,7 +10,7 @@ page* buffer::get_page() {
     return contents.get();
 }
 
-block_id* buffer::get_block() {
+file_block_idx* buffer::get_block() {
     return blk;
 }
 
@@ -22,7 +22,7 @@ int buffer::currTransaction() {
     return txn_num;
 }
 
-void buffer::link_block(block_id *blk) {
+void buffer::link_block(file_block_idx *blk) {
     //flush dirty data and reset pins before linking block
     flush();
     pins = 0;

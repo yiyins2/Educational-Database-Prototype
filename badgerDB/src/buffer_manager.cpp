@@ -1,5 +1,4 @@
-#include "buffer_manager.hpp"
-
+#include "../include/buffer_manager.hpp"
 #include <chrono>
 #include <iostream>
 
@@ -39,7 +38,20 @@ void buffer_manager::unpin(buffer *bf) {
     }
 }
 
-buffer *buffer_manager::pin(block_id *blk) {
+void buffer_manager::unpin(file_block_idx *blk) {
+    buffer *bf = find_linked_buffer(blk);
+    if (bf) {
+        unpin(bf);
+    }
+}
+
+void buffer_manager::unpin_all() {
+    for (auto buffer : buffer_pool) {
+        buffer->unpin();
+    }
+}
+
+buffer *buffer_manager::pin(file_block_idx *blk) {
     //lock the process to prevent inconsistant result
     unique_lock<mutex> lock(m);
     auto start = chrono::high_resolution_clock::now();
@@ -61,7 +73,7 @@ buffer *buffer_manager::pin(block_id *blk) {
     }
 }
 
-buffer *buffer_manager::pin_attempt(block_id *blk) {
+buffer *buffer_manager::pin_attempt(file_block_idx *blk) {
     buffer *bf = find_linked_buffer(blk);
     //if no linked buffer not found, choose an unpinned buffer and link it to block
     if (!bf) {
@@ -78,9 +90,9 @@ buffer *buffer_manager::pin_attempt(block_id *blk) {
     return bf;
 }
 
-buffer *buffer_manager::find_linked_buffer(block_id *blk) {
+buffer *buffer_manager::find_linked_buffer(file_block_idx *blk) {
     for (auto buffer : buffer_pool) {
-        block_id *b = buffer->get_block();
+        file_block_idx *b = buffer->get_block();
         if (!b && b == blk) {
             return buffer;
         }
