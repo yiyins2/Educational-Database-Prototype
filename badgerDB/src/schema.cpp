@@ -1,7 +1,7 @@
 #include "../include/schema.hpp"
 
 // Currently only support int type
-int schema::addField(string field_name) {
+int schema::add_field(string field_name) {
 	// Duplicate field name
 	if (find(this->field_names.begin(), this->field_names.end(), field_name) != this->field_names.end()) {
 		return DUPLICATE_FIELD;

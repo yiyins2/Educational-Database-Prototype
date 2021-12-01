@@ -14,8 +14,7 @@ class insert_data {
         vector<string> fields; 
         vector<constant> values; 
     public:
-        insert_data(const string&, const vector<string>&, const vector<constant>&); 
+        insert_data(const string&, const vector<constant>&); 
         string get_table_name(); 
-        vector<string> get_fields(); 
         vector<constant> get_values(); 
 };

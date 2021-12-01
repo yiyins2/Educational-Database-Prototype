@@ -6,7 +6,7 @@
 
 #include "table.hpp"
 #include "schema.hpp"
-#include "constant.hpp"
+#include "messages.hpp"
 using namespace std;
 
 class layout {
@@ -21,5 +21,5 @@ class layout {
 		table* get_table(string);
 		schema *get_table_schema(string);
 		int add_table_and_schema(table, schema);
-		int delete_table(string);
+		int drop_table(string);
 };

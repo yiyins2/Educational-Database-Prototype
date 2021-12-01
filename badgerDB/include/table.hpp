@@ -28,6 +28,4 @@ class table {
 		int insert_record(record, int);
 		int update_records(vector<update_record>, vector<predicate>, int);
 		vector<record> select_records(vector<int>, vector<predicate>, int);
-
-		
 };

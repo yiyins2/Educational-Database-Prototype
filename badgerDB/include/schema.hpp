@@ -5,7 +5,7 @@
 #include <string>
 
 #include "field_info.hpp"
-#include "constant.hpp"
+#include "messages.hpp"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class schema {
 	public:
 		schema() {}
 		// bool add_field(string, int);
-		int addField(string);
+		int add_field(string);
 		int get_field_idx(string);
 		vector<string> get_field_names();
 		vector<int> get_field_types();

@@ -1,0 +1,8 @@
+buffer_test: 
+    g++ -o buffer_test buffer_manager/buffer_test.cpp buffer_manager/buffer_manager.cpp buffer_manager/buffer.cpp file_manager/file_manager.cpp file_manager/page.cpp file_manager/block_id.cpp 
+
+server: 
+    g++ server/test_server.cpp server/db_server.hpp server/db_server.cpp
+
+client: 
+    g++ client/test_client.cpp client/db_client.hpp client/db_client.cpp

@@ -9,11 +9,11 @@ using namespace std;
 class record {
 	private:
 		string table_name;
-		vector<int> value;
+		vector<int> values;
 	
 	public:
-		record(string table_name, vector<int> value);
+		record(string, vector<int>);
 		record(){}
-		vector<int> get_value();
+		vector<int> get_values();
 		string get_table_name();
 };

@@ -63,12 +63,12 @@ bool table::check_one_field(int record_value, string op, int threshold)
 
 bool table::check_predicate(vector<predicate> preds, record r)
 {
-	vector<int> field_values = r.get_value();
+	vector<int> field_values = r.get_values();
 
 	// TODO:
 	for (predicate pr : preds)
 	{
-		int record_value = r.get_value()[pr.field_idx];
+		int record_value = r.get_values()[pr.field_idx];
 		string op = pr.op;
 		int threshold = pr.value;
 		if (!check_one_field(record_value, op, threshold))

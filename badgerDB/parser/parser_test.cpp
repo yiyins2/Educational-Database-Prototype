@@ -63,7 +63,7 @@ int main() {
     print_data(cmd); 
 
     cout << "---insert test---" << endl; 
-    cmd = "insert into test (col1, col2) values (1, 2)"; 
+    cmd = "insert into test 1, 2"; 
     print_data(cmd); 
 
     cout << "---update test---" << endl; 

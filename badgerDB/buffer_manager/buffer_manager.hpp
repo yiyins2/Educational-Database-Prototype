@@ -13,7 +13,7 @@ class buffer_manager {
         int available_num;
         mutex m;
         condition_variable cv;
-        const int MAX_TIME = 10000;
+         int MAX_TIME = 10000;
         buffer *pin_attempt(block_id *blk);
         buffer *find_linked_buffer(block_id *blk);
         buffer *unpinned_buffer();

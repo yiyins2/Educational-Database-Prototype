@@ -1,20 +1,38 @@
-#include <iostream>
+#include "parser.hpp"
+
 #include <string>
 #include <vector>
 #include <set>
 
-#include "parser.hpp"
-
 using namespace std;
 
- int schema_int = 0;
- int schema_varchar = 1;
+// TODO
+int schema_int = 0;
+int schema_varchar = 1;
 
 parser::parser(const string &cmd) {
     this->lex = lexer(cmd); 
 }
 
-// ceate table table_name (column1 datatype, ...)
+constant parser::create_constant() {
+    if (lex.match_int_constant()) {
+        return constant(lex.eat_int_constant());
+    } else {
+        return constant(lex.eat_string_constant());
+    }
+}
+
+predicate parser::create_predicate() {
+    predicate pred = predicate(term()); 
+    if (lex.match_keyword("and")) {
+        lex.eat_keyword("and")
+        pred.con_join_with(predicate()); 
+    }
+    return pred; 
+}
+
+
+// ceate table table_name (col1 datatype, ...)
 create_table_data parser::create_table() {
     this->lex.eat_keyword("create");
     this->lex.eat_keyword("table"); 
@@ -55,27 +73,28 @@ drop_table_data parser::drop_table() {
 }
 
 // insert into table_name (col1, ...) values (val1, ...)
-insert_data parser::insert_records() {
+// simpler version: insert into table_name values (val1, ...)
+insert_data parser::insert_record() {
     this->lex.eat_keyword("insert");
     this->lex.eat_keyword("into"); 
     string table_name = this->lex.eat_identifier();
 
-    this->lex.eat_delimiter('('); 
-    vector<string> fields = listing(); 
-    this->lex.eat_delimiter(')');
+    // this->lex.eat_delimiter('('); 
+    // vector<string> fields = list(); 
+    // this->lex.eat_delimiter(')');
 
     this->lex.eat_keyword("values"); 
     this->lex.eat_delimiter('('); 
     vector<constant> values;
     while (!this->lex.match_delimiter(')')) {
-        values.push_back(this->lex.eat_identifier());
+        values.push_back(create_constant());
         if (this->lex.match_delimiter(',')) {
             this->lex.eat_delimiter(',');
         }
     }
     this->lex.eat_delimiter(')');
 
-    return insert_data(table_name, fields, values);
+    return insert_data(table_name, values);
 }
 
 // update table_name set col1 = val1, ... where 
@@ -89,14 +108,14 @@ update_data parser::update_records() {
     while (!this->lex.match_keyword("where")) {
         fields.push_back(this->lex.eat_identifier()); 
         this->lex.eat_delimiter('=');
-        values.push_back(this->lex.eat_identifier()); 
+        values.push_back(create_constant()); 
         if (this->lex.match_delimiter(',')) {
             this->lex.eat_delimiter(',');
         }
     }
 
     this->lex.eat_keyword("where");
-    predicate pred = predicate("123"); 
+    predicate pred = create_predicate(); 
 
     return update_data(table_name, fields, values, pred);
 }
@@ -113,19 +132,19 @@ delete_data parser::delete_records() {
 }
 
 // select col1, ... from tab1 join tab2 on tab1.key = tab2.key 
-query_data parser::query() {
+select_data parser::select() {
     this->lex.eat_keyword("select");
-    vector<string> fields = listing(); 
+    vector<string> fields = list(); 
     this->lex.eat_keyword("from"); 
-    vector<string> tables = listing(); 
+    vector<string> tables = list(); 
     if (this->lex.match_keyword("where")) {
         this->lex.eat_keyword("where"); 
     }
     predicate pred = predicate("123"); 
-    return query_data(fields, tables, pred);
+    return select_data(fields, tables, pred);
 }
 
-vector<string> parser::listing() {
+vector<string> parser::list() {
     vector<string> results;
     results.push_back(this->lex.eat_identifier());
     while (this->lex.match_delimiter(',')) {
@@ -133,10 +152,6 @@ vector<string> parser::listing() {
         results.push_back(this->lex.eat_identifier());
     }
     return results; 
-}
-
-predicate parser::new_predicate() {
-    return predicate("123");
 }
 
 

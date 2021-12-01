@@ -17,7 +17,8 @@ class lexer {
             "update", "set", 
             "delete", "from", 
             "select", "from", "where",
-            "join", "on"
+            "join", "on", 
+            "and"
         };
 
     public: 

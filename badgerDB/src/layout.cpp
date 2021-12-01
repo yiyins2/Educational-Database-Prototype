@@ -28,7 +28,7 @@ int layout::add_table_schema(string new_table_name, schema new_schema)
 	return SUCCESS;
 }
 
-int layout::delete_table(string table_name) {
+int layout::drop_table(string table_name) {
 	if (this->tables_names.count(table_name) == 0) {
 		return TABLE_NOT_EXIST;
 	}
@@ -41,7 +41,7 @@ int layout::add_table_and_schema(table t, schema s) {
 	string table_name = t.get_table_name();
 	if (this->tables_names.count(table_name) == 1)
 	{
-		return TABLE_DUPLICATE;
+		return DUPLICATE_TABLE;
 	}
 
 	this->tables_names.insert(table_name);

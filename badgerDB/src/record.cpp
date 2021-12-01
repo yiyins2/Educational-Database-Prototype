@@ -6,11 +6,11 @@
  */
 record::record(string table_name, vector<int> value) {
 	this->table_name = table_name;
-	this->value = value;
+	this->values = values;
 }
 
-vector<int> record::get_value() {
-	return this->value;
+vector<int> record::get_values() {
+	return this->values;
 }
 
 string record::get_table_name() {

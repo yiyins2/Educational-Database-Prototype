@@ -1,7 +1,8 @@
+#include "../include/page.hpp"
+
 #include <stdlib.h>
 #include <string>
 
-#include "../include/page.hpp"
 using namespace std;
 
 // Serves as a in-memory buffer for disk content
@@ -15,7 +16,7 @@ int* page::get_buf() {
 }
 
 void page::write_record(record r, int offset) {
-	for (int field : r.get_value()) {
+	for (int field : r.get_values()) {
 		buf[offset++] = field;
 	}
 }

@@ -1,9 +1,10 @@
 #pragma once
+
 #include <memory>
 
-#include "../file_manager/file_manager.hpp"
-#include "../file_manager/page.hpp"
-#include "../file_manager/block_id.hpp"
+#include "../include/file_manager.hpp"
+#include "../include/page.hpp"
+#include "../include/file_block_id.hpp"
 
 using namespace std;
 class buffer {

@@ -6,22 +6,34 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "predicate.hpp"
-#include "record.hpp"
 #include "file_manager.hpp"
+#include "record.hpp"
 #include "layout.hpp"
 #include "table.hpp"
-#include "predicate.hpp"
+
 #include "update_record.hpp"
-#include "constant.hpp"
+
+#include "messages.hpp"
+
+// TODO: 
+#include "predicate.hpp"
+
+#include "../parser/parser.hpp"
+#include "../parser/create_table_data.hpp"
+#include "../parser/drop_table_data.hpp"
+#include "../parser/insert_data.hpp"
+#include "../parser/update_data.hpp"
+#include "../parser/delete_data.hpp"
+#include "../parser/select_data.cpp"
 
 using namespace std;
 
 class query_executor
 {
 private:
-	layout tables_layout;
 	file_manager fm;
+	layout tables_layout;
+	
 	bool check_number(string);
 	string query_result_format(vector<string>, vector<record>);
 	string format_value_row(record);
@@ -30,21 +42,20 @@ private:
 	int build_predicate(vector<string>, int, vector<predicate> &, schema *);
 
 public:
-	string execute(string cmd);
-	query_executor(string db_dir)
-	{
+	string execute(const string&);
+	query_executor(string db_dir) {
 		this->fm = file_manager(db_dir);
 		this->tables_layout = layout();
 	}
-	query_executor()
-	{
+	query_executor() {
 		this->fm = file_manager();
 		this->tables_layout = layout();
 	}
 
-    int insert_record(record r);
-	int create_table(string table_name, vector<string> fields_str);
-	int delete_table(string table_name);
-	int select_records(string table_name, vector<int> field_pos, vector<predicate> preds, vector<record> &result);
-	int update_records(string table_name, vector<update_record> update_records_info, vector<predicate> preds);
+	string create_table(const create_table_data&);
+	string drop_table(const drop_table_data&);
+    string insert_record(const insert_data&);
+	string update_records(const update_data&);
+	string delete_records(const delete_data&);
+	string select_records(const select_data&);
 };

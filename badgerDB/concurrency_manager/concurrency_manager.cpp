@@ -1,4 +1,5 @@
 #include "concurrency_manager.hpp"
+
 using namespace std;
 
 lock_table concurrency_manager::table;
