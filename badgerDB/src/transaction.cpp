@@ -1,4 +1,4 @@
-#include "transaction.hpp"
+#include "../include/transaction.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,15 +17,15 @@ void transaction::commit() {
     bm->unpin_all();
 }
 
-void transaction::pin(block_id *blk) {
+void transaction::pin(file_block_idx *blk) {
     bm->pin(blk);
 }
 
-void transaction::unpin(block_id *blk) {
+void transaction::unpin(file_block_idx *blk) {
     bm->unpin(blk);
 }
 
-int transaction::read(block_id *blk) {
+int transaction::read(file_block_idx *blk) {
     cm->global_lock(blk);
     buffer* bf = bm->find_linked_buffer(blk);
     if (!bf) {
@@ -35,7 +35,7 @@ int transaction::read(block_id *blk) {
     return *(bf->get_page()->get_buf());
 } 
 
-void transaction::write(block_id *blk, int val, int offset) {
+void transaction::write(file_block_idx *blk, int val, int offset) {
     cm->global_lock(blk);
     //find the corresponding buffer according to block_id, if any
     buffer* bf = bm->find_linked_buffer(blk);
@@ -43,7 +43,7 @@ void transaction::write(block_id *blk, int val, int offset) {
         cout << "The block doesn't exist to write, please try again" << endl;
     } else {
         //set_buf is something I created myself, please refer to isabella's version for modification.
-        bf->get_page()->set_buf(val, offset);
+        //bf->get_page()->set_buf(val, offset);
         bf->setTransaction(curr_tx_num);
     }
 } 

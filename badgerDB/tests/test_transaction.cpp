@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include <thread>
-#include "transaction.hpp"
+#include "../include/transaction.hpp"
 
 using namespace std;
 
-void task_one(transaction *tx, block_id *blk) {
+void task_one(transaction *tx, file_block_idx *blk) {
     tx->pin(blk);
     cout << "first time reading from block " << blk->get_filename() << endl;
     int val = tx->read(blk);
@@ -16,7 +16,7 @@ void task_one(transaction *tx, block_id *blk) {
     cout << "finished reading" << endl;
 }
 
-void task_two(transaction *tx, block_id *blk) {
+void task_two(transaction *tx, file_block_idx *blk) {
     tx->pin(blk);
     cout << "first time writing from block " << blk->get_filename() << endl;
     tx->write(blk, 10, 0);
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     buffer_manager *bm = new buffer_manager(fm, 8);
 
     transaction *tx1 = new transaction(fm, bm);
-    block_id *blk = new block_id("test_block", 1);
+    file_block_idx *blk = new file_block_idx("test_block", 1);
     tx1->pin(blk);
     tx1->write(blk, 10, 40);
     tx1->commit();
