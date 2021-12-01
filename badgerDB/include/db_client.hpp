@@ -1,14 +1,15 @@
 #pragma once
-
 #include <string>
+
+#include "constant.hpp"
 using namespace std;
 
 class db_client {
 	private:
 		int port;
-		string cmd;
+		int send_cmd(string, char*);
 
 	public:
-		db_client(int, string);
-		string send_cmd();
+		db_client(int);
+		void start_shell();
 };
