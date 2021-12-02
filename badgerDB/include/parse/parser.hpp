@@ -13,19 +13,28 @@
 #include "select_data.hpp"
 #include "lexer.hpp"
 
-#include "../include/schema.hpp"
+#include "../schema.hpp"
+
+#include "../query/constant.hpp"
+#include "../query/expression.hpp"
+#include "../query/term.hpp"
+#include "../query/predicate1.hpp"
+
+#include "../messages.hpp"
 
 using namespace std; 
 
 class parser {
     private: 
         lexer lex; 
-        create_constant(); 
-        create_expression(); 
+        constant create_constant(); 
+        expression create_expression(); 
+        term create_term();
+        predicate1 create_predicate();
 
         schema schema_list();
         vector<string> list();
-        predicate new_predicate(); 
+        predicate1 new_predicate(); 
         
     public: 
         parser(const string &); 

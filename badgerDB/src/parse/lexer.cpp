@@ -1,10 +1,9 @@
-#include <iostream>
+#include "../../include/parse/lexer.hpp"
+
 #include <boost/tokenizer.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/range/iterator_range.hpp>
 #include <string>
-
-#include "lexer.hpp"
 
 using namespace std;
 

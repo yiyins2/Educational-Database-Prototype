@@ -44,6 +44,7 @@ static const int FAILED_TO_CREATE_TABLE = -7;
 static const int DUPLICATE_FIELD = -8;
 // Select
 static const int OPERATOR_NOT_VALID = -9;
+static const int TABLE_DUPLICATE = -10; 
 
 // Messages
 static const string predicate_field_not_found_msg = "Predicate field not found";
@@ -89,4 +90,7 @@ static const string DUPLICATE_TABLE_MSG = "Failed: table already exist";
 
 // insert record error messages
 static const string INVALID_INSERT_RECORD_SIZE_MSG = "Failed: invalid insert record size"; 
+
+static const int INT_TYPE = 0; 
+static const int STR_TYPE = 1; 
 

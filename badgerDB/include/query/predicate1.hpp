@@ -1,13 +1,11 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 
 using namespace std; 
 
-class constant {
+class predicate1 {
     private: 
-        string str;
     public: 
-        constant(string);
+        predicate1() {};
 };

@@ -10,5 +10,5 @@ class drop_table_data {
         string table_name; 
     public:
         drop_table_data(const string&); 
-        string get_table_name(); 
+        string get_table_name() const; 
 };

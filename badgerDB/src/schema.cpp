@@ -6,7 +6,6 @@ int schema::add_field(string field_name) {
 	if (find(this->field_names.begin(), this->field_names.end(), field_name) != this->field_names.end()) {
 		return DUPLICATE_FIELD;
 	}
-
 	this->field_names.push_back(field_name);
 	return SUCCESS;
 }

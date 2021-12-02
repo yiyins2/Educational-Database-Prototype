@@ -4,7 +4,7 @@
  * Record: store table_name and value
  * The field name of each value is determined by its position
  */
-record::record(string table_name, vector<int> value) {
+record::record(string table_name, vector<int> values) {
 	this->table_name = table_name;
 	this->values = values;
 }

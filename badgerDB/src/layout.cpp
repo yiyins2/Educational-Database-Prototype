@@ -41,7 +41,7 @@ int layout::add_table_and_schema(table t, schema s) {
 	string table_name = t.get_table_name();
 	if (this->tables_names.count(table_name) == 1)
 	{
-		return DUPLICATE_TABLE;
+		return TABLE_DUPLICATE;
 	}
 
 	this->tables_names.insert(table_name);

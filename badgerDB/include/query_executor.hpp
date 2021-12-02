@@ -11,20 +11,20 @@
 #include "layout.hpp"
 #include "table.hpp"
 
-#include "update_record.hpp"
+// #include "update_record.hpp"
 
 #include "messages.hpp"
 
 // TODO: 
 #include "predicate.hpp"
 
-#include "../parser/parser.hpp"
-#include "../parser/create_table_data.hpp"
-#include "../parser/drop_table_data.hpp"
-#include "../parser/insert_data.hpp"
-#include "../parser/update_data.hpp"
-#include "../parser/delete_data.hpp"
-#include "../parser/select_data.cpp"
+#include "parse/parser.hpp"
+#include "parse/create_table_data.hpp"
+#include "parse/drop_table_data.hpp"
+#include "parse/insert_data.hpp"
+#include "parse/update_data.hpp"
+#include "parse/delete_data.hpp"
+#include "parse/select_data.hpp"
 
 using namespace std;
 

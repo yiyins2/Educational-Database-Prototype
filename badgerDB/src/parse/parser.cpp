@@ -1,14 +1,9 @@
-#include "parser.hpp"
+#include "../../include/parse/parser.hpp"
 
 #include <string>
 #include <vector>
-#include <set>
 
 using namespace std;
-
-// TODO
-int schema_int = 0;
-int schema_varchar = 1;
 
 parser::parser(const string &cmd) {
     this->lex = lexer(cmd); 
@@ -16,21 +11,37 @@ parser::parser(const string &cmd) {
 
 constant parser::create_constant() {
     if (lex.match_int_constant()) {
-        return constant(lex.eat_int_constant());
+        return constant(this->lex.eat_int_constant());
     } else {
-        return constant(lex.eat_string_constant());
+        return constant(this->lex.eat_string_constant());
     }
 }
 
-predicate parser::create_predicate() {
-    predicate pred = predicate(term()); 
-    if (lex.match_keyword("and")) {
-        lex.eat_keyword("and")
-        pred.con_join_with(predicate()); 
+expression parser::create_expression() {
+    if (lex.match_identifier()) {
+        return expression(this->lex.eat_identifier());
+    } else {
+        return expression(create_constant());
     }
-    return pred; 
 }
 
+term parser::create_term() {
+    // expression lhs = create_expression(); 
+    // this->lex.eat_delimiter('=');
+    // expression rhs = create_expression(); 
+    // return term(lhs, rhs);
+    return term();
+}
+
+predicate1 parser::create_predicate() {
+    // predicate1 pred = predicate1(create_term()); 
+    // if (this->lex.match_keyword("and")) {
+    //     this->lex.eat_keyword("and");
+    //     pred.con_join_with(create_predicate()); 
+    // }
+    // return pred; 
+    return predicate1(); 
+}
 
 // ceate table table_name (col1 datatype, ...)
 create_table_data parser::create_table() {
@@ -51,11 +62,11 @@ schema parser::schema_list() {
         string field_name = this->lex.eat_identifier(); 
         if (this->lex.match_keyword("int")) {
             this->lex.eat_keyword("int"); 
-            sch.add_field(field_name, schema_int); 
+            sch.add_field(field_name); 
         }
         if (this->lex.match_keyword("varchar")) {
             this->lex.eat_keyword("varchar"); 
-            sch.add_field(field_name, schema_varchar); 
+            sch.add_field(field_name); 
         }
         if (this->lex.match_delimiter(',')) {
             this->lex.eat_delimiter(',');
@@ -97,27 +108,23 @@ insert_data parser::insert_record() {
     return insert_data(table_name, values);
 }
 
-// update table_name set col1 = val1, ... where 
+// update table_name set col1 = val1 where 
 update_data parser::update_records() {
     this->lex.eat_keyword("update");
     string table_name = this->lex.eat_identifier();
     this->lex.eat_keyword("set");
 
-    vector<string> fields; 
-    vector<constant> values;
-    while (!this->lex.match_keyword("where")) {
-        fields.push_back(this->lex.eat_identifier()); 
-        this->lex.eat_delimiter('=');
-        values.push_back(create_constant()); 
-        if (this->lex.match_delimiter(',')) {
-            this->lex.eat_delimiter(',');
-        }
+    string field = this->lex.eat_identifier(); 
+    this->lex.eat_delimiter('=');
+    expression value = create_expression(); 
+
+    predicate1 pred; 
+    if (this->lex.match_keyword("where")) {
+        this->lex.eat_keyword("where"); 
+        pred = create_predicate(); 
     }
 
-    this->lex.eat_keyword("where");
-    predicate pred = create_predicate(); 
-
-    return update_data(table_name, fields, values, pred);
+    return update_data(table_name, field, value, pred);
 }
 
 // delete from table_name where
@@ -126,8 +133,7 @@ delete_data parser::delete_records() {
     this->lex.eat_keyword("from");
     string table_name = this->lex.eat_identifier();
     this->lex.eat_keyword("where");
-    predicate pred = predicate("123"); 
-
+    predicate1 pred = create_predicate(); 
     return delete_data(table_name, pred);
 }
 
@@ -137,10 +143,11 @@ select_data parser::select() {
     vector<string> fields = list(); 
     this->lex.eat_keyword("from"); 
     vector<string> tables = list(); 
+    predicate1 pred; 
     if (this->lex.match_keyword("where")) {
         this->lex.eat_keyword("where"); 
+        pred = create_predicate(); 
     }
-    predicate pred = predicate("123"); 
     return select_data(fields, tables, pred);
 }
 

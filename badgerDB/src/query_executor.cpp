@@ -1,5 +1,7 @@
 #include "../include/query_executor.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 // // Utility function
 // bool query_executor::check_number(string number)
 // {
@@ -447,7 +449,7 @@
 // 	return command_not_valid_msg;
 // }
 
-string query_executor::execute(cont string& cmd) {
+string query_executor::execute(const string& cmd) {
 	parser p = parser(cmd);
     string command_type = cmd.substr(0, cmd.find(" ")); 
     boost::algorithm::to_lower(command_type); 
@@ -459,7 +461,7 @@ string query_executor::execute(cont string& cmd) {
 		return drop_table(data);
     } else if (command_type == "insert") {
         insert_data data = p.insert_record();
-		return insert_records(data);
+		return insert_record(data);
     } else if (command_type == "delete") { 
         delete_data data = p.delete_records();
 		return delete_records(data);
@@ -467,8 +469,8 @@ string query_executor::execute(cont string& cmd) {
         update_data data = p.update_records(); 
 		return update_records(data);
 	} else if (command_type == "select") {
-        query_data data = p.select();
-		return query(data);
+    	select_data data = p.select();
+		return select_records(data);
 	} else {
         return INVALID_COMMAND_MSG; 
 	}
@@ -476,7 +478,7 @@ string query_executor::execute(cont string& cmd) {
 
 string query_executor::create_table(const create_table_data& data) {
 	table new_table(data.get_table_name(), this->fm);
-	if (this->tables_layout.add_table_and_schema(new_table, data.get_schema()) == DUPLICATE_TABLE) {
+	if (this->tables_layout.add_table_and_schema(new_table, data.get_schema()) == TABLE_DUPLICATE) {
 		return DUPLICATE_TABLE_MSG;
 	}
     this->fm.create_data_file(data.get_table_name());
@@ -486,36 +488,37 @@ string query_executor::create_table(const create_table_data& data) {
 string query_executor::drop_table(const drop_table_data& data) {
 	this->tables_layout.drop_table(data.get_table_name());
 	this->fm.delete_file(data.get_table_name());
-	//TODO
 	return SUCCESS_MSG;
 }
 
 string query_executor::insert_record(const insert_data& data) {
-	string table_name = data.get_table_name();
-	record new_record = {table_name, data.get_values()};
-	table *t = this->tables_layout.get_table(table_name);
-	if (t == nullptr) {
-		return TABLE_NOT_EXIST_MSG;
-	}
+	// string table_name = data.get_table_name();
+	// record new_record = record(table_name, data.get_values());
+	// table *t = this->tables_layout.get_table(table_name);
+	// if (t == nullptr) {
+	// 	return TABLE_NOT_EXIST_MSG;
+	// }
 
-	schema *s = this->tables_layout.get_table_schema(table_name);
-	if (s == nullptr) {
-		return SCHEMA_NOT_EXIST_MSG;
-	}
+	// schema *s = this->tables_layout.get_table_schema(table_name);
+	// if (s == nullptr) {
+	// 	return SCHEMA_NOT_EXIST_MSG;
+	// }
 
-	if (s->get_field_names().size() != new_record.get_value().size()) {
-		return INVALID_INSERT_RECORD_SIZE_MSG;
-	}
+	// if (s->get_field_names().size() != new_record.get_values().size()) {
+	// 	return INVALID_INSERT_RECORD_SIZE_MSG;
+	// }
 
-	return t->insert_record(new_record, s->get_record_size());
+	// return t->insert_record(new_record, s->get_record_size());
+	return SUCCESS_MSG;
 }
 
 string query_executor::update_records(const update_data& data) {
-	string table_name = data.get_table_name(); 
+	// string table_name = data.get_table_name(); 
 
-	table *t = this->tables_layout.get_table(table_name);
-	schema *s = this->tables_layout.get_table_schema(table_name);
-	return t->update_records(update_records_info, preds, s->get_record_size());
+	// table *t = this->tables_layout.get_table(table_name);
+	// schema *s = this->tables_layout.get_table_schema(table_name);
+	// return t->update_records(update_records_info, preds, s->get_record_size());
+	return SUCCESS_MSG;
 }
 
 string query_executor::delete_records(const delete_data& data) {

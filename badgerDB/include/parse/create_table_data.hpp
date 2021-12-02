@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "../record/schema.hpp"
+#include "../schema.hpp"
 
 using namespace std;
 
@@ -13,6 +13,6 @@ class create_table_data {
         schema sch; 
     public:
         create_table_data(const string&, const schema&); 
-        string get_table_name(); 
-        schema get_schema(); 
+        string get_table_name() const; 
+        schema get_schema() const; 
 };

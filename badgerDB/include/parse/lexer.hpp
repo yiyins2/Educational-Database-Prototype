@@ -21,10 +21,11 @@ class lexer {
             "and"
         };
 
-    public: 
         typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
         tokenizer::iterator beg; 
         tokenizer::iterator end; 
+
+    public: 
         lexer() = default;
         lexer(const string&);
         bool match_delimiter(char); 
