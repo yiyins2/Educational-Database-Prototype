@@ -11,11 +11,12 @@ class transaction {
         concurrency_manager cm;
         buffer_manager bm;
         file_manager fm;
-        mutex m;
+        mutex *m;
         int set_next_txn();
 
     public:
         transaction(file_manager fm, buffer_manager bm);
+        transaction() = default;
         void commit();
         void pin(file_block_idx *blk);
         void unpin(file_block_idx *blk);

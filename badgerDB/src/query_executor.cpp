@@ -113,7 +113,6 @@ int query_executor::create_table(string table_name, vector<string> fields_str)
 	{
 		new_table_schema.addField(field_name);
 	}
-
     // Add table and schema to layout (internal metadata)
 	table new_table(table_name, this->fm);
 	if (this->tables_layout.add_table_and_schema(new_table, new_table_schema) == TABLE_DUPLICATE)

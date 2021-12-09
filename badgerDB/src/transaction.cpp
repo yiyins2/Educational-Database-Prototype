@@ -5,7 +5,7 @@ using namespace std;
 
 int transaction::next_tx_num = 0;
 
-transaction::transaction(file_manager fm_mgr, buffer_manager bm_mgr) : fm(fm_mgr), bm(bm_mgr){
+transaction::transaction(file_manager fm_mgr, buffer_manager bm_mgr) : fm(fm_mgr), bm(bm_mgr) {
     cm = concurrency_manager();
     //set transaction id to keep track of them
     curr_tx_num = set_next_txn();
@@ -48,7 +48,7 @@ void transaction::write(file_block_idx *blk, int val, int offset) {
 } 
 
 int transaction::set_next_txn() {
-    lock_guard<mutex> lock(m);
+    lock_guard<mutex> lock(*m);
     next_tx_num++;
     return next_tx_num;
 }
