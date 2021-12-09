@@ -5,10 +5,10 @@ using namespace std;
 
 lock_table::lock_table() {}
 
-void lock_table::global_lock(file_block_idx * p_blk) {
+void lock_table::global_lock(file_block_idx* blk_id) {
     unique_lock<std::mutex> lock(m);
-    wait_list.push(p_blk);
-    cv.wait(lock, [this, p_blk]{return wait_list.front() == p_blk;});
+    wait_list.push(blk_id);
+    cv.wait(lock, [this, blk_id]{return wait_list.front() == blk_id;});
 }
 
 void lock_table::global_unlock() {

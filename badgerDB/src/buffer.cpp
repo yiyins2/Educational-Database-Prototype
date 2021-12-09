@@ -2,23 +2,23 @@
 #include <memory>
 using namespace std;
 
-buffer::buffer(file_manager *fmgr) : fm(fmgr) {
-    contents = make_unique<page>(fmgr->get_block_size());
+buffer::buffer(file_manager fmgr) : fm(fmgr) {
+    this->contents = make_unique<page>(fmgr.get_block_size());
 }
 
 page* buffer::get_page() {
-    return contents.get();
+    return this->contents.get();
 }
 
 file_block_idx* buffer::get_block() {
     return blk;
 }
 
-void buffer::setTransaction(int txn_num) {
+void buffer::set_transaction(int txn_num) {
     this->txn_num = txn_num;
 }
 
-int buffer::currTransaction() {
+int buffer::curr_transaction() {
     return txn_num;
 }
 
@@ -27,12 +27,12 @@ void buffer::link_block(file_block_idx *blk) {
     flush();
     pins = 0;
     this->blk = blk;
-    fm->read(*(this->blk), *contents);
+    fm.read(*(this->blk), *contents);
 }
 
 void buffer::flush() {
     if (txn_num > 0) {
-        fm->write(*blk, *contents);
+        fm.write(*blk, *contents);
         txn_num = -1;
     }
 }

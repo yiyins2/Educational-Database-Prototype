@@ -28,8 +28,8 @@ void task_two(transaction *tx, file_block_idx *blk) {
 
 int main(int argc, char *argv[]) {
     //Transaction test
-    file_manager *fm = new file_manager("transaction_test");
-    buffer_manager *bm = new buffer_manager(fm, 8);
+    file_manager fm = file_manager("transaction_test");
+    buffer_manager bm = buffer_manager(fm, 8);
 
     transaction *tx1 = new transaction(fm, bm);
     file_block_idx *blk = new file_block_idx("test_block", 1);

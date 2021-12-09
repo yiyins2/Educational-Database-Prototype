@@ -4,11 +4,10 @@
 
 using namespace std;
 
-buffer_manager::buffer_manager(file_manager *fm, int buff_num) {
+buffer_manager::buffer_manager(file_manager fm, int buff_num) {
     available_num = buff_num;
     for (int i = 0; i < buff_num; i++) {
-        //bad implementation using new keyword, will solve in the future
-        buffer_pool.emplace_back(new buffer(fm));
+        buffer_pool.emplace_back(buffer(fm));
     }
 }
 
@@ -22,7 +21,7 @@ void buffer_manager::flush(int txn_num) {
     //lock the process to prevent inconsistant result
     lock_guard<mutex> lock(m);
     for (auto buffer : buffer_pool) {
-        if (buffer->currTransaction() == txn_num) {
+        if (buffer->curr_transaction() == txn_num) {
             buffer->flush();
         }
     }

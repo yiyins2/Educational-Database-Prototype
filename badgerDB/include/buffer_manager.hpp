@@ -19,7 +19,7 @@ class buffer_manager {
         bool wait_too_long(chrono::time_point<std::chrono::high_resolution_clock> start);
 
     public:
-        buffer_manager(file_manager *fm, int buff_num);
+        buffer_manager(file_manager fm, int buff_num);
         int available();
         void flush(int txn_num);
         buffer *find_linked_buffer(file_block_idx *blk);

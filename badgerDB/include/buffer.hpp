@@ -8,7 +8,7 @@
 using namespace std;
 class buffer {
     private:
-        file_manager *fm;
+        file_manager fm;
         //use of unique pointer due to temporal usage of page.
         unique_ptr<page> contents;
         file_block_idx* blk = nullptr;
@@ -16,12 +16,12 @@ class buffer {
         int txn_num = -1;
 
     public:
-        buffer(file_manager *fm);
+        buffer(file_manager fm);
         page *get_page();
         file_block_idx* get_block();
-        void setTransaction(int tx_num);
+        void set_transaction(int tx_num);
         bool isPinned();
-        int currTransaction();
+        int curr_transaction();
         void link_block(file_block_idx *blk);
         void flush();
         void pin();

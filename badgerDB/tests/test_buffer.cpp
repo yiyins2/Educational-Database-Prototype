@@ -8,13 +8,13 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     //Test buffer without buffer manager
-    file_manager *fm = new file_manager("fm");
-    buffer *buff1 = new buffer(fm);
-    page *p = buff1->get_page();
-    buff1->setTransaction(1);
+    file_manager fm = file_manager("fm");
+    buffer buff1 = buffer(fm);
+    page *p = buff1.get_page();
+    buff1.set_transaction(1);
     int num = 0;
     //p->set_buf(num, 30);
-    cout << "The new value for buffer is " << buff1->get_page()->get_buf() << endl;
+    cout << "The new value for buffer is " << buff1.get_page()->get_buf() << endl;
 
 
     //Test buffer manager
