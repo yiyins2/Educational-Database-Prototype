@@ -62,11 +62,15 @@ schema parser::schema_list() {
         string field_name = this->lex.eat_identifier(); 
         if (this->lex.match_keyword("int")) {
             this->lex.eat_keyword("int"); 
-            sch.add_field(field_name); 
+            if (!sch.add_field(field_name, INT_TYPE)) {
+                throw runtime_error(DUPLICATE_FIELD_NAME_MSG); 
+            }
         }
         if (this->lex.match_keyword("varchar")) {
             this->lex.eat_keyword("varchar"); 
-            sch.add_field(field_name); 
+            if (!sch.add_field(field_name, STR_TYPE)) {
+                throw runtime_error(DUPLICATE_FIELD_NAME_MSG); 
+            }
         }
         if (this->lex.match_delimiter(',')) {
             this->lex.eat_delimiter(',');

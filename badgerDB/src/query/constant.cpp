@@ -39,6 +39,14 @@ bool constant::is_null() {
     return (this->int_val == nullptr || this->str_val == nullptr); 
 }
 
+bool constant::is_int() {
+    return this->int_val != nullptr; 
+}
+
+bool constant::is_string() {
+    return this->str_val != nullptr; 
+}
+
 bool operator==(const constant& lhs, const constant& rhs) {
     if (lhs.int_val != nullptr && rhs.int_val != nullptr) {
         return lhs.int_val == lhs.int_val;

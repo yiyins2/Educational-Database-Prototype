@@ -14,12 +14,12 @@ class layout {
 		set<string> tables_names;
 		map<string, table> tables_info;
 		map<string, schema> tables_schema;
-		int add_table(table);
-		int add_table_schema(string, schema);
+		void add_table(table);
+		void add_table_schema(string, schema);
 
 	public:
 		table* get_table(string);
 		schema *get_table_schema(string);
-		int add_table_and_schema(table, schema);
-		int drop_table(string);
+		void add_table_and_schema(table, schema);
+		void drop_table(string);
 };

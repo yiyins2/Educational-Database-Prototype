@@ -7,6 +7,7 @@
 #include "predicate.hpp"
 #include "update_record.hpp"
 #include "page.hpp"
+
 using namespace std;
 
 class table {
@@ -25,7 +26,7 @@ class table {
 		table(string, file_manager);
 		string get_table_name();
 
-		int insert_record(record, int);
+		void insert_record(record, int);
 		int update_records(vector<update_record>, vector<predicate>, int);
 		vector<record> select_records(vector<int>, vector<predicate>, int);
 };

@@ -1,6 +1,7 @@
+#include "../include/table.hpp"
+
 #include <cerrno>
 
-#include "../include/table.hpp"
 const int BUFFER_SIZE = 512;
 
 // Constructor
@@ -80,8 +81,7 @@ bool table::check_predicate(vector<predicate> preds, record r)
 }
 
 // Public methods called by query_executor
-int table::insert_record(record new_record, int record_size)
-{
+void table::insert_record(record new_record, int record_size) {
     // Determine where we should insert the record
 	auto pr = get_block_id_and_offset(this->record_num++, record_size);
 	int block_idx = pr.first;
@@ -89,29 +89,22 @@ int table::insert_record(record new_record, int record_size)
 
     // In case there is not enough block
 	int cur_block_num = this->fm.get_file_block_cnt(this->table_name);
-	while (cur_block_num++ < block_idx + 1)
-	{
+	while (cur_block_num++ < block_idx + 1) {
 		this->fm.add_block(this->table_name);
 	}
 
     // Read the block
 	page p = {BUFFER_SIZE};
 	file_block_idx blk_id = {this->table_name, block_idx};
-	if (this->fm.read(blk_id, p) < 0)
-	{
-	    return FAILED_TO_READ_BLOCK;
+	if (this->fm.read(blk_id, p) < 0) {
+	    return runtime_error(FAILED_TO_READ_BLOCK_MSG);
 	}
 
     // Write the new record
 	p.write_record(new_record, offset);
-
-    //
-	if (this->fm.write(blk_id, p) < 0)
-	{
-        return FAILED_TO_WRITE_BLOCK;
+	if (this->fm.write(blk_id, p) < 0) {
+        throw runtime_error(FAILED_TO_WRITE_BLOCK_MSG);
 	}
-
-	return SUCCESS;
 }
 
 int table::update_records(vector<update_record> update_record_info, vector<predicate> preds, int record_field_num)

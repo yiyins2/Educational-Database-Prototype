@@ -19,6 +19,8 @@ class constant {
         string as_string(); 
         int as_int(); 
         bool is_null(); 
+        bool is_int(); 
+        bool is_string(); 
         constant& operator=(const constant&);
         friend bool operator==(const constant&, const constant&);
 }; 

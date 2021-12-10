@@ -1,9 +1,6 @@
 #include "../../include/parse/lexer.hpp"
 
-#include <boost/tokenizer.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <string>
 
 using namespace std;
 
@@ -48,14 +45,14 @@ bool lexer::match_identifier() {
 
 void lexer::eat_delimiter(char d) {
     if (!match_delimiter(d)) {
-        throw runtime_error("bad syntax exception: delimiter");
+        throw runtime_error(INVALID_COMMAND_MSG);
     }
     next_token(); 
 }
 
 int lexer::eat_int_constant() {
     if (!match_int_constant()) {
-        throw runtime_error("bad syntax exception: int constant");
+        throw runtime_error(INVALID_COMMAND_MSG);
     }
     int temp = stoi(*this->beg); 
     next_token(); 
@@ -64,7 +61,7 @@ int lexer::eat_int_constant() {
 
 string lexer::eat_string_constant() {
     if (!match_string_constant()) {
-        throw runtime_error("bad syntax exception: string constant");
+        throw runtime_error(INVALID_COMMAND_MSG);
     }
     string temp = *this->beg;
     next_token(); 
@@ -73,14 +70,14 @@ string lexer::eat_string_constant() {
 
 void lexer::eat_keyword(string kw) {
     if (!match_keyword(kw)) {
-        throw runtime_error("bad syntax exception: keyword");
+        throw runtime_error(INVALID_COMMAND_MSG);
     }
     next_token(); 
 }
 
 string lexer::eat_identifier(){
     if (!match_identifier()) {
-        throw runtime_error("bad syntax exception: identifier");
+        throw runtime_error(INVALID_COMMAND_MSG);
     }
     string temp = *this->beg;
     next_token(); 

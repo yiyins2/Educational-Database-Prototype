@@ -79,17 +79,22 @@ static const string failed_to_write_block_msg = "Failed to write block";
 
 // executor messages
 static const string SUCCESS_MSG = "SUCCESS";
-static const string INVALID_COMMAND_MSG = "Failed: invalid command";
-static const string TABLE_NOT_EXIST_MSG = "Failed: table not exist";
-static const string SCHEMA_NOT_EXIST_MSG = "Failed: table schema not exist";
+
+// parser error messages 
+static const string INVALID_COMMAND_MSG = "Syntax error: invalid command";
 
 // create table error messages
-static const string DUPLICATE_TABLE_MSG = "Failed: table already exist";
+static const string DUPLICATE_TABLE_NAME_MSG = "Failed: duplicate table name"; 
+static const string DUPLICATE_FIELD_NAME_MSG = "Failed: duplicate field name"; 
 
 // drop table error messages
+static const string TABLE_NOT_EXIST_MSG = "Failed: table does not exist";
 
 // insert record error messages
+static const string SCHEMA_NOT_EXIST_MSG = "Failed: table schema does not exist";
 static const string INVALID_INSERT_RECORD_SIZE_MSG = "Failed: invalid insert record size"; 
+static const string FAILED_TO_READ_BLOCK_MSG = "Failed: read block"; 
+static const string FAILED_TO_WRITE_BLOCK_MSG = "Failed: write block"; 
 
 static const int INT_TYPE = 0; 
 static const int STR_TYPE = 1; 

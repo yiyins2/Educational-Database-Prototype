@@ -4,16 +4,18 @@
 #include <string>
 
 #include "schema.hpp"
+#include "query/constant.hpp"
+
 using namespace std;
 
 class record {
 	private:
 		string table_name;
-		vector<int> values;
+		vector<constant> values;
 	
 	public:
-		record(string, vector<int>);
-		record(){}
-		vector<int> get_values();
+		record() {};
+		record(string, vector<constant>);
+		vector<constant> get_values();
 		string get_table_name();
 };
