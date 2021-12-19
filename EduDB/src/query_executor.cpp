@@ -195,6 +195,12 @@ string query_executor::execute(string cmd)
 	std::string delim = " ";
 	vector<string> parts = split_with_delimiter(cmd, " ");
 
+	if (parts.size() == 1 && strcmp(parts[0].c_str(), "EXIT") == 0) {
+		// Store metadata into file
+		this->tables_layout.write_to_disk();	
+		return "EXIT";
+	}
+
 	// Create table
 	if (parts.size() >= 3
         && strcmp(parts[0].c_str(), "CREATE") == 0
@@ -420,7 +426,6 @@ string query_executor::execute(string cmd)
 
         // Build predicate
 		vector<predicate> preds;
-        cout << where_idx << " jsfs" << endl;
         int ret_val = build_predicate(parts, where_idx + 1, preds, table_schema);
         switch (ret_val) {
             case PREDICARE_FIELD_NOT_FOUND:

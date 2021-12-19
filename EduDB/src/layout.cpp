@@ -1,5 +1,4 @@
 #include "../include/layout.hpp"
-
 table* layout::get_table(string table_name) {
 	if (this->tables_names.count(table_name) == 0) {
 		return nullptr;
@@ -48,4 +47,87 @@ int layout::add_table_and_schema(table t, schema s) {
 	this->add_table(t);
 	this->add_table_schema(table_name, s);
 	return SUCCESS;
+}
+
+void layout::write_to_disk() {
+	string filename = "metadata";
+	FILE *f = fopen(filename.c_str(), "w+");
+
+	for (auto tablename : this->tables_names) {
+		schema s = this->tables_schema[tablename];
+		fputs(tablename.c_str(), f);
+		fputs("\n", f);
+		vector<string> fields = s.get_field_names();
+		for (int i = 0; i < fields.size(); ++i) {
+			if (i > 0) {
+				fputs(" ", f);
+			}
+			fputs(fields[i].c_str(), f);
+		}
+		fputs("\n", f);
+		// Write record num
+		int record_num = this->tables_info[tablename].get_record_num();
+		fputs(to_string(record_num).c_str(), f);
+		fputs("\n", f);
+	}
+
+	fclose(f);	
+}
+
+void layout::load_from_disk(file_manager fm) {
+	ifstream fp("./metadata");
+	string tablename;
+	string fields;
+	string record_num;
+
+	string delimiter = " ";
+
+	//Checks if file is empty
+	if (!fp)
+	{
+		return;
+	}
+
+	while (getline(fp, tablename))
+	{
+		// Skip newline
+		getline(fp, fields);
+		
+		// Split fields
+		string fields_str = fields;
+		vector<string> parts;
+		int start = 0;
+		int end = fields_str.find(delimiter);
+		while (end != std::string::npos)
+		{
+			// Remove blank spaces
+			string part = fields_str.substr(start, end - start);
+			part.erase(remove(part.begin(), part.end(), ' '), fields_str.end());
+			if (part.length() > 0)
+			{
+				parts.push_back(part);
+			}
+
+			start = end + delimiter.length();
+			end = fields_str.find(delimiter, start);
+		}
+		parts.push_back(fields_str.substr(start, end - start));
+
+		// Create schema
+		schema s;
+		for (int i = 0; i < parts.size(); ++i) {
+			s.addField(parts[i]);
+		}
+
+		table new_table(tablename, fm);
+
+		// Update my table record num
+		getline(fp, record_num);
+		new_table.update_record_num(atoi(record_num.c_str()));
+
+		// Create table
+		this->add_table_and_schema(new_table, s);
+	}
+
+	fp.close();
 }

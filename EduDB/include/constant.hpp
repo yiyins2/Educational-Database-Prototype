@@ -4,7 +4,7 @@
 using namespace  std;
 
 // Test Server
-static const string db_dir = "./db";;
+static const string db_dir = "./db";
 static const int server_port = 8085;
 
 /* Test client */

@@ -48,7 +48,7 @@ int file_manager::read(file_block_idx blk, page p)
 
 	if (!f)
 	{
-		return -1;  
+		return -1;
 	}
 
 	f.close();
@@ -120,4 +120,8 @@ int file_manager::create_data_file(string filename) {
 	ofstream new_data_file(get_complete_file_path(filename));
 	new_data_file.close();
 	return SUCCESS;
+}
+
+string file_manager::get_dir() {
+	return this->db_dir;
 }

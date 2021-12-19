@@ -5,6 +5,7 @@
 
 #include "buffer.hpp"
 #include "file_manager.hpp"
+#include "page.hpp"
 
 using namespace std;
 class buffer_manager {

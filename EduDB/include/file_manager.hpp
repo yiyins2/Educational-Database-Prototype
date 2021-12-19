@@ -28,4 +28,5 @@ class file_manager {
 		int get_block_size();
 		int delete_file(string filename);
 		int create_data_file(string filename);
+		string get_dir();
 };

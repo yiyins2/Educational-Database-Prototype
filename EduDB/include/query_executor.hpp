@@ -35,11 +35,13 @@ public:
 	{
 		this->fm = file_manager(db_dir);
 		this->tables_layout = layout();
+		this->tables_layout.load_from_disk(this->fm);
 	}
 	query_executor()
 	{
 		this->fm = file_manager();
 		this->tables_layout = layout();
+		this->tables_layout.load_from_disk(this->fm);
 	}
 
     int insert_record(record r);

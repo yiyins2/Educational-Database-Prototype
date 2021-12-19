@@ -27,6 +27,10 @@ void *db_server::database_operation(void *socket_id_addr)
 
 	// Send back response
 	send(socket_id, result.c_str(), strlen(result.c_str()), 0);
+
+	if (strcmp(result.c_str(), "EXIT") == 0) {
+		stop();
+	}
 	return NULL;
 }
 
