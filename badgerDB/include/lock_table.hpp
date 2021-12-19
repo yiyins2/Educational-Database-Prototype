@@ -1,21 +1,33 @@
 #pragma once
 
 #include "file_block_idx.hpp"
-#include <queue>
+#include <map>
 #include <mutex>
 #include <condition_variable>
+#include <string>
+#include <chrono>
 using namespace std;
 
 class lock_table {
     private:
-        queue<file_block_idx *> wait_list;
+        //For simplicity, the size of wait list is one
+        map<string, int> locks;
+        //WARNING: Don't use global lock with shared or exclusive lock, they are supposed to be in different modes. 
+        bool has_global;
         mutex m;
         condition_variable cv;
-        // const int wait_time = 3000;
-        // const int lock_time = 5000;
+        bool has_shared_lock(string table_name);
+        bool has_exclusive_lock(string table_name);
+        int get_lock_val(string table_name);
+        bool wait_too_long(chrono::time_point<std::chrono::high_resolution_clock> start);
     
     public:
         lock_table();
-        void global_lock(file_block_idx *blk_id);
+        void global_lock();
         void global_unlock();
+        void shared_lock(string table_name);
+        void shared_unlock(string table_name);
+        void exclusive_lock(string table_name);
+        void exclusive_unlock(string table_name);
+        void unlock(string table_name);
 };
