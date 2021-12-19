@@ -37,6 +37,10 @@ void db_client::start_shell() {
 			return;
 		}
 		cout << cmd_resp_buf << endl;
+		
+		if (strcmp(cmd.c_str(), "EXIT") == 0) {
+			return;
+		}
 	}
 }
 

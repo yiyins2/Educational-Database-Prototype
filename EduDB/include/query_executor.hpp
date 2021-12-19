@@ -8,7 +8,7 @@
 
 #include "predicate.hpp"
 #include "record.hpp"
-#include "transaction.hpp"
+#include "file_manager.hpp"
 #include "layout.hpp"
 #include "table.hpp"
 #include "predicate.hpp"
@@ -22,9 +22,6 @@ class query_executor
 private:
 	layout tables_layout;
 	file_manager fm;
-	buffer_manager bm;
-	transaction tx;
-	const int BUFF_NUMBER = 8;
 	bool check_number(string);
 	string query_result_format(vector<string>, vector<record>);
 	string format_value_row(record);
@@ -37,16 +34,14 @@ public:
 	query_executor(string db_dir)
 	{
 		this->fm = file_manager(db_dir);
-		this->bm = buffer_manager(this->fm, BUFF_NUMBER);
-		this->tx = transaction(this->fm, this->bm);
 		this->tables_layout = layout();
+		this->tables_layout.load_from_disk(this->fm);
 	}
 	query_executor()
 	{
 		this->fm = file_manager();
-		this->bm = buffer_manager(this->fm, BUFF_NUMBER);
-		this->tx = transaction(this->fm, this->bm);
 		this->tables_layout = layout();
+		this->tables_layout.load_from_disk(this->fm);
 	}
 
     int insert_record(record r);

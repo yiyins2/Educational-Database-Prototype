@@ -219,3 +219,11 @@ vector<record> table::select_records(vector<int> select_fields, vector<predicate
 
 	return result;
 }
+
+void table::update_record_num(int new_record_num) {
+	this->record_num = new_record_num;
+}
+
+int table::get_record_num() {
+	return this->record_num;
+}

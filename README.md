@@ -54,37 +54,37 @@ Support Operations
 
 3. in client1, you can type in commands
 
-  ```
-  Successfully connected to server
-  SQL> CREATE TABLE t1 f1 f2 f3
-  SUCCESS
-  SQL> INSERT INTO TABLE t1 1 4 10
-  SUCCESS
-  SQL> UPDATE t1 SET f1 = 7 f2 = 82 WHERE f3 < 100
-  COMMAND NOT VALID
-  SQL> SELECT * FROM TABLE t1
-  --------------
-  f1|f2|f3
-  7|82|10
-  --------------
-  
-  SQL> INSERT INTO TABLE t1 10 11 12
-  SUCCESS
-  SQL> SELECT * FROM TABLE t1
-  --------------
-  f1|f2|f3
-  7|82|10
-  10|11|12
-  --------------
-  
-  SQL> UPDATE t1 SET f2 = 51 f3 = 92 WHERE f2 > 10                    
-  COMMAND NOT VALID
-  SQL> SELECT * FROM TABLE t1
-  --------------
-  f1|f2|f3
-  7|51|92
-  10|51|92
-  --------------
-  ```
+```
+Successfully connected to server
+SQL >CREATE TABLE t1 f1 f2 f3
+SUCCESS
+SQL >INSERT INTO TABLE t1 1 4 10
+SUCCESS
+SQL >UPDATE t1 SET f1 = 7 f2 = 82 WHERE f3 < 100
+SUCCESS
+SQL >SELECT * FROM TABLE t1
+--------------
+f1|f2|f3
+7|82|10
+--------------
+SQL >INSERT INTO TABLE t1 10 11 12
+SUCCESS
+SQL >SELECT * FROM TABLE t1
+--------------
+f1|f2|f3
+7|82|10
+10|11|12
+--------------
+SQL >UPDATE t1 SET f2 = 51 f3 = 92 WHERE f2 > 10
+SUCCESS
+SQL >SELECT * FROM TABLE t1
+--------------
+f1|f2|f3
+7|51|92
+10|51|92
+--------------
+SQL >EXIT
+EXIT
+```
 
   

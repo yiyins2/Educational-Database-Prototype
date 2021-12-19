@@ -3,6 +3,8 @@
 #include <set>
 #include <map>
 #include <string>
+#include <stdio.h>
+#include <sys/stat.h>
 
 #include "table.hpp"
 #include "schema.hpp"
@@ -22,4 +24,6 @@ class layout {
 		schema *get_table_schema(string);
 		int add_table_and_schema(table, schema);
 		int delete_table(string);
+		void write_to_disk();
+		void load_from_disk(file_manager);
 };

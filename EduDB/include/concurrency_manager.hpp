@@ -4,6 +4,7 @@
 #include "lock_table.hpp"
 #include "vector"
 #include "string"
+
 using namespace std;
 
 class concurrency_manager {

@@ -113,6 +113,7 @@ int query_executor::create_table(string table_name, vector<string> fields_str)
 	{
 		new_table_schema.addField(field_name);
 	}
+
     // Add table and schema to layout (internal metadata)
 	table new_table(table_name, this->fm);
 	if (this->tables_layout.add_table_and_schema(new_table, new_table_schema) == TABLE_DUPLICATE)
@@ -193,6 +194,12 @@ string query_executor::execute(string cmd)
 {
 	std::string delim = " ";
 	vector<string> parts = split_with_delimiter(cmd, " ");
+
+	if (parts.size() == 1 && strcmp(parts[0].c_str(), "EXIT") == 0) {
+		// Store metadata into file
+		this->tables_layout.write_to_disk();	
+		return "EXIT";
+	}
 
 	// Create table
 	if (parts.size() >= 3
@@ -419,7 +426,6 @@ string query_executor::execute(string cmd)
 
         // Build predicate
 		vector<predicate> preds;
-        cout << where_idx << " jsfs" << endl;
         int ret_val = build_predicate(parts, where_idx + 1, preds, table_schema);
         switch (ret_val) {
             case PREDICARE_FIELD_NOT_FOUND:
