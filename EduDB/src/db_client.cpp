@@ -2,7 +2,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <iostream>
-#include <string>
+#include <cstring>
 
 #include "../include/db_client.hpp"
 using namespace std;

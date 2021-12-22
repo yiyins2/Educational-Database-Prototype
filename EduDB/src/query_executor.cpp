@@ -93,7 +93,7 @@ vector<string> query_executor::split_with_delimiter(string cmd, string delimiter
     {
         // Remove blank spaces
         string part = cmd.substr(start, end - start);
-        part.erase(remove(part.begin(), part.end(), ' '), cmd.end());
+        part.erase(remove(part.begin(), part.end(), ' '), part.end());
         if (part.length() > 0) {
             parts.push_back(part);
         }

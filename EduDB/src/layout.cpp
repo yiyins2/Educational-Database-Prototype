@@ -102,7 +102,7 @@ void layout::load_from_disk(file_manager fm) {
 		{
 			// Remove blank spaces
 			string part = fields_str.substr(start, end - start);
-			part.erase(remove(part.begin(), part.end(), ' '), fields_str.end());
+			part.erase(remove(part.begin(), part.end(), ' '), part.end());
 			if (part.length() > 0)
 			{
 				parts.push_back(part);

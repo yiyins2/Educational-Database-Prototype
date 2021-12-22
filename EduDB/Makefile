@@ -9,6 +9,7 @@
   # The build target 
   SERVER = server1
   CLIENT = client1
+  METADATA = metadata
 
   all : $(SERVER) $(CLIENT) 
   .PHONY : all
@@ -20,4 +21,4 @@
 			$(CC) $(CFLAGS) -o $(CLIENT)  tests/test_client.cpp src/db_client.cpp
 
   clean:
-	$(RM) $(SERVER) $(CLIENT)
+	$(RM) $(SERVER) $(CLIENT) $(METADATA)
