@@ -2,7 +2,7 @@
 
 ### Structure
 
-* badgerDB: our implementation
+* EduDB: our implementation
 * BUSimpleDB: simpleDB from Boston University(our main reference), written in java
 * CPPSimpleDB: c++ version of simpleDB
 * mitSimpleDB: simpleDB from MIT, written in java
