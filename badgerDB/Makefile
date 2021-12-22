@@ -4,7 +4,7 @@
   # compiler flags:
   #  -g     - this flag adds debugging information to the executable file
   #  -Wall  - this flag is used to turn on most compiler warnings
-  CFLAGS  = -g -std=c++14
+  CFLAGS  = -I/opt/homebrew/Cellar/boost/1.76.0 -g -std=c++14 
  
   # The build target 
   SERVER = server1
