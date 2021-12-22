@@ -25,7 +25,7 @@ void transaction::unpin(file_block_idx *blk) {
 }
 
 int transaction::read(file_block_idx *blk) {
-    cm.global_lock(blk);
+    cm.global_lock();
     buffer* bf = bm.find_linked_buffer(blk);
     if (!bf) {
         cout << "The block is not exist to read, please try again" << endl;
@@ -35,7 +35,7 @@ int transaction::read(file_block_idx *blk) {
 } 
 
 void transaction::write(file_block_idx *blk, int val, int offset) {
-    cm.global_lock(blk);
+    cm.global_lock();
     //find the corresponding buffer according to block_id, if any
     buffer* bf = bm.find_linked_buffer(blk);
     if (!bf) {
